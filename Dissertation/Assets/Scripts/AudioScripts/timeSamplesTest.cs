@@ -6,26 +6,26 @@ using UnityEngine;
 public class timeSamplesTest : MonoBehaviour
 {
     AudioSource audioSource;
-    int currentSample;
     bool pause;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        float[] samples = new float[audioSource.clip.samples * audioSource.clip.channels];
-        audioSource.clip.GetData(samples, 0);
-        audioSource.clip.SetData(samples, 0);
     }
 
     void Update()
     {
+        audioSource.timeSamples = (int) Input.mousePosition.x * 190;
+
         if (Input.GetKeyDown(KeyCode.Return))
         {
             pause = false;
             audioSource.Stop();
             //audioSource.timeSamples = Random.Range(0, 389500);
             audioSource.Play();
+            
         }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (!pause)
@@ -39,6 +39,8 @@ public class timeSamplesTest : MonoBehaviour
                 pause = false;
             }
         }
-        Debug.Log(audioSource.timeSamples);
+
+        //Debug.Log(audioSource.timeSamples);
+        //Debug.Log(Input.mousePosition);
     }
 }
