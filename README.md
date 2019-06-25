@@ -12,6 +12,25 @@ To play back from a specific sample, set `AudioSource.timeSamples` to the sample
 ### Day 003
 Today I think I will learn how to scrub/seek through an audio file in Unity. I am going to try to use the mouse x position as the `AudioSource.timeSamples` integer to see if I can scrub through an audio file. With some mild scaling, during `Update()` I can declare the mouse x position to be the sample from which to play. I hit 'Enter' to initiate playing, and the audio loops on the sample where mouse position x is, and scrubs through the audio file as I move the mouse left and right. Can I make the sample window larger? I don't know how to yet, because `AudioSource.timeSamples` is an int. My thought is to use it as an initial starting point but have the audio play only 512 samples from that point. So that point + 511 samples would be the play length on loop. I still need to work on this.
 
+### Day 004
+Unity Audio Engine video notes:
+- Spatial Blend curves quite useful for switching between 3D and 2D on the fly.
+- Audio profiler great tool to inspect how sounds are playing frame by frame.
+- Audio Mixer for routing, submixing, effects, hierarchical mixing.
+- Audio Mixer can use native plugin and custom GUIs.
+- Mixer can interpolate between snapshots.
+- bitbucket.org/Unity-Technologies/audiodemos
+- Native audio plugins sdk <-- Look into that, it may be in C or C++
+- Prototype in C# using OnAudioFilterRead
+- Real time game parameters can change plugin parameters.
+- Procedural generation with modal filter.
+- Teleport transmits audio between external applications and Unity. Hear audio in Unity while you work on it in your DAW.
+- As of 2015, Unity is working on sound design possibilities in editor and multiple audio listeners.
+
+I downloaded the Unity native audio plugins from [bitbucket](https://bitbucket.org/Unity-Technologies/). Native Plugins are worth building if you know C++, but also worth using their examples if you don't know C++. They have granulators, ring modulators, vocoders, EQ, and reverb. It may be worth more to use their tools to develop VR interactions for parameter controls as compositions than to learn C++ and write my own granulator or equalizer. Of course, if I come up with something I want to do that these plugins can't, then I'll need to write my own plugins. I'll certainly need to investigate how a real-time game parameter can control the plugin parameters before moving much further ahead.
+
+---
+
 ### Jesse Meeting 001
 Two goals: "Hello, World!" the Native Audio Plugin SDK and build more cubes to learn about interactions with Unity's Audio Scripting API. How does audio pass to another cube? Eventually, you'll want to get modular with your object building, so think about preparing your code to be used as a library that will, in three or so lines, be able to make several thousand objects with several thousand audio clips, etc.
 
