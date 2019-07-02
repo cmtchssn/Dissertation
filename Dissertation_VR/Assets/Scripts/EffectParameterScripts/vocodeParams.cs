@@ -18,8 +18,7 @@ public class vocodeParams : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        vocGroup = GetComponent<AudioMixer>();
-        soundObject = GetComponent<GameObject>();
+        // I apparently don't need to get any components, as they are not attached to the game object.
     }
 
     // Update is called once per frame
@@ -92,6 +91,8 @@ public class vocodeParams : MonoBehaviour
         vocGroup.SetFloat("VocodeSynthesisBW", xRot);
         vocGroup.SetFloat("VocodeEnvelopeDecay", yRot);
         vocGroup.SetFloat("VocodeEmphasis", zRot);
+
+        Debug.Log("xpos: " + xPos);
 
     }
 }
