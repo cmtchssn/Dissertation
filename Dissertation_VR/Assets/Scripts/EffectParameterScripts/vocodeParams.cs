@@ -24,13 +24,16 @@ public class vocodeParams : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        xPos = soundObject.transform.position.x;
-        yPos = soundObject.transform.position.y * 0.05f;
-        zPos = soundObject.transform.position.z * 0.1f;
-        xRot = soundObject.transform.rotation.x * 0.1f;
-        yRot = soundObject.transform.rotation.y * 0.01f;
-        zRot = soundObject.transform.rotation.z;
+        //position is in units (infinite), but x is currently -50. to 50., y is 0 to inf, z is -50. to 50.
+        xPos = soundObject.transform.position.x * 30f; // scale to -1500. to 1500.
+        yPos = (soundObject.transform.position.y - 0.5f) * 1.111f; // scale to 0. to 10.
+        zPos = (soundObject.transform.position.z * 0.01f) + 0.5f; // scale to 0. to 1.
 
+        //rotation is between -1. and 1.
+        xRot = (soundObject.transform.rotation.x * 0.5f) + 0.5f;
+        yRot = (soundObject.transform.rotation.y * 0.2f) + 0.2f;
+        zRot = (soundObject.transform.rotation.z * 0.5f) + 1f;
+        /*
         if (xPos <= -1500f)
         {
             xPos = -1500f;
@@ -57,7 +60,7 @@ public class vocodeParams : MonoBehaviour
         {
             zPos = 100f;
         }
-
+        
         if (xRot <= 0.1f)
         {
             xRot = 0.1f;
@@ -84,7 +87,7 @@ public class vocodeParams : MonoBehaviour
         {
             zRot = 150f;
         }
-
+        */
         vocGroup.SetFloat("VocodeFormantShift", xPos);
         vocGroup.SetFloat("VocodeFormantScale", yPos);
         vocGroup.SetFloat("VocodeAnalysisBW", zPos);
@@ -92,7 +95,7 @@ public class vocodeParams : MonoBehaviour
         vocGroup.SetFloat("VocodeEnvelopeDecay", yRot);
         vocGroup.SetFloat("VocodeEmphasis", zRot);
 
-        Debug.Log("xpos: " + xPos);
-
+        //Debug.Log("xpos: " + xPos + "; ypos: " + yPos + "; zpos: " + zPos);
+        //Debug.Log("xrot: " + xRot + "; yrot: " + yRot + "; zrot: " + zRot);
     }
 }

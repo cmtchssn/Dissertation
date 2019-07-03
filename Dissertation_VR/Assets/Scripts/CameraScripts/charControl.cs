@@ -36,5 +36,15 @@ public class charControl : MonoBehaviour
         {
             rb.AddForce(Vector3.back * speed);
         }
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            rb.AddForce(Vector3.up * speed);
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            rb.AddForce(Vector3.down * speed);
+        }
     }
 }
