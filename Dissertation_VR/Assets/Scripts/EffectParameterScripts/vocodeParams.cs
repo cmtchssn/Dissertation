@@ -42,11 +42,12 @@ public class vocodeParams : MonoBehaviour
         {
             xPos = 1500f;
         }
-
+        */
         if (yPos <= 0.05f)
         {
             yPos = 0.05f;
         }
+        /*
         if (yPos >= 10f)
         {
             yPos = 10f;
@@ -94,8 +95,9 @@ public class vocodeParams : MonoBehaviour
         vocGroup.SetFloat("VocodeSynthesisBW", xRot);
         vocGroup.SetFloat("VocodeEnvelopeDecay", yRot);
         vocGroup.SetFloat("VocodeEmphasis", zRot);
+        vocGroup.SetFloat("VolumeVoc", 0f);
 
         //Debug.Log("xpos: " + xPos + "; ypos: " + yPos + "; zpos: " + zPos);
-        //Debug.Log("xrot: " + xRot + "; yrot: " + yRot + "; zrot: " + zRot);
+        Debug.Log("xrot: " + xRot + "; yrot: " + yRot + "; zrot: " + zRot);
     }
 }

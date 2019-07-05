@@ -16,6 +16,8 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: 8e3d3933d2510934e8650002e258d17d
+    name: VolumeVoc
   - guid: f50fd5d2fec166642ae4351d2907dc25
     name: VocodeGain
   - guid: 6d21443c8402f3d45bc8c9f74abe51ba
@@ -82,15 +84,26 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 78c8c4ca5e7ca51438169bb46abd32d5
   m_FloatValues:
+    542d3d80db74de44eaf8e18a271b6ead: 4000
     d28556c029376cf4394055083bd56ec6: 1
+    bdced9b2fedd76d45b7f35c194ab17b1: 886.033
     f50fd5d2fec166642ae4351d2907dc25: -0.8
     8e3d3933d2510934e8650002e258d17d: 0
+    1313bbf361cc6604ebb50ba481378868: 0
+    a0419c457959fe6499949a7534d89401: 0.707
+    ff35ae655b413d845b7e058317410831: -9.833286
     f156fc86af3102640b68d7ab8b023ff4: 0
+    b5c441c6581aa7444b7a1154a717e0b2: 0.707
+    06a679d88af5b4d42b6de0309f2bd4fe: 24000
     7711a88a7963b1e418e44da0bc8e3809: 0.05
     c56a19fba24aa7e45a958c0fca18bb0c: 0.4
     6d21443c8402f3d45bc8c9f74abe51ba: -1500
+    6722573c1110b3f4fa2195be9ebcc37a: 0
+    e9ff0b5cdfb88f541902c7db0aef60d5: 0.707
     ba00669c21dbaa0488fc8f5d636ed205: 3.8
+    a1af4cbcc5388e740a854a7d45cc6ff5: 15
     e4a6ae2dfc5d2e44ea0e6ac31a5356fb: 1.5
+    434416be0fa273848bb3872bc994764b: -6.5
     ce07d21fa8600f94195d51ebd25c5812: 0
     0bc7536fd8ea11b4ab2b54edbfbde6aa: 1
   m_TransitionOverrides: {}
