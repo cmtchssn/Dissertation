@@ -51,6 +51,11 @@ I'm going to take the rigidbody components off the planes, in exchange for box c
 
 The latest scene (001) has all transforms scaled correctly, but the parameters aren't necessarily mapped in a meaningful way. Using WASD and the Up and Down Arrow keys to control the ball in the scene is awkward as well. This is where the VR controllers come in handy. With experimentation, meaningful mapping can be derived. For instance, the rotation parameters are just constantly oscillating in this version. With a VR controller, users can deliberately rotate for effect and make conscious decisions about the sound. I need to get my hands on those VR controllers upstairs. Also, that the ball relies on gravity exclusively is a problem. VR controllers take advantage of three dimensions better than keyboards, so with VR users can intuitively control vertical and horizontal positions of the ball moreso than a keyboard mapping. Also, I changed the looping audio to a song and am having way more fun than with the voice.
 
+### Day 009
+Start with updating character controls; remove AddForce.
+
+I have a new character controller and camera controller which work like a walking 3D character in an MMORPG. This isn't exactly what I need for a rolling ball, but it is better than the AddForce movement of the previous script. I should probably add another AddForce for moving up and down the Y-Axis, then work on getting some objects in the level that will cause the ball to rotate.
+
 ---
 
 ### Jesse Meeting 001

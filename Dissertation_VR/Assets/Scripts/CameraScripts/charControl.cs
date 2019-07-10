@@ -4,47 +4,65 @@ using UnityEngine;
 
 public class charControl : MonoBehaviour
 {
-    public float speed;
+    public float inputDelay = 0.1f;
+    public float forwardVel = 12;
+    public float rotateVel = 100;
 
-    // Start is called before the first frame update
-    void Start()
+    Quaternion targetRotation;
+    Rigidbody rBody;
+    float forwardInput, turnInput;
+
+    public Quaternion TargetRotation
     {
-
+        get { return targetRotation; }
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        targetRotation = transform.rotation;
+        if (GetComponent<Rigidbody>())
+            rBody = GetComponent<Rigidbody>();
+        else
+            Debug.LogError("The character needs a rigidbody");
+
+        forwardInput = turnInput = 0;
+    }
+
+    void GetInput()
+    {
+        forwardInput = Input.GetAxis("Vertical");
+        turnInput = Input.GetAxis("Horizontal");
+    }
+
     void Update()
     {
-        Rigidbody rb = GetComponent<Rigidbody>();
+        GetInput();
+        Turn();
+    }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            rb.AddForce(Vector3.left * speed);
-        }
+    void FixedUpdate()
+    {
+        Run();
+    }
 
-        if (Input.GetKey(KeyCode.D))
+    void Run()
+    {
+        if (Mathf.Abs(forwardInput) > inputDelay)
         {
-            rb.AddForce(Vector3.right * speed);
+            //move
+            rBody.velocity = transform.forward * forwardInput * forwardVel;
         }
+        else
+            //zero velocity
+            rBody.velocity = Vector3.zero;
+    }
 
-        if (Input.GetKey(KeyCode.W))
+    void Turn()
+    {
+        if (Mathf.Abs(turnInput) > inputDelay)
         {
-            rb.AddForce(Vector3.forward * speed);
+            targetRotation *= Quaternion.AngleAxis(rotateVel * turnInput * Time.deltaTime, Vector3.up);
         }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            rb.AddForce(Vector3.back * speed);
-        }
-
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            rb.AddForce(Vector3.up * speed);
-        }
-
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            rb.AddForce(Vector3.down * speed);
-        }
+        transform.rotation = targetRotation;
     }
 }
