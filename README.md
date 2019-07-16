@@ -59,6 +59,8 @@ I have a new character controller and camera controller which work like a walkin
 ### Day 010
 I set up the Vive today. Next, I will try to use it in my game just to see what happens. The game works with the keyboard controls laid out in day 009, but the camera doesn't work the same since the headset is now the camera. Day 011 should focus on adding VR camera and control scripts.
 
+### Day 011
+First, I'll download the Vive SDK for Unity, then I'll start working on scripts for camera and controllers. Vive Input Utility from the Unity Asset Store is really what I want. Vive Wave SDK is for mobile VR. There are also Vive Audio and Hand Tracking SDKs, but I'm not looking too far into them yet. There are some drag and drop scripts to make items grabbable and teleportable, but fine tuning is required. I'm kind of beat already from the VR, it is more fatiguing than nauseous so far, likely because I'm seated. I think standing and walking around causing equilibrium imbalance that leads to nausea quicker. So for tomorrow, do some fine tuning, dig into what the scripts mean and do, and make the scene work well in VR. 
 ---
 
 ### Jesse Meeting 001
