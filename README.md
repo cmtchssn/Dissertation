@@ -61,6 +61,12 @@ I set up the Vive today. Next, I will try to use it in my game just to see what 
 
 ### Day 011
 First, I'll download the Vive SDK for Unity, then I'll start working on scripts for camera and controllers. Vive Input Utility from the Unity Asset Store is really what I want. Vive Wave SDK is for mobile VR. There are also Vive Audio and Hand Tracking SDKs, but I'm not looking too far into them yet. There are some drag and drop scripts to make items grabbable and teleportable, but fine tuning is required. I'm kind of beat already from the VR, it is more fatiguing than nauseous so far, likely because I'm seated. I think standing and walking around causing equilibrium imbalance that leads to nausea quicker. So for tomorrow, do some fine tuning, dig into what the scripts mean and do, and make the scene work well in VR. 
+
+### Day 012
+I'm going to watch some vids about what the VIU scripts do and how to use them in my own scenes. Finally got things working right. I was trying to add a few Vive component prefabs at a time, but really, I just needed to add Vive Rig prefab and everything works like a charm. Always read the guides/READMEs/tutorials included with your software/hardware. So, I can play with the ball and listen to the music and control the music more intuitively now. This still needs improvement. The scale of the scene is massive when in VR, the sphere is around half my size, the ceiling is unreachable, the walls are massively far apart. I should rescale a new room with interactivity in mind. think of bowling, Newton's cradle, pinball, rotational gusts, etc. It's a real Mario Maker in here now. 
+
+I've got a lot of freedom, so start with the limitations. I do want multiple sound objects, perhaps I should create three types: sphere, cube, cone/pyramid. Each will behave differently, but I can lay the groundwork for mass producing these objects in scenes. I should think three-dimensionally. Consider height as well as length and width. The first addition to the scene will be a big ramp. Objects can speed down the ramp and fly off to land on a bouncy surface.
+
 ---
 
 ### Jesse Meeting 001
