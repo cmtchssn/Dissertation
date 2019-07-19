@@ -79,3 +79,6 @@ Had a good meeting demoing the plugins for Jesse. Showed off the Mixer and all i
 
 ### Jesse Meeting 003
 Show him the 3D UI for the Unity vocoder. Eventually, I'll need to define mapping in convenient, easy ways for users. First thing to do this week is develop more interesting levels for the ball to roll around in. Make a vortex that changes the rotation values, add some columns that bounce the ball away pinball style, make the level itself a funnel or cylinder or something. Play around and have fun with some new mechanics that make the scene playable/performable.
+
+### Jesse Meeting 004
+Learn to make dice. Record your own sounds (impulse, ambient, rhythmic, etc.). Have fun, explore. Don't narrow vision on one idea yet.
