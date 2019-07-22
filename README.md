@@ -67,6 +67,9 @@ I'm going to watch some vids about what the VIU scripts do and how to use them i
 
 I've got a lot of freedom, so start with the limitations. I do want multiple sound objects, perhaps I should create three types: sphere, cube, cone/pyramid. Each will behave differently, but I can lay the groundwork for mass producing these objects in scenes. I should think three-dimensionally. Consider height as well as length and width. The first addition to the scene will be a big ramp. Objects can speed down the ramp and fly off to land on a bouncy surface.
 
+### Day 013
+Investigating procedural meshes for rendering dice in-game. I watched the board to bits youtube series on 3D object generation with procedural meshes and learned a lot. I think I can use it as a reference to generate my own polyhedrons. I'll start with a cube following his instructions, then try 4, 8, 10, 12, 20-sided polyhedrons. Or I'll just check the asset store to download some, as I'm sure they've been made already. I just think the procedural method should be lightweight and flexible. Upon further review, the Unity asset store doesn't have anything adequate for my needs. Procedural generation begins tomorrow.
+
 ---
 
 ### Jesse Meeting 001
