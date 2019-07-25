@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
+[RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
 public class ProceduralOctahedron : MonoBehaviour
 {
     Mesh mesh;
+    MeshCollider meshCollider;
     List<Vector3> vertices;
     List<int> triangles;
 
     private void Awake()
     {
         mesh = GetComponent<MeshFilter>().mesh;
+        meshCollider = GetComponent<MeshCollider>();
+        meshCollider.sharedMesh = mesh;
     }
 
     // Start is called before the first frame update
@@ -19,9 +22,10 @@ public class ProceduralOctahedron : MonoBehaviour
     {
         MakeOctahedron();
         UpdateMesh();
+        meshCollider.convex = true;
     }
 
-    void MakeOctahedron()
+    void MakeOctahedron() //consider putting this in mesh data file.
     {
         vertices = new List<Vector3>();
         triangles = new List<int>();

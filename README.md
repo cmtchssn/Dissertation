@@ -70,6 +70,15 @@ I've got a lot of freedom, so start with the limitations. I do want multiple sou
 ### Day 013
 Investigating procedural meshes for rendering dice in-game. I watched the board to bits youtube series on 3D object generation with procedural meshes and learned a lot. I think I can use it as a reference to generate my own polyhedrons. I'll start with a cube following his instructions, then try 4, 8, 10, 12, 20-sided polyhedrons. Or I'll just check the asset store to download some, as I'm sure they've been made already. I just think the procedural method should be lightweight and flexible. Upon further review, the Unity asset store doesn't have anything adequate for my needs. Procedural generation begins tomorrow.
 
+### Day 014
+Coded a procedural cube following Board to Bits' YouTube series. It looks good, if a little large. Nothing scaling can't fix.
+
+### Day 015
+Coded a procedural octahedron based on the procedural cube code. Took me a while to get the triangles to face outward, something to do with the order in which the vertices are called and culling. Anyway, got it figured out, but then tried to add mesh colliders to both the cube and octahedron. Updated the code to require the mesh colliders and to use the mesh generated from the shape's data as the mesh in the mesh collider. Added rigidbodies to the objects. They now just fall straight through the floor. Next step is to figure out how to solve that. Rigidbodies + MeshCollider with convex checked is supposed to work, but doesn't. As I tried to change the floor's collider, the sphere I have been using began to float off the ground. Peculiar.
+
+### Day 016
+Investigate colliders and make the scene's physics work correctly. Jeezy Petes, it was an order of operations issue. I need to generate the mesh first in `Awake()`, then in `Start()` declare the mesh to be convex. doing it in the reverse order meant the mesh that was declared convex didn't exist and the newly generated mesh wasn't. at least I figured it out. Oddly enough, leaving the ocatahedron at a 0-rotation point allows it to fall into place standing on the southern tip of the die. 
+
 ---
 
 ### Jesse Meeting 001
@@ -85,3 +94,6 @@ Show him the 3D UI for the Unity vocoder. Eventually, I'll need to define mappin
 
 ### Jesse Meeting 004
 Learn to make dice. Record your own sounds (impulse, ambient, rhythmic, etc.). Have fun, explore. Don't narrow vision on one idea yet.
+
+### Jesse Meeting 005
+Combining dice creation into 1 function call. Include empty object generation when calling this so you can call them in game. Your goal is to make making music doable in VR. To get there you need to set up all the scripts to enable how much work you can actually do in VR rather than switching between Unity and in-game to make music. Start organizing the way you will work in-game so you can spend more time there playing and making music.

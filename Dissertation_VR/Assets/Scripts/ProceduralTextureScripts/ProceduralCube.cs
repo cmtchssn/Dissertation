@@ -22,6 +22,7 @@ public class ProceduralCube : MonoBehaviour
     {
         MakeCube();
         UpdateMesh();
+        meshCollider.convex = true;
     }
 
     void MakeCube()
