@@ -97,3 +97,6 @@ Learn to make dice. Record your own sounds (impulse, ambient, rhythmic, etc.). H
 
 ### Jesse Meeting 005
 Combining dice creation into 1 function call. Include empty object generation when calling this so you can call them in game. Your goal is to make making music doable in VR. To get there you need to set up all the scripts to enable how much work you can actually do in VR rather than switching between Unity and in-game to make music. Start organizing the way you will work in-game so you can spend more time there playing and making music.
+
+### Jesse Meeting 006
+How can my generator files read standardized object files to simplify the process?
