@@ -79,6 +79,17 @@ Coded a procedural octahedron based on the procedural cube code. Took me a while
 ### Day 016
 Investigate colliders and make the scene's physics work correctly. Jeezy Petes, it was an order of operations issue. I need to generate the mesh first in `Awake()`, then in `Start()` declare the mesh to be convex. doing it in the reverse order meant the mesh that was declared convex didn't exist and the newly generated mesh wasn't. at least I figured it out. Oddly enough, leaving the ocatahedron at a 0-rotation point allows it to fall into place standing on the southern tip of the die. 
 
+### Day 017
+Working on making all faces visible on D10. 6 of 10 are visible, so I thought it was an issue of triangle meshes being drawn backwards or something. The problem with that is, if it were being drawn backwards, the inverse would be visible. As of now, 4 of the kites have no faces inverted or not. I tried to brute force 24 variations of one kite face and no matter the configuration the D10 looked the same every time. When I altered a visible face, one of the two triangles making the face disappeared. I'm going to walk around, maybe ask Jesse for some troubleshooting ideas. I should also rewatch the Board to Bits YouTube series. 
+
+**AAAAAAHHHHHH** I figured it out. The reason I wasn't seeing an inverted face is because my for loop, which makes faces, was only counting up to 6, not 10. Changing that one number solved my 2 hour problem. Note to self: carefully read your code while troubleshooting.
+
+Tomorrow, build a D4, D12, and D20.
+
+P.S.
+I'm in the new office, out of the studio. Got all of that stuff transferred and setup today. Feels good.
+
+
 ---
 
 ### Jesse Meeting 001

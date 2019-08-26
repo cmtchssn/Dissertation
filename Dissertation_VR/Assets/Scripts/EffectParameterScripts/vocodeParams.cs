@@ -98,6 +98,6 @@ public class vocodeParams : MonoBehaviour
         vocGroup.SetFloat("VolumeVoc", 0f);
 
         //Debug.Log("xpos: " + xPos + "; ypos: " + yPos + "; zpos: " + zPos);
-        Debug.Log("xrot: " + xRot + "; yrot: " + yRot + "; zrot: " + zRot);
+        //Debug.Log("xrot: " + xRot + "; yrot: " + yRot + "; zrot: " + zRot);
     }
 }

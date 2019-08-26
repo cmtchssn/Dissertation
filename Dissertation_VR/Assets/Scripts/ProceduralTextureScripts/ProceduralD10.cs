@@ -23,6 +23,7 @@ public class ProceduralD10 : MonoBehaviour
         MakeD10();
         UpdateMesh();
         meshCollider.convex = true;
+        Debug.Log(vertices);
     }
 
     void MakeD10()
@@ -30,7 +31,7 @@ public class ProceduralD10 : MonoBehaviour
         vertices = new List<Vector3>();
         triangles = new List<int>();
 
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 10; i++)
         {
             MakeFace(i);
         }

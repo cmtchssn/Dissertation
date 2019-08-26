@@ -5,9 +5,9 @@ using UnityEngine;
 
 public static class D10MeshData
 {
-    static float C0 = (Mathf.Sqrt(5f) - 1f) / 4f;
-    static float C1 = (1f + Mathf.Sqrt(5f)) / 4f;
-    static float C2 = (3f + Mathf.Sqrt(5f)) / 4f;
+    static float C0 = 0.309016994374947424102293417183f;// = (Mathf.Sqrt(5f) - 1f) / 4f;
+    static float C1 = 0.809016994374947424102293417183f;// (1f + Mathf.Sqrt(5f)) / 4f;
+    static float C2 = 1.30901699437494742410229341718f;// (3f + Mathf.Sqrt(5f)) / 4f;
 
     public static Vector3[] vertices =
     {
