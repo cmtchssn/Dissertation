@@ -89,6 +89,8 @@ Tomorrow, build a D4, D12, and D20.
 P.S.
 I'm in the new office, out of the studio. Got all of that stuff transferred and setup today. Feels good.
 
+### Day 018
+New GPU from Derick! Let's take it for a spin. After much copying and pasting from dmccooey.com/polyhedra, I have a D4, 6, 8, 10, 12, and 20. All meshes are perfectly sorted. The code leaves a bit to be desired. I've talked to Jesse about moving the `MakeD`*n*`()` methods to the same scripts containing the static data, but I'm going to have to look into making methods work inside static classes. I'm going for a short walk and will tackle that next. After getting static class methods to work in public classes, I should start learning how to spawn each item in-game.
 
 ---
 
