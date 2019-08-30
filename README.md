@@ -95,7 +95,15 @@ New GPU from Derick! Let's take it for a spin. After much copying and pasting fr
 The static methods can be called by non-static classes, but I need more info to make it work. Meanwhile, I learned how to spawn items in-game and it is super cool. I declared a variable for an empty object, then made a simple if statement saying if "n" is pressed, spawn a D4 inside the empty game object at my location. I can still tweak the location and how it spawns, but I'm super pumped about it. Also, I need to require or somehow add the renderer material I'm using to the classes defining and creating the shapes so when I later spawn them they will already have materials.
 
 ### Day 019
-Let's start with the renderer material sorting, then start a UI to choose which shape to generate. It is also worthwhile to see about learning what face is making contact with the floor, or just how to differentiate the faces via scripting. My first thought is to check which vertices are touching the floor and derive what face contains those points.
+Let's start with the renderer material sorting, then start a UI to choose which shape to generate. It is also worthwhile to see about learning what face is making contact with the floor, or just how to differentiate the faces via scripting. My first thought is to check which vertices are touching the floor and derive what face contains those points. Instead of UI, I'll first update the generate script to include functions for each shape.
+
+I should probably start a trello board to keep track of progress.
+
+Materials: if you have a material you want to put on an object in game via scripting, you can add that material to a "Resources" folder in your Assets folder. Then you set the material to `Resources.Load("nameofmaterial") as Material`. You can do this with other assets as well. In my case, I am generating objects in-game so there is not an object in the hierarchy or inspector window to which I can add a material. You can put a material on what doesn't exist. Keep in mind, the Resources folder loads everything in the folder during the build, so only use what is necessary in the Resources folder. Unused items will still load in the build.
+
+Generating: I updated the generation script to include all shapes, and for some odd reason, the D6 is generated twice on key down. The procedural D6 script doesn't seem off, but I'll go over it some more. All other shapes generate one at a time. It isn't the number I am pressing. I switch D8 and D6 to see if it was the keyboard, but D6 still generates twice on both `GetKeyDown(KeyCode.Alpha2)` and `Alpha.3`.
+
+Faces: One thought is to put colliders on each face and determine which face touches the floor by learning which collider touches the floor. It is cheesy, and maybe too much work. I'd like to think you could find what vertices or triangles are colliding though without the extra colliders. `Collision.GetContacts` may be the place to start. It returns contact points, but I don't know what that really means.
 
 ---
 

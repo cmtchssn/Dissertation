@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class D6MeshData
 {
-    static float C0 = 0.75f;
+    static float C0 = 1f;
 
     public static Vector3[] vertices =
     {

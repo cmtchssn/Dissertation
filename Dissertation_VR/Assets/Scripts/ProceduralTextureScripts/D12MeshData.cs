@@ -5,8 +5,8 @@ using UnityEngine;
 
 public static class D12MeshData
 {
-    static float C0 = 0.809016994374947424102293417183f * 0.75f;    // = (1f + Math.Sqrt(5f)) / 4f
-    static float C1 = 1.30901699437494742410229341718f * 0.75f;     // = (3f + Math.Sqrt(5f)) / 4f
+    static float C0 = 0.809016994374947424102293417183f;    // = (1f + Math.Sqrt(5f)) / 4f
+    static float C1 = 1.30901699437494742410229341718f;     // = (3f + Math.Sqrt(5f)) / 4f
 
     public static Vector3[] vertices =      // where each face connects in space
     {

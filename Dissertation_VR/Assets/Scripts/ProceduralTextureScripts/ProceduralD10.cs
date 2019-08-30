@@ -8,6 +8,7 @@ public class ProceduralD10 : MonoBehaviour
 {
     Mesh mesh;
     MeshCollider meshCollider;
+    MeshRenderer meshRend;
     List<Vector3> vertices;
     List<int> triangles;
 
@@ -16,6 +17,7 @@ public class ProceduralD10 : MonoBehaviour
         mesh = GetComponent<MeshFilter>().mesh;
         meshCollider = GetComponent<MeshCollider>();
         meshCollider.sharedMesh = mesh;
+        meshRend = GetComponent<MeshRenderer>();
     }
 
     // Start is called before the first frame update
@@ -60,5 +62,6 @@ public class ProceduralD10 : MonoBehaviour
         mesh.vertices = vertices.ToArray();
         mesh.triangles = triangles.ToArray();
         mesh.RecalculateNormals();
+        meshRend.material = Resources.Load("shapePrototypingMaterial") as Material;
     }
 }

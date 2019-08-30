@@ -8,6 +8,7 @@ public class ProceduralD6 : MonoBehaviour
 {
     Mesh mesh;
     MeshCollider meshCollider;
+    MeshRenderer meshRend;
     List<Vector3> vertices;
     List<int> triangles;
 
@@ -16,17 +17,18 @@ public class ProceduralD6 : MonoBehaviour
         mesh = GetComponent<MeshFilter>().mesh;
         meshCollider = GetComponent<MeshCollider>();
         meshCollider.sharedMesh = mesh;
+        meshRend = GetComponent<MeshRenderer>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        MakeCube();
+        MakeD6();
         UpdateMesh();
         meshCollider.convex = true;
     }
 
-    void MakeCube()
+    void MakeD6()
     {
         vertices = new List<Vector3>();
         triangles = new List<int>();
@@ -48,8 +50,6 @@ public class ProceduralD6 : MonoBehaviour
         triangles.Add(vCount - 4);
         triangles.Add(vCount - 4 + 2);
         triangles.Add(vCount - 4 + 3);
-
-
     }
 
     void UpdateMesh()
@@ -59,5 +59,6 @@ public class ProceduralD6 : MonoBehaviour
         mesh.vertices = vertices.ToArray();
         mesh.triangles = triangles.ToArray();
         mesh.RecalculateNormals();
+        meshRend.material = Resources.Load("shapePrototypingMaterial") as Material;
     }
 }
