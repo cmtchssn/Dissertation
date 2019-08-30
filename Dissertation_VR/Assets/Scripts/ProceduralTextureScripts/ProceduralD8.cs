@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
 [RequireComponent(typeof(Rigidbody))]
-public class ProceduralD10 : MonoBehaviour
+public class ProceduralD8 : MonoBehaviour
 {
     Mesh mesh;
     MeshCollider meshCollider;
@@ -21,18 +21,17 @@ public class ProceduralD10 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MakeD10();
+        MakeD8();
         UpdateMesh();
         meshCollider.convex = true;
-        Debug.Log(vertices);
     }
 
-    void MakeD10()
+    void MakeD8() //consider putting this in mesh data file.
     {
         vertices = new List<Vector3>();
         triangles = new List<int>();
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 8; i++) //8 sides
         {
             MakeFace(i);
         }
@@ -40,17 +39,12 @@ public class ProceduralD10 : MonoBehaviour
 
     void MakeFace(int dir)
     {
-        vertices.AddRange(D10MeshData.faceVertices(dir));
+        vertices.AddRange(D8MeshData.faceVertices(dir));
         int vCount = vertices.Count;
 
-        triangles.Add(vCount - 4);
-        triangles.Add(vCount - 4 + 1);
-        triangles.Add(vCount - 4 + 2);
-        triangles.Add(vCount - 4);
-        triangles.Add(vCount - 4 + 2);
-        triangles.Add(vCount - 4 + 3);
-
-
+        triangles.Add(vCount - 3);
+        triangles.Add(vCount - 3 + 1);
+        triangles.Add(vCount - 3 + 2);
     }
 
     void UpdateMesh()

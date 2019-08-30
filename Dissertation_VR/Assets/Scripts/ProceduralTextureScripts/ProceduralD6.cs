@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
+[RequireComponent (typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
 [RequireComponent(typeof(Rigidbody))]
-public class ProceduralD10 : MonoBehaviour
+public class ProceduralD6 : MonoBehaviour
 {
     Mesh mesh;
     MeshCollider meshCollider;
@@ -21,18 +21,17 @@ public class ProceduralD10 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MakeD10();
+        MakeCube();
         UpdateMesh();
         meshCollider.convex = true;
-        Debug.Log(vertices);
     }
 
-    void MakeD10()
+    void MakeCube()
     {
         vertices = new List<Vector3>();
         triangles = new List<int>();
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 6; i++)
         {
             MakeFace(i);
         }
@@ -40,7 +39,7 @@ public class ProceduralD10 : MonoBehaviour
 
     void MakeFace(int dir)
     {
-        vertices.AddRange(D10MeshData.faceVertices(dir));
+        vertices.AddRange(D6MeshData.faceVertices(dir));
         int vCount = vertices.Count;
 
         triangles.Add(vCount - 4);

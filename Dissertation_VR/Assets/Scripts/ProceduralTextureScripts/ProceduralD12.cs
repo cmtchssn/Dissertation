@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
 [RequireComponent(typeof(Rigidbody))]
-public class ProceduralD10 : MonoBehaviour
+public class ProceduralD12 : MonoBehaviour
 {
     Mesh mesh;
     MeshCollider meshCollider;
@@ -21,18 +21,17 @@ public class ProceduralD10 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MakeD10();
+        MakeD12();
         UpdateMesh();
         meshCollider.convex = true;
-        Debug.Log(vertices);
     }
 
-    void MakeD10()
+    void MakeD12()
     {
         vertices = new List<Vector3>();
         triangles = new List<int>();
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 12; i++)     // i < number of faces shape has
         {
             MakeFace(i);
         }
@@ -40,16 +39,18 @@ public class ProceduralD10 : MonoBehaviour
 
     void MakeFace(int dir)
     {
-        vertices.AddRange(D10MeshData.faceVertices(dir));
+        vertices.AddRange(D12MeshData.faceVertices(dir));
         int vCount = vertices.Count;
 
-        triangles.Add(vCount - 4);
-        triangles.Add(vCount - 4 + 1);
-        triangles.Add(vCount - 4 + 2);
-        triangles.Add(vCount - 4);
-        triangles.Add(vCount - 4 + 2);
-        triangles.Add(vCount - 4 + 3);
-
+        triangles.Add(vCount - 5);      // 1 group of 0-2 means 3 total vertices per face
+        triangles.Add(vCount - 5 + 1);
+        triangles.Add(vCount - 5 + 2);
+        triangles.Add(vCount - 5);      
+        triangles.Add(vCount - 5 + 2);
+        triangles.Add(vCount - 5 + 3);
+        triangles.Add(vCount - 5);      
+        triangles.Add(vCount - 5 + 3);
+        triangles.Add(vCount - 5 + 4);
 
     }
 

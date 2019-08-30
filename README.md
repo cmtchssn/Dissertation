@@ -92,6 +92,11 @@ I'm in the new office, out of the studio. Got all of that stuff transferred and 
 ### Day 018
 New GPU from Derick! Let's take it for a spin. After much copying and pasting from dmccooey.com/polyhedra, I have a D4, 6, 8, 10, 12, and 20. All meshes are perfectly sorted. The code leaves a bit to be desired. I've talked to Jesse about moving the `MakeD`*n*`()` methods to the same scripts containing the static data, but I'm going to have to look into making methods work inside static classes. I'm going for a short walk and will tackle that next. After getting static class methods to work in public classes, I should start learning how to spawn each item in-game.
 
+The static methods can be called by non-static classes, but I need more info to make it work. Meanwhile, I learned how to spawn items in-game and it is super cool. I declared a variable for an empty object, then made a simple if statement saying if "n" is pressed, spawn a D4 inside the empty game object at my location. I can still tweak the location and how it spawns, but I'm super pumped about it. Also, I need to require or somehow add the renderer material I'm using to the classes defining and creating the shapes so when I later spawn them they will already have materials.
+
+### Day 019
+Let's start with the renderer material sorting, then start a UI to choose which shape to generate. It is also worthwhile to see about learning what face is making contact with the floor, or just how to differentiate the faces via scripting. My first thought is to check which vertices are touching the floor and derive what face contains those points.
+
 ---
 
 ### Jesse Meeting 001
