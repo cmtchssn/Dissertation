@@ -26,7 +26,6 @@ public class ProceduralD10 : MonoBehaviour
         MakeD10();
         UpdateMesh();
         meshCollider.convex = true;
-        Debug.Log(vertices);
     }
 
     void MakeD10()
@@ -38,6 +37,8 @@ public class ProceduralD10 : MonoBehaviour
         {
             MakeFace(i);
         }
+        Debug.Log(vertices.Count);
+
     }
 
     void MakeFace(int dir)

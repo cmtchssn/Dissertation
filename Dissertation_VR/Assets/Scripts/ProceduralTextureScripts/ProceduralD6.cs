@@ -37,6 +37,8 @@ public class ProceduralD6 : MonoBehaviour
         {
             MakeFace(i);
         }
+        Debug.Log(vertices.Count);
+
     }
 
     void MakeFace(int dir)

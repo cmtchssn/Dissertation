@@ -6,12 +6,6 @@ public class GenerateObject : MonoBehaviour
 {
     GameObject emptyObj;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -21,11 +15,11 @@ public class GenerateObject : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            generateD8();
+            generateD6();
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            generateD6();
+            generateD8();
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {

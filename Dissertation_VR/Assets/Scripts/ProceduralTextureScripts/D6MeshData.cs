@@ -8,32 +8,24 @@ public static class D6MeshData
 
     public static Vector3[] vertices =
     {
-        //north face vertices
         new Vector3( C0,  C0,  C0),
-        new Vector3(-C0,  C0,  C0),
-        new Vector3(-C0, -C0,  C0),
-        new Vector3( C0, -C0,  C0),
-        //south face vertices
-        new Vector3(-C0,  C0, -C0),
         new Vector3( C0,  C0, -C0),
+        new Vector3( C0, -C0,  C0),
         new Vector3( C0, -C0, -C0),
+        new Vector3(-C0,  C0,  C0),
+        new Vector3(-C0,  C0, -C0),
+        new Vector3(-C0, -C0,  C0),
         new Vector3(-C0, -C0, -C0)
     };
 
     public static int[][] faceTriangles =
     {
-        //north face
-        new int[] { 0, 1, 2, 3 },
-        //east face
-        new int[] { 5, 0, 3, 6 },
-        //south face
-        new int[] { 4, 5, 6, 7 },
-        //west face
-        new int[] { 1, 4, 7, 2 },
-        //top face
-        new int[] { 5, 4, 1, 0 },
-        //bottom face
-        new int[] { 3, 2, 7, 6 } //counterclockwise for culling purposes, i think
+        new int[] { 0, 1, 5, 4 },
+        new int[] { 0, 4, 6, 2 },
+        new int[] { 0, 2, 3, 1 },
+        new int[] { 7, 3, 2, 6 },
+        new int[] { 7, 6, 4, 5 },
+        new int[] { 7, 5, 1, 3 }
     };
 
     public static Vector3[] faceVertices(int dir)

@@ -27,7 +27,22 @@ public class ProceduralD4 : MonoBehaviour
         UpdateMesh();
         meshCollider.convex = true;
     }
-
+    /*
+    void OnCollisionEnter(Collision collision)
+    {
+        //Debug.Log(collision.collider.name);
+        //Debug.Log(collision.contactCount);
+        //Debug.Log(collision.contacts);
+    }
+    
+    void OnCollisionStay(Collision collisionInfo)
+    {
+        ContactPoint[] contactPts = new ContactPoint[4];
+        Debug.Log(collisionInfo.GetContacts(contactPts));
+        //Can I return the vertices of the contact points?
+        //When there are three contact points (1 face for this shape) return the vertices of the three points
+    }
+    */
     void MakeD4()
     {
         vertices = new List<Vector3>();
@@ -37,6 +52,14 @@ public class ProceduralD4 : MonoBehaviour
         {
             MakeFace(i);
         }
+        Debug.Log(vertices[0]);
+        Debug.Log(vertices[1]);
+        Debug.Log(vertices[2]);
+        Debug.Log(vertices[3]);
+        Debug.Log(vertices[4]);
+        Debug.Log(vertices[5]);
+        Debug.Log(vertices.Count);
+        //Debug.Log(triangles[0] + triangles[1] + triangles[2] + triangles[3]);
     }
 
     void MakeFace(int dir)
