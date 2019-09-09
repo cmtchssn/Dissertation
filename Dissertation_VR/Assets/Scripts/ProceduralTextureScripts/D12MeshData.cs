@@ -5,10 +5,11 @@ using UnityEngine;
 
 public static class D12MeshData
 {
+    /*
     static float C0 = 0.809016994374947424102293417183f;    // = (1f + Math.Sqrt(5f)) / 4f
     static float C1 = 1.30901699437494742410229341718f;     // = (3f + Math.Sqrt(5f)) / 4f
 
-    public static Vector3[] vertices =      // where each face connects in space
+    public static Vector3[] verticesD12 =      // where each face connects in space
     {
         new Vector3( 0.0f,  0.5f,    C1),
         new Vector3( 0.0f,  0.5f,   -C1),
@@ -32,7 +33,7 @@ public static class D12MeshData
         new Vector3(  -C0,   -C0,   -C0)
     };
 
-    public static int[][] faceTriangles =   // what order to connect vertices to create an outward facing mesh for each face
+    public static int[][] faceTrianglesD12 =   // what order to connect vertices to create an outward facing mesh for each face
     {
         new int[] {  0,  2, 14,  4, 12 },
         new int[] {  0, 12,  8, 10, 16 },
@@ -48,13 +49,14 @@ public static class D12MeshData
         new int[] { 13,  5, 15,  3,  1 }
     };
 
-    public static Vector3[] faceVertices(int dir)
+    public static Vector3[] faceVerticesD12(int dir)
     {
         Vector3[] fv = new Vector3[5]; // number of vertices per face
         for (int i = 0; i < fv.Length; i++)
         {
-            fv[i] = vertices[faceTriangles[dir][i]];
+            fv[i] = verticesD12[faceTrianglesD12[dir][i]];
         }
         return fv;
     }
+    */
 }

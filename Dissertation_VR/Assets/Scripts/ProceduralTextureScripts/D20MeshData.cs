@@ -5,9 +5,10 @@ using UnityEngine;
 
 public static class D20MeshData
 {
+    /*
     static float C0 = 0.809016994374947424102293417183f;    // = (1f + Mathf.Sqrt(5f)) / 4f;
 
-    public static Vector3[] vertices =      // where each face connects in space
+    public static Vector3[] verticesD20 =      // where each face connects in space
     {
         new Vector3( 0.5f,  0.0f,    C0),
         new Vector3( 0.5f,  0.0f,   -C0),
@@ -23,7 +24,7 @@ public static class D20MeshData
         new Vector3( 0.0f,   -C0, -0.5f)
     };
 
-    public static int[][] faceTriangles =   // what order to connect vertices to create an outward facing mesh for each face
+    public static int[][] faceTrianglesD20 =   // what order to connect vertices to create an outward facing mesh for each face
     {
         new int[] {  0,  2, 10 },
         new int[] {  0, 10,  5 },
@@ -47,13 +48,14 @@ public static class D20MeshData
         new int[] {  8,  6,  2 }
     };
 
-    public static Vector3[] faceVertices(int dir)
+    public static Vector3[] faceVerticesD20(int dir)
     {
         Vector3[] fv = new Vector3[3]; // number of vertices per face
         for (int i = 0; i < fv.Length; i++)
         {
-            fv[i] = vertices[faceTriangles[dir][i]];
+            fv[i] = verticesD20[faceTrianglesD20[dir][i]];
         }
         return fv;
     }
+    */
 }

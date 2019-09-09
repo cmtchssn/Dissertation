@@ -5,11 +5,12 @@ using UnityEngine;
 
 public static class D10MeshData
 {
+    /*
     static float C0 = 0.309016994374947424102293417183f;// = (Mathf.Sqrt(5f) - 1f) / 4f;
     static float C1 = 0.809016994374947424102293417183f;// (1f + Mathf.Sqrt(5f)) / 4f;
     static float C2 = 1.30901699437494742410229341718f;// (3f + Mathf.Sqrt(5f)) / 4f;
 
-    public static Vector3[] vertices =
+    public static Vector3[] verticesD10 =
     {
         new Vector3( 0.0f,    C0,    C1),
         new Vector3( 0.0f,    C0,   -C1),
@@ -26,7 +27,7 @@ public static class D10MeshData
 
     };
 
-    public static int[][] faceTriangles =
+    public static int[][] faceTrianglesD10 =
     {
         //half of the faces are inverse, have fun troubleshooting
         new int[] { 8,  2,  6, 11 },
@@ -41,13 +42,14 @@ public static class D10MeshData
         new int[] { 9,  6,  2,  0 }   //copied this from dmccooey
     };
 
-    public static Vector3[] faceVertices(int dir)
+    public static Vector3[] faceVerticesD10(int dir)
     {
         Vector3[] fv = new Vector3[4];
         for (int i = 0; i < fv.Length; i++)
         {
-            fv[i] = vertices[faceTriangles[dir][i]];
+            fv[i] = verticesD10[faceTrianglesD10[dir][i]];
         }
         return fv;
     }
+    */
 }

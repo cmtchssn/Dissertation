@@ -5,7 +5,8 @@ using UnityEngine;
 
 public static class D8MeshData
 {
-    public static Vector3[] vertices =
+    /*
+    public static Vector3[] verticesD8 =
     {
         new Vector3( 0,  1,  0),
         new Vector3( 1,  0,  1),
@@ -15,7 +16,7 @@ public static class D8MeshData
         new Vector3( 0, -1,  0)
     };
 
-    public static int[][] faceTriangles =
+    public static int[][] faceTrianglesD8 =
     {
         //top triangles
         new int[] { 2, 1, 0 },
@@ -29,13 +30,14 @@ public static class D8MeshData
         new int[] { 4, 1, 5 }   //culling is weird on this one, these are counterclockwise, but work.
     };
 
-    public static Vector3[] faceVertices(int dir)
+    public static Vector3[] faceVerticesD8(int dir)
     {
         Vector3[] fv = new Vector3[3];
         for (int i = 0; i < fv.Length; i++)
         {
-            fv[i] = vertices[faceTriangles[dir][i]];
+            fv[i] = verticesD8[faceTrianglesD8[dir][i]];
         }
         return fv;
     }
+    */
 }

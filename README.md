@@ -110,6 +110,11 @@ I'm first attempting to solve the D6 spawn issue. I'm going to replace my mesh d
 
 I'm still thinking about gathering vertices to determine the face that should play audio. ProceduralD4 calls `MakeD4()` which shuffles through a list of vector 3 vertices. That list of vertices can be references to D4MeshData's `int[][] faceTriangles`. The first 3 vertices returned by `MakeD4` represents the 3 vertices contained in `faceTriangles[0]`, the 4th-6th = `faceTriangles[1]`, etc. Each shape has a list of vertices equal to the number of vertices per face time the number of faces. D12, for instances, has 5 vertices per face and 12 faces, equalling 60 total Vector 3 points in the vertices list. This information is hopefully handy. Can I find out which 3-5 vertices are making contact with the ground to determine which face is making contact with the ground?
 
+### Day 021
+I'm starting with cleaning up shape scripts to be 1 script per shape. Well, I copied and pasted the entire meshdata script of one shape into the procedural script of the same shape and it worked without a hitch...auspicious or foreboding? Now that I've finished that, I can start working on iterating the name of each new shape in my generation script. The generation script is slightly more clean now. I have 6 counters, 1 for each shape, that count up as more of their respective shapes are generated. There is one method now `generateDn()` that has a large if/else if chain, but I'm having to re-use a lot of similar code. I wonder how I can clean things up more. Variables are helpful, but still result in needing 6 options. I can't figure out how to make the `AddComponent<ProceduralD4>()` variable. In this case `ProceduralD4` is a type, but I can't make a variable a type of type. There is something I'm not seeing that can make this easier, a little break from it will do me good. Anyway, it works, it names what object is generated with how many are in the scene already, starting with 0 of course. I'll eventually want to tie the code to Vive input rather than keyboard. I think I want to trigger a popup display when the trigger and surface are pressed together and have the user move their thumb around the surface to decide what to generate. That is for a later day.
+
+I still need to look at rotation to determine which face is up on each shape. Let's start on that! Boy oh boy do I have an immediate issue. Objects can spin infinitely in any direction so any calculations with have to use modulo operations. I fear this will cause trouble. I'm sort of researching best methods and quick ways to calculate what angle my shape is at and it might be quaternions that help, but I could probably use a rotation matrix as well. I really think there is a simpler way I'm overlooking, but I'll think on it and come back later to work it out.
+
 ---
 
 ### Jesse Meeting 001
@@ -131,3 +136,7 @@ Combining dice creation into 1 function call. Include empty object generation wh
 
 ### Jesse Meeting 006
 How can my generator files read standardized object files to simplify the process?
+
+### Jesse Meeting 007
+Ask about static/non-static method calling. Ask about returning face from collision. 
+Find out how to get rid of shape objects, or determine lifespan of objects. Look at rotation for an object to determine face collision. That way you can always determine the Up position and music playback won't rely exclusively on a resting face position. Clean-up and consolidate the Procedural/Data files for the shapes, and the generating methods. Try to make iterations in names of generated shapes. Try to fix lit shaders. Goal is to have shapes that play audio based on what side they are laying on.
