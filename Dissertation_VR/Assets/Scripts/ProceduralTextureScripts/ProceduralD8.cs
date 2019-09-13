@@ -71,8 +71,6 @@ public class ProceduralD8 : MonoBehaviour
         {
             MakeFace(i);
         }
-        Debug.Log(vertices.Count);
-
     }
 
     void MakeFace(int dir)

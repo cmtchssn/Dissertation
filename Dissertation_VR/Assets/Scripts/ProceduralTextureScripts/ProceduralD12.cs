@@ -90,8 +90,6 @@ public class ProceduralD12 : MonoBehaviour
         {
             MakeFace(i);
         }
-        Debug.Log(vertices.Count);
-
     }
 
     void MakeFace(int dir)

@@ -11,6 +11,7 @@ public class ProceduralD4 : MonoBehaviour
     MeshRenderer meshRend;
     List<Vector3> vertices;
     List<int> triangles;
+    RaycastHit hit;
 
     static float C0 = 0.353553390593273762200422181052f;// = Mathf.Sqrt(2f) / 4f;
     static float C1 = C0 * 2f;
@@ -49,22 +50,35 @@ public class ProceduralD4 : MonoBehaviour
         meshRend = GetComponent<MeshRenderer>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         MakeD4();
         UpdateMesh();
         meshCollider.convex = true;
+        //Debug.Log();
     }
-    /*
-    void OnCollisionStay(Collision collisionInfo)
+
+    private void Update()
     {
-        ContactPoint[] contactPts = new ContactPoint[4];
-        Debug.Log(collisionInfo.GetContacts(contactPts));
-        //Can I return the vertices of the contact points?
-        //When there are three contact points (1 face for this shape) return the vertices of the three points
+        print(meshCollider.transform.rotation);
+        print(mesh.normals[0].ToString() + mesh.normals[1].ToString() + mesh.normals[2].ToString() + mesh.normals[3].ToString());
     }
-    */
+
+    void OnCollisionStay(Collision collision)
+    {
+        // Debug-draw all contact points and normals
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            Debug.DrawRay(contact.point, contact.normal * 10, Color.white);
+            //Debug.Log(mesh.vertices[0].ToString() + ", " + mesh.vertices[1].ToString() + ", " + mesh.vertices[2].ToString() + ", " + mesh.vertices[3].ToString());
+        }
+
+        // Which 3 verticesD4[] are touching something?
+        // Is that something the floor?
+        // verticesD4[i],[j],[k] make face Fijk
+        // Check normals of face?
+    }
+
     void MakeD4()
     {
         vertices = new List<Vector3>();
@@ -84,6 +98,9 @@ public class ProceduralD4 : MonoBehaviour
         triangles.Add(vCount - 3);      // 1 group of 0-2 means 3 total vertices per face
         triangles.Add(vCount - 3 + 1);
         triangles.Add(vCount - 3 + 2);
+
+        // Can I name this or give it some attribute?
+        //Debug.Log("Face " + triangles[0].ToString() + " has been created.");
     }
 
     void UpdateMesh()

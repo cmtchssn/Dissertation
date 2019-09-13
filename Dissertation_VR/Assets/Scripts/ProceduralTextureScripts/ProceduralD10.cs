@@ -83,8 +83,6 @@ public class ProceduralD10 : MonoBehaviour
         {
             MakeFace(i);
         }
-        Debug.Log(vertices.Count);
-
     }
 
     void MakeFace(int dir)
@@ -98,8 +96,6 @@ public class ProceduralD10 : MonoBehaviour
         triangles.Add(vCount - 4);
         triangles.Add(vCount - 4 + 2);
         triangles.Add(vCount - 4 + 3);
-
-
     }
 
     void UpdateMesh()

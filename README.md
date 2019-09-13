@@ -115,6 +115,16 @@ I'm starting with cleaning up shape scripts to be 1 script per shape. Well, I co
 
 I still need to look at rotation to determine which face is up on each shape. Let's start on that! Boy oh boy do I have an immediate issue. Objects can spin infinitely in any direction so any calculations with have to use modulo operations. I fear this will cause trouble. I'm sort of researching best methods and quick ways to calculate what angle my shape is at and it might be quaternions that help, but I could probably use a rotation matrix as well. I really think there is a simpler way I'm overlooking, but I'll think on it and come back later to work it out.
 
+### Day 022
+I was technically wrong about the rotation issue on day 021. In game, while rotating, the numbers will not exceed 360 degrees. This has to do with Unity using quanternions and translating them into Euler angles for human-readable numbers. Anyway, onward with solving the rotation issue!
+
+I have no idea what I am doing.
+
+The rotation thing seems too convoluted. Getting colliding vertices seems bizarrely difficult...idk.
+
+### Day 023
+Keeping at it. Going to find out if I can name each face as it is created and perhaps get other attributes or something from it. Check out normals link Jesse sent.
+
 ---
 
 ### Jesse Meeting 001
@@ -140,3 +150,6 @@ How can my generator files read standardized object files to simplify the proces
 ### Jesse Meeting 007
 Ask about static/non-static method calling. Ask about returning face from collision. 
 Find out how to get rid of shape objects, or determine lifespan of objects. Look at rotation for an object to determine face collision. That way you can always determine the Up position and music playback won't rely exclusively on a resting face position. Clean-up and consolidate the Procedural/Data files for the shapes, and the generating methods. Try to make iterations in names of generated shapes. Try to fix lit shaders. Goal is to have shapes that play audio based on what side they are laying on.
+
+### Jesse Meeting 008
+We talked about quaternions and rotation matrices. Eventually found something involving checking normals of an object against normals of the collision to determine which face is colliding. This sounds simplest so far and will pursue it next week.
