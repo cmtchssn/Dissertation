@@ -13,6 +13,11 @@ public class ProceduralD4 : MonoBehaviour
     List<int> triangles;
     RaycastHit hit;
 
+    Vector3[] face1 = faceVerticesD4(0);
+    Vector3[] face2 = faceVerticesD4(1);
+    Vector3[] face3 = faceVerticesD4(2);
+    Vector3[] face4 = faceVerticesD4(3);
+
     static float C0 = 0.353553390593273762200422181052f;// = Mathf.Sqrt(2f) / 4f;
     static float C1 = C0 * 2f;
 
@@ -60,23 +65,39 @@ public class ProceduralD4 : MonoBehaviour
 
     private void Update()
     {
-        print(meshCollider.transform.rotation);
-        print(mesh.normals[0].ToString() + mesh.normals[1].ToString() + mesh.normals[2].ToString() + mesh.normals[3].ToString());
+        //print(meshCollider.transform.rotation);
     }
 
     void OnCollisionStay(Collision collision)
     {
-        // Debug-draw all contact points and normals
-        foreach (ContactPoint contact in collision.contacts)
-        {
-            Debug.DrawRay(contact.point, contact.normal * 10, Color.white);
-            //Debug.Log(mesh.vertices[0].ToString() + ", " + mesh.vertices[1].ToString() + ", " + mesh.vertices[2].ToString() + ", " + mesh.vertices[3].ToString());
-        }
+        string gface1p1 = transform.TransformPoint(face1[0]).ToString();
+        string gface1p2 = transform.TransformPoint(face1[1]).ToString();
+        string gface1p3 = transform.TransformPoint(face1[2]).ToString();
+        
+        string gface2p1 = transform.TransformPoint(face2[0]).ToString();
+        string gface2p2 = transform.TransformPoint(face2[1]).ToString();
+        string gface2p3 = transform.TransformPoint(face2[2]).ToString();
+        
+        string gface3p1 = transform.TransformPoint(face3[0]).ToString();
+        string gface3p2 = transform.TransformPoint(face3[1]).ToString();
+        string gface3p3 = transform.TransformPoint(face3[2]).ToString();
+        
+        string gface4p1 = transform.TransformPoint(face4[0]).ToString();
+        string gface4p2 = transform.TransformPoint(face4[1]).ToString();
+        string gface4p3 = transform.TransformPoint(face4[2]).ToString();
 
-        // Which 3 verticesD4[] are touching something?
-        // Is that something the floor?
-        // verticesD4[i],[j],[k] make face Fijk
-        // Check normals of face?
+        Debug.Log(collision.GetContact(0).point.ToString() + collision.GetContact(1).point.ToString() + collision.GetContact(2).point.ToString() + "3 contact points");
+        Debug.Log(gface1p1 + gface1p2 + gface1p3 + " f1 transform points");
+        Debug.Log(gface2p1 + gface2p2 + gface2p3 + " f2 transform points");
+        Debug.Log(gface3p1 + gface3p2 + gface3p3 + " f3 transform points");
+        Debug.Log(gface4p1 + gface4p2 + gface4p3 + " f4 transform points");
+        
+        if(collision.contactCount == 3)
+        {
+            if(collision.GetContact(0).ToString() == gface1p1)
+            {
+            }
+        }
     }
 
     void MakeD4()

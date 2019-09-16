@@ -125,6 +125,11 @@ The rotation thing seems too convoluted. Getting colliding vertices seems bizarr
 ### Day 023
 Keeping at it. Going to find out if I can name each face as it is created and perhaps get other attributes or something from it. Check out normals link Jesse sent.
 
+### Day 024
+Still working on it. I'm first going to try finding the normals of a colliding face and see what I can do with that information.
+
+I have something. I can find the contact points on my object and I can get my object's vertices and translate them to global coordinates. Now I need to match them to compare vertices to find what face is touching. I use a `Vector3[]` for each face on the D4 defined by `int[][] faceTrianglesD4`. Then I transform the `Vector3[]` into global position and turn it into a `string`. The code is awkward and has 3 vertices for each face that I have to compare to the three `collision.GetContact().point`s after converting them to `strings`. I am sure there is a better way of managing the data I'm using, but cannot seem to figure it out yet. I think using a `List<T>` to hold the data and comparing the contact points with the list might be the way to go. Again, I'm not sure how that works. I'll look up how to use and compare lists so I don't have 60+ lines of code for the D20 just defining faces.
+
 ---
 
 ### Jesse Meeting 001
