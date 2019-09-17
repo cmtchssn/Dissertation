@@ -130,6 +130,12 @@ Still working on it. I'm first going to try finding the normals of a colliding f
 
 I have something. I can find the contact points on my object and I can get my object's vertices and translate them to global coordinates. Now I need to match them to compare vertices to find what face is touching. I use a `Vector3[]` for each face on the D4 defined by `int[][] faceTrianglesD4`. Then I transform the `Vector3[]` into global position and turn it into a `string`. The code is awkward and has 3 vertices for each face that I have to compare to the three `collision.GetContact().point`s after converting them to `strings`. I am sure there is a better way of managing the data I'm using, but cannot seem to figure it out yet. I think using a `List<T>` to hold the data and comparing the contact points with the list might be the way to go. Again, I'm not sure how that works. I'll look up how to use and compare lists so I don't have 60+ lines of code for the D20 just defining faces.
 
+### Day 025
+What if I use a for loop to add vertices to a list while creating the object?
+Holy shit, I finally did it. My method is super convoluted, because I don't know how to make it modular yet. I have a `Vector3[]` for each face of an object. I convert each of the 3 indices of each `Vector3[]` index from local to global positions as strings in `OnCollisionStay()` while also converting collision contact points to strings. I declare a variable for a face, f1 for instance, containing the 3 string indices of each `Vector3[]` index and search for the face that contains all three collision contact point strings. This is the simplest way I could figure out doing if statements, by searching for strings containing other strings.
+
+Now that the logic is in place, I need to set up the audio source component for the object and try to get a different audio file to play based on which face is touching the floor.
+
 ---
 
 ### Jesse Meeting 001

@@ -12,14 +12,17 @@ public class ProceduralD4 : MonoBehaviour
     List<Vector3> vertices;
     List<int> triangles;
     RaycastHit hit;
-
     Vector3[] face1 = faceVerticesD4(0);
     Vector3[] face2 = faceVerticesD4(1);
     Vector3[] face3 = faceVerticesD4(2);
     Vector3[] face4 = faceVerticesD4(3);
-
+    
     static float C0 = 0.353553390593273762200422181052f;// = Mathf.Sqrt(2f) / 4f;
     static float C1 = C0 * 2f;
+
+    AudioSource audioSource;
+    //AudioClip[] clipArray;// = (Resources.Load("guitarChordsD4-01.wav") as AudioClip, Resources.Load("guitarChordsD4-02.wav") as AudioClip, Resources.Load("guitarChordsD4-03.wav") as AudioClip, Resources.Load("guitarChordsD4-04.wav") as AudioClip);
+    //AudioClip clip;
 
     public static Vector3[] verticesD4 =      // where each face connects in space
     {
@@ -60,12 +63,8 @@ public class ProceduralD4 : MonoBehaviour
         MakeD4();
         UpdateMesh();
         meshCollider.convex = true;
-        //Debug.Log();
-    }
-
-    private void Update()
-    {
-        //print(meshCollider.transform.rotation);
+        audioSource = GetComponent<AudioSource>();
+        //clip = GetComponent<AudioSource>().clip;
     }
 
     void OnCollisionStay(Collision collision)
@@ -73,30 +72,67 @@ public class ProceduralD4 : MonoBehaviour
         string gface1p1 = transform.TransformPoint(face1[0]).ToString();
         string gface1p2 = transform.TransformPoint(face1[1]).ToString();
         string gface1p3 = transform.TransformPoint(face1[2]).ToString();
-        
+
         string gface2p1 = transform.TransformPoint(face2[0]).ToString();
         string gface2p2 = transform.TransformPoint(face2[1]).ToString();
         string gface2p3 = transform.TransformPoint(face2[2]).ToString();
-        
+
         string gface3p1 = transform.TransformPoint(face3[0]).ToString();
         string gface3p2 = transform.TransformPoint(face3[1]).ToString();
         string gface3p3 = transform.TransformPoint(face3[2]).ToString();
-        
+
         string gface4p1 = transform.TransformPoint(face4[0]).ToString();
         string gface4p2 = transform.TransformPoint(face4[1]).ToString();
         string gface4p3 = transform.TransformPoint(face4[2]).ToString();
 
-        Debug.Log(collision.GetContact(0).point.ToString() + collision.GetContact(1).point.ToString() + collision.GetContact(2).point.ToString() + "3 contact points");
-        Debug.Log(gface1p1 + gface1p2 + gface1p3 + " f1 transform points");
-        Debug.Log(gface2p1 + gface2p2 + gface2p3 + " f2 transform points");
-        Debug.Log(gface3p1 + gface3p2 + gface3p3 + " f3 transform points");
-        Debug.Log(gface4p1 + gface4p2 + gface4p3 + " f4 transform points");
-        
+        string col1 = collision.GetContact(0).point.ToString();
+        string col2 = collision.GetContact(1).point.ToString();
+        string col3 = collision.GetContact(2).point.ToString();
+
+        string f1 = gface1p1 + gface1p2 + gface1p3;
+        string f2 = gface2p1 + gface2p2 + gface2p3;
+        string f3 = gface3p1 + gface3p2 + gface3p3;
+        string f4 = gface4p1 + gface4p2 + gface4p3;
+
         if(collision.contactCount == 3)
         {
-            if(collision.GetContact(0).ToString() == gface1p1)
+            if (f1.Contains(col1) && f1.Contains(col2) && f1.Contains(col3))
             {
+                print("Face 1 colliding");
+                audioSource.Pause();
+                audioSource.clip = Resources.Load("guitarChordsD4-01") as AudioClip;
+                audioSource.Play();
+                //pause then play audio.
             }
+            else if (f2.Contains(col1) && f2.Contains(col2) && f2.Contains(col3))
+            {
+                print("Face 2 colliding");
+                audioSource.Pause();
+                audioSource.clip = Resources.Load("guitarChordsD4-02") as AudioClip;
+                audioSource.Play();
+                //pause then play audio.
+            }
+            else if (f3.Contains(col1) && f3.Contains(col2) && f3.Contains(col3))
+            {
+                print("Face 3 colliding");
+                audioSource.Pause();
+                audioSource.clip = Resources.Load("guitarChordsD4-03") as AudioClip;
+                audioSource.Play();
+                //pause then play audio.
+            }
+            else if (f4.Contains(col1) && f4.Contains(col2) && f4.Contains(col3))
+            {
+                print("Face 4 colliding");
+                audioSource.Pause();
+                audioSource.clip = Resources.Load("guitarChordsD4-04") as AudioClip;
+                audioSource.Play();
+                //pause then play audio.
+            }
+        }
+        else
+        {
+            audioSource.Pause();
+            //pause audio
         }
     }
 
@@ -119,9 +155,6 @@ public class ProceduralD4 : MonoBehaviour
         triangles.Add(vCount - 3);      // 1 group of 0-2 means 3 total vertices per face
         triangles.Add(vCount - 3 + 1);
         triangles.Add(vCount - 3 + 2);
-
-        // Can I name this or give it some attribute?
-        //Debug.Log("Face " + triangles[0].ToString() + " has been created.");
     }
 
     void UpdateMesh()
