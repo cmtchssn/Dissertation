@@ -136,6 +136,10 @@ Holy shit, I finally did it. My method is super convoluted, because I don't know
 
 Now that the logic is in place, I need to set up the audio source component for the object and try to get a different audio file to play based on which face is touching the floor.
 
+### Day 026
+Meeting Jesse soon. Going to troubleshoot the camera issues I was having. I'm pretty sure I just need to reset the cam position, but we'll see.
+Indeed, the cam just needed a reset. My D4 script is now more modular. Next time I'm in I need to apply the same techniques to my other scripts. Then I can load all of my shapes up with audio and start making some darn music!
+
 ---
 
 ### Jesse Meeting 001
@@ -164,3 +168,6 @@ Find out how to get rid of shape objects, or determine lifespan of objects. Look
 
 ### Jesse Meeting 008
 We talked about quaternions and rotation matrices. Eventually found something involving checking normals of an object against normals of the collision to determine which face is colliding. This sounds simplest so far and will pursue it next week.
+
+### Jesse Meeting 009
+I've got audio based on face collisions! How can I make it more modular? He showed me how to make things modular using for loops, arrays, and more variables. D4 script is looking *and* sounding good. 
