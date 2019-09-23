@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody), typeof(AudioSource))]
 public class ProceduralD12 : MonoBehaviour
 {
     Mesh mesh;
@@ -11,6 +11,12 @@ public class ProceduralD12 : MonoBehaviour
     MeshRenderer meshRend;
     List<Vector3> vertices;
     List<int> triangles;
+
+    AudioSource audioSource;
+    Vector3[][] face;
+    static int faceCount = 12;
+    int faceVertCount = 5;
+    string[] clipNames = new string[] { "guitarChordsD4-01", "guitarChordsD4-02", "guitarChordsD4-03", "guitarChordsD4-04", "guitarChordsD4-01", "guitarChordsD4-02", "guitarChordsD4-03", "guitarChordsD4-04", "guitarChordsD4-01", "guitarChordsD4-02", "guitarChordsD4-03", "guitarChordsD4-04" };
 
     static float C0 = 0.809016994374947424102293417183f;    // = (1f + Math.Sqrt(5f)) / 4f
     static float C1 = 1.30901699437494742410229341718f;     // = (3f + Math.Sqrt(5f)) / 4f
@@ -71,14 +77,56 @@ public class ProceduralD12 : MonoBehaviour
         meshCollider = GetComponent<MeshCollider>();
         meshCollider.sharedMesh = mesh;
         meshRend = GetComponent<MeshRenderer>();
+        face = new Vector3[faceCount][];
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         MakeD12();
         UpdateMesh();
         meshCollider.convex = true;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.spatialize = true;
+        audioSource.spatialBlend = 1f;
+        audioSource.playOnAwake = false;
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        string[] globalFace = new string[faceCount];
+        for (int i = 0; i < faceCount; i++)
+        {
+            for (int j = 0; j < faceVertCount; j++)
+            {
+                globalFace[i] = globalFace[i] + transform.TransformPoint(face[i][j]).ToString();
+                //print(globalFace[i]);
+            }
+        }
+
+        if (collision.contactCount == (faceVertCount - 1))
+        {
+            string col1 = collision.GetContact(0).point.ToString();
+            string col2 = collision.GetContact(1).point.ToString();
+            string col3 = collision.GetContact(2).point.ToString();
+            string col4 = collision.GetContact(3).point.ToString();
+
+            for (int i = 0; i < faceCount; i++)
+            {
+                if (globalFace[i].Contains(col1) && globalFace[i].Contains(col2) && globalFace[i].Contains(col3) && globalFace[i].Contains(col4))
+                {
+                    //print("D12 Face " + (i + 1) + " colliding");
+                    audioSource.Pause();
+                    audioSource.clip = Resources.Load(clipNames[i]) as AudioClip;
+                    audioSource.Play();
+                    //pause then play audio.
+                }
+            }
+        }
+        else
+        {
+            audioSource.Pause();
+            //pause audio
+        }
     }
 
     void MakeD12()
@@ -86,7 +134,7 @@ public class ProceduralD12 : MonoBehaviour
         vertices = new List<Vector3>();
         triangles = new List<int>();
 
-        for (int i = 0; i < 12; i++)     // i < number of faces shape has
+        for (int i = 0; i < faceCount; i++)     // i < number of faces shape has
         {
             MakeFace(i);
         }
@@ -94,6 +142,7 @@ public class ProceduralD12 : MonoBehaviour
 
     void MakeFace(int dir)
     {
+        face[dir] = faceVerticesD12(dir);
         vertices.AddRange(faceVerticesD12(dir));
         int vCount = vertices.Count;
 

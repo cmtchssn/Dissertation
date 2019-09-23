@@ -140,6 +140,11 @@ Now that the logic is in place, I need to set up the audio source component for 
 Meeting Jesse soon. Going to troubleshoot the camera issues I was having. I'm pretty sure I just need to reset the cam position, but we'll see.
 Indeed, the cam just needed a reset. My D4 script is now more modular. Next time I'm in I need to apply the same techniques to my other scripts. Then I can load all of my shapes up with audio and start making some darn music!
 
+### Day 027
+Updated Dn scripts to their respective modular versions. Biggest issue I had was with the D12. The D12 has 5 vertices per face so I assumed using the same method of finding each contact point (5 in this case), I could compare to global positions of D12 vertices. Nothing was happening, though. So I checked each contact point and found out there are only 4 contact points in the collision. So now I'm comparing a face with 5 vertices to 4 vertices in contact with the ground. It seems stable enough, but not ideal. I expect more issues, honestly. But as long as it is working now, I'm happy. I wonder if the D12 has faces that aren't flat.
+
+I'm having garbage collection issues. When I spawn several objects, the frame rate and audio skips and slows down. There are some tutorials from Unity addressing similar issues that I should look into more. The Unity profiler shows that each shapes `OnCollisionStay()` process is running up the garbage. This is definitely a must-fix. Jesse may know more. I'll work on it next time.
+
 ---
 
 ### Jesse Meeting 001

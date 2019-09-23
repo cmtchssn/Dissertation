@@ -11,7 +11,7 @@ public class ProceduralD4 : MonoBehaviour
     MeshRenderer meshRend;
     List<Vector3> vertices;
     List<int> triangles;
-    RaycastHit hit;
+
     AudioSource audioSource;
     Vector3[][] face;
     static int faceCount = 4;
@@ -62,6 +62,9 @@ public class ProceduralD4 : MonoBehaviour
         UpdateMesh();
         meshCollider.convex = true;
         audioSource = GetComponent<AudioSource>();
+        audioSource.spatialize = true;
+        audioSource.spatialBlend = 1f;
+        audioSource.playOnAwake = false;
     }
 
     void OnCollisionStay(Collision collision)
@@ -85,7 +88,7 @@ public class ProceduralD4 : MonoBehaviour
             {
                 if(globalFace[i].Contains(col1) && globalFace[i].Contains(col2) && globalFace[i].Contains(col3))
                 {
-                    print("Face " + (i+1) + " colliding");
+                    //print("D4 Face " + (i+1) + " colliding");
                     audioSource.Pause();
                     audioSource.clip = Resources.Load(clipNames[i]) as AudioClip;
                     audioSource.Play();

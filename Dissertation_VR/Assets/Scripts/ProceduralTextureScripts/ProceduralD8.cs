@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody), typeof(AudioSource))]
 public class ProceduralD8 : MonoBehaviour
 {
     Mesh mesh;
@@ -11,6 +11,12 @@ public class ProceduralD8 : MonoBehaviour
     MeshRenderer meshRend;
     List<Vector3> vertices;
     List<int> triangles;
+
+    AudioSource audioSource;
+    Vector3[][] face;
+    static int faceCount = 8;
+    int faceVertCount = 3;
+    string[] clipNames = new string[] { "guitarChordsD4-01", "guitarChordsD4-02", "guitarChordsD4-03", "guitarChordsD4-04", "guitarChordsD4-01", "guitarChordsD4-02", "guitarChordsD4-03", "guitarChordsD4-04" };
 
     public static Vector3[] verticesD8 =
     {
@@ -52,22 +58,62 @@ public class ProceduralD8 : MonoBehaviour
         meshCollider = GetComponent<MeshCollider>();
         meshCollider.sharedMesh = mesh;
         meshRend = GetComponent<MeshRenderer>();
+        face = new Vector3[faceCount][];
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         MakeD8();
         UpdateMesh();
         meshCollider.convex = true;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.spatialize = true;
+        audioSource.spatialBlend = 1f;
+        audioSource.playOnAwake = false;
     }
 
-    void MakeD8() //consider putting this in mesh data file.
+    void OnCollisionStay(Collision collision)
+    {
+        string[] globalFace = new string[faceCount];
+        for (int i = 0; i < faceCount; i++)
+        {
+            for (int j = 0; j < faceVertCount; j++)
+            {
+                globalFace[i] = globalFace[i] + transform.TransformPoint(face[i][j]).ToString();
+            }
+        }
+
+        if (collision.contactCount == faceVertCount)
+        {
+            string col1 = collision.GetContact(0).point.ToString();
+            string col2 = collision.GetContact(1).point.ToString();
+            string col3 = collision.GetContact(2).point.ToString();
+
+            for (int i = 0; i < faceCount; i++)
+            {
+                if (globalFace[i].Contains(col1) && globalFace[i].Contains(col2) && globalFace[i].Contains(col3))
+                {
+                    //print("D8 Face " + (i + 1) + " colliding");
+                    audioSource.Pause();
+                    audioSource.clip = Resources.Load(clipNames[i]) as AudioClip;
+                    audioSource.Play();
+                    //pause then play audio.
+                }
+            }
+        }
+        else
+        {
+            audioSource.Pause();
+            //pause audio
+        }
+    }
+
+    void MakeD8()
     {
         vertices = new List<Vector3>();
         triangles = new List<int>();
 
-        for (int i = 0; i < 8; i++) //8 sides
+        for (int i = 0; i < faceCount; i++)
         {
             MakeFace(i);
         }
@@ -75,6 +121,7 @@ public class ProceduralD8 : MonoBehaviour
 
     void MakeFace(int dir)
     {
+        face[dir] = faceVerticesD8(dir);
         vertices.AddRange(faceVerticesD8(dir));
         int vCount = vertices.Count;
 
