@@ -116,9 +116,14 @@ public class ProceduralD10 : MonoBehaviour
         }
         else
         {
-            audioSource.Pause();
+            audioSource.Stop();
             //pause audio
         }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        audioSource.Stop();
     }
 
     void MakeD10()

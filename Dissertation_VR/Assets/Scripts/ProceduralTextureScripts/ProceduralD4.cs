@@ -78,7 +78,7 @@ public class ProceduralD4 : MonoBehaviour
             }
         }
 
-        if (collision.contactCount == 3)
+        if (collision.contactCount == faceVertCount)
         {
             string col1 = collision.GetContact(0).point.ToString();
             string col2 = collision.GetContact(1).point.ToString();
@@ -89,7 +89,7 @@ public class ProceduralD4 : MonoBehaviour
                 if(globalFace[i].Contains(col1) && globalFace[i].Contains(col2) && globalFace[i].Contains(col3))
                 {
                     //print("D4 Face " + (i+1) + " colliding");
-                    audioSource.Pause();
+                    audioSource.Stop();
                     audioSource.clip = Resources.Load(clipNames[i]) as AudioClip;
                     audioSource.Play();
                     //pause then play audio.
@@ -98,9 +98,14 @@ public class ProceduralD4 : MonoBehaviour
         }
         else
         {
-            audioSource.Pause();
+            audioSource.Stop();
             //pause audio
         }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        audioSource.Stop();
     }
 
     void MakeD4()

@@ -145,6 +145,15 @@ Updated Dn scripts to their respective modular versions. Biggest issue I had was
 
 I'm having garbage collection issues. When I spawn several objects, the frame rate and audio skips and slows down. There are some tutorials from Unity addressing similar issues that I should look into more. The Unity profiler shows that each shapes `OnCollisionStay()` process is running up the garbage. This is definitely a must-fix. Jesse may know more. I'll work on it next time.
 
+### Day 028
+In an effort to control garbage, I'm going to put samples to play `OnCollisionEnter()`. That didn't work.
+
+I've spent a long time trying to figure out how to play samples based on which face is touching the ground. However, this is not exactly the best way to play music. Some problems from this first iteration include: Stuttering audio and frame rate drops when new objects are added to the scene, objects touching the ground play audio when another object comes in contact with them (false collision registration), and samples not always stopping when objects are lifted and dropped in the same place and don't always replay audio when landing.
+
+Actually, the stuttering might be caused by the `Pause()` method. I'm going to switch to `Stop()` and `PlayOneShot()` for some new ideas.
+
+I did some experimentation today with garbage collection, pause vs. stop, and collision tags and layers. What seems to be slowing things down is the reactivation of a collision when two objects collide and either is touching the floor. That will cause audio to replay and stutter, which seems to slow the frame rate. I need a solution for this. I also need to evaluate what I will do with this particular scene. There is more musical interaction to add that I haven't even touched on and to change how I'm working now would be premature. After the Cinema for the Ears concert last Monday, I'm getting intrigued with the visual elements generating playback somehow, but that is another scene for another piece. Start considering the collision solutions, add some effects interactions, and get in the game and make some music. After that, I'll have a good idea how to proceed, but working on a piece with what I have is incredibly beneficial to the overall outcome of this project.
+
 ---
 
 ### Jesse Meeting 001
