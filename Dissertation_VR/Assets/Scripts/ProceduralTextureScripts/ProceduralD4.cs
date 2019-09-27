@@ -12,6 +12,7 @@ public class ProceduralD4 : MonoBehaviour
     List<Vector3> vertices;
     List<int> triangles;
     bool colFlag = false;
+    bool reTrig = true;
 
 
     AudioSource audioSource;
@@ -71,7 +72,11 @@ public class ProceduralD4 : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        colFlag = true;
+        if (reTrig && collision.collider.tag == "Floor")
+        {
+            reTrig = false;
+            colFlag = true;
+        }
     }
 
     void OnCollisionStay(Collision collision)
@@ -106,19 +111,17 @@ public class ProceduralD4 : MonoBehaviour
                     }
                 }
             }
-            /*
-            else
-            {
-                audioSource.Stop();
-                //pause audio
-            }
-            */
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        audioSource.Stop();
+        print(collision.gameObject.tag);
+        if (collision.collider.tag == "Floor")
+        {
+            audioSource.Stop();
+            reTrig = true;
+        }
     }
 
     void MakeD4()

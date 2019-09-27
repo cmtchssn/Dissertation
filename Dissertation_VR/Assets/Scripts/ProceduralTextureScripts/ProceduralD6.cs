@@ -76,8 +76,6 @@ public class ProceduralD6 : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        print(collision.collider.tag);
-        
         if (reTrig && collision.collider.tag == "Floor")
         {
             reTrig = false;
@@ -118,15 +116,7 @@ public class ProceduralD6 : MonoBehaviour
                     }
                 }
             }
-            /*
-            else
-            {
-                audioSource.Stop();
-                //pause audio
-            }
-            */
         }
-        
     }
 
     private void OnCollisionExit(Collision collision)
