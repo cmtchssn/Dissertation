@@ -11,6 +11,8 @@ public class ProceduralD4 : MonoBehaviour
     MeshRenderer meshRend;
     List<Vector3> vertices;
     List<int> triangles;
+    bool colFlag = false;
+
 
     AudioSource audioSource;
     Vector3[][] face;
@@ -67,39 +69,50 @@ public class ProceduralD4 : MonoBehaviour
         audioSource.playOnAwake = false;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        colFlag = true;
+    }
+
     void OnCollisionStay(Collision collision)
     {
-        string[] globalFace = new string[faceCount];
-        for (int i = 0; i < faceCount; i++)
+        if (colFlag)
         {
-            for (int j= 0; j < faceVertCount; j++)
-            {
-                globalFace[i] = globalFace[i] + transform.TransformPoint(face[i][j]).ToString();
-            }
-        }
-
-        if (collision.contactCount == faceVertCount)
-        {
-            string col1 = collision.GetContact(0).point.ToString();
-            string col2 = collision.GetContact(1).point.ToString();
-            string col3 = collision.GetContact(2).point.ToString();
-
+            string[] globalFace = new string[faceCount];
             for (int i = 0; i < faceCount; i++)
             {
-                if(globalFace[i].Contains(col1) && globalFace[i].Contains(col2) && globalFace[i].Contains(col3))
+                for (int j = 0; j < faceVertCount; j++)
                 {
-                    //print("D4 Face " + (i+1) + " colliding");
-                    audioSource.Stop();
-                    audioSource.clip = Resources.Load(clipNames[i]) as AudioClip;
-                    audioSource.Play();
-                    //pause then play audio.
+                    globalFace[i] = globalFace[i] + transform.TransformPoint(face[i][j]).ToString();
                 }
             }
-        }
-        else
-        {
-            audioSource.Stop();
-            //pause audio
+
+            if (collision.contactCount == faceVertCount)
+            {
+                string col1 = collision.GetContact(0).point.ToString();
+                string col2 = collision.GetContact(1).point.ToString();
+                string col3 = collision.GetContact(2).point.ToString();
+
+                for (int i = 0; i < faceCount; i++)
+                {
+                    if (globalFace[i].Contains(col1) && globalFace[i].Contains(col2) && globalFace[i].Contains(col3))
+                    {
+                        //print("D4 Face " + (i+1) + " colliding");
+                        audioSource.Pause();
+                        audioSource.clip = Resources.Load(clipNames[i]) as AudioClip;
+                        audioSource.Play();
+                        colFlag = false;
+                        //pause then play audio.
+                    }
+                }
+            }
+            /*
+            else
+            {
+                audioSource.Stop();
+                //pause audio
+            }
+            */
         }
     }
 

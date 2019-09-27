@@ -148,11 +148,14 @@ I'm having garbage collection issues. When I spawn several objects, the frame ra
 ### Day 028
 In an effort to control garbage, I'm going to put samples to play `OnCollisionEnter()`. That didn't work.
 
-I've spent a long time trying to figure out how to play samples based on which face is touching the ground. However, this is not exactly the best way to play music. Some problems from this first iteration include: Stuttering audio and frame rate drops when new objects are added to the scene, objects touching the ground play audio when another object comes in contact with them (false collision registration), and samples not always stopping when objects are lifted and dropped in the same place and don't always replay audio when landing.
+I've spent a long time trying to figure out how to play samples based on which face is touching the ground. However, this is not exactly the best way to play music. Some problems from this first iteration include: Stuttering audio and frame rate drops when new objects are added to the scene, objects touching the ground play audio when another object comes in contact with them (false collision registration), and audio not always stopping when objects are lifted and dropped in the same place and don't always replay audio when landing.
 
 Actually, the stuttering might be caused by the `Pause()` method. I'm going to switch to `Stop()` and `PlayOneShot()` for some new ideas.
 
 I did some experimentation today with garbage collection, pause vs. stop, and collision tags and layers. What seems to be slowing things down is the reactivation of a collision when two objects collide and either is touching the floor. That will cause audio to replay and stutter, which seems to slow the frame rate. I need a solution for this. I also need to evaluate what I will do with this particular scene. There is more musical interaction to add that I haven't even touched on and to change how I'm working now would be premature. After the Cinema for the Ears concert last Monday, I'm getting intrigued with the visual elements generating playback somehow, but that is another scene for another piece. Start considering the collision solutions, add some effects interactions, and get in the game and make some music. After that, I'll have a good idea how to proceed, but working on a piece with what I have is incredibly beneficial to the overall outcome of this project.
+
+### Day 029
+
 
 ---
 
@@ -185,3 +188,6 @@ We talked about quaternions and rotation matrices. Eventually found something in
 
 ### Jesse Meeting 009
 I've got audio based on face collisions! How can I make it more modular? He showed me how to make things modular using for loops, arrays, and more variables. D4 script is looking *and* sounding good. 
+
+### Jesse Meeting 010
+Ask about garbage collection, collision reactivation. He was definitely able to solve some problems. There is not really a garbage collection problem, so much as a state problem. Having the scene limit when to play audio before/after/during a collision makes for smoother gameplay. I need to update all scripts to allow these state changes. Then I will make some music. Have objects in the scene control parameters of the Dn objects or have Dn params control other Dn objects. Just explore the interactions knowing that this scene uses the floor as a playhead/plectrum of sorts and define what that means for how the piece plays.

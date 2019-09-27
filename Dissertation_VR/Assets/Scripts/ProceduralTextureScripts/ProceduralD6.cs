@@ -11,6 +11,8 @@ public class ProceduralD6 : MonoBehaviour
     MeshRenderer meshRend;
     List<Vector3> vertices;
     List<int> triangles;
+    bool colFlag = false;
+    bool reTrig = true;
 
     AudioSource audioSource;
     Vector3[][] face;
@@ -72,46 +74,69 @@ public class ProceduralD6 : MonoBehaviour
         audioSource.playOnAwake = false;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        print(collision.collider.tag);
+        
+        if (reTrig && collision.collider.tag == "Floor")
+        {
+            reTrig = false;
+            colFlag = true;
+        }
+    }
+
     void OnCollisionStay(Collision collision)
     {
-        string[] globalFace = new string[faceCount];
-        for (int i = 0; i < faceCount; i++)
+        if (colFlag)
         {
-            for (int j = 0; j < faceVertCount; j++)
-            {
-                globalFace[i] = globalFace[i] + transform.TransformPoint(face[i][j]).ToString();
-            }
-        }
-
-        if (collision.contactCount == faceVertCount)
-        {
-            string col1 = collision.GetContact(0).point.ToString();
-            string col2 = collision.GetContact(1).point.ToString();
-            string col3 = collision.GetContact(2).point.ToString();
-            string col4 = collision.GetContact(3).point.ToString();
-
+            string[] globalFace = new string[faceCount];
             for (int i = 0; i < faceCount; i++)
             {
-                if (globalFace[i].Contains(col1) && globalFace[i].Contains(col2) && globalFace[i].Contains(col3) && globalFace[i].Contains(col4))
+                for (int j = 0; j < faceVertCount; j++)
                 {
-                    //print("D6 Face " + (i + 1) + " colliding");
-                    audioSource.Pause();
-                    audioSource.clip = Resources.Load(clipNames[i]) as AudioClip;
-                    audioSource.Play();
-                    //pause then play audio.
+                    globalFace[i] = globalFace[i] + transform.TransformPoint(face[i][j]).ToString();
                 }
             }
+
+            if (collision.contactCount == faceVertCount)
+            {
+                string col1 = collision.GetContact(0).point.ToString();
+                string col2 = collision.GetContact(1).point.ToString();
+                string col3 = collision.GetContact(2).point.ToString();
+                string col4 = collision.GetContact(3).point.ToString();
+
+                for (int i = 0; i < faceCount; i++)
+                {
+                    if (globalFace[i].Contains(col1) && globalFace[i].Contains(col2) && globalFace[i].Contains(col3) && globalFace[i].Contains(col4))
+                    {
+                        //print("D6 Face " + (i + 1) + " colliding");
+                        audioSource.Pause();
+                        audioSource.clip = Resources.Load(clipNames[i]) as AudioClip;
+                        audioSource.Play();
+                        colFlag = false;
+                        //pause then play audio.
+                    }
+                }
+            }
+            /*
+            else
+            {
+                audioSource.Stop();
+                //pause audio
+            }
+            */
         }
-        else
-        {
-            audioSource.Stop();
-            //pause audio
-        }
+        
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        audioSource.Stop();
+        print(collision.gameObject.tag);
+        if (collision.collider.tag == "Floor")
+        {
+            audioSource.Stop();
+            reTrig = true;
+        }
     }
 
     void MakeD6()
