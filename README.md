@@ -191,3 +191,12 @@ I've got audio based on face collisions! How can I make it more modular? He show
 
 ### Jesse Meeting 010
 Ask about garbage collection, collision reactivation. He was definitely able to solve some problems. There is not really a garbage collection problem, so much as a state problem. Having the scene limit when to play audio before/after/during a collision makes for smoother gameplay. I need to update all scripts to allow these state changes. Then I will make some music. Have objects in the scene control parameters of the Dn objects or have Dn params control other Dn objects. Just explore the interactions knowing that this scene uses the floor as a playhead/plectrum of sorts and define what that means for how the piece plays.
+
+### Jesse Meeting 011
+What the hell am I doing? How would you go about writing music for this scene? Looped playback seems tedious and uninteresting. Single sample playback sounds like too much work for the performer. Should I focus on rhythmic themes, harmonic ideas, drones, or what? 
+
+Triggers, different sizes, speeds that cause playback to specific Dn's. Use terrains to lead objects to beat areas. Chaotic oscillating planes? Save scenes as recordings to pull up later for performing/composing/editing.
+
+Make a registry that holds every object in the scene, and devise a way to tell any object based on any parameter to play.
+
+Start with the trigger and have fun!
