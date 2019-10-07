@@ -70,7 +70,7 @@ public class ProceduralD8 : MonoBehaviour
         meshCollider.convex = true;
         audioSource = GetComponent<AudioSource>();
         audioSource.spatialize = true;
-        audioSource.spatialBlend = 1f;
+        audioSource.spatialBlend = 0.33f;
         audioSource.playOnAwake = false;
     }
 
