@@ -746,8 +746,7 @@ GameObject:
   - component: {fileID: 834966094}
   - component: {fileID: 834966093}
   - component: {fileID: 834966092}
-  - component: {fileID: 834966097}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: timeCylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -846,18 +845,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &834966097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 834966091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3c1f4face809154b96b3770dbdfe87c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1104644321
 GameObject:
   m_ObjectHideFlags: 0
@@ -2287,8 +2274,7 @@ GameObject:
   - component: {fileID: 2014844758}
   - component: {fileID: 2014844757}
   - component: {fileID: 2014844756}
-  - component: {fileID: 2014844761}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Cylinder2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2387,15 +2373,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2014844761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2014844755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f38242685bb0bb5468f35f5694f5f0af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -128,6 +128,12 @@ public class ProceduralD8 : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        audioSource.Stop();
+        audioSource.Play();
+    }
+
     void MakeD8()
     {
         vertices = new List<Vector3>();

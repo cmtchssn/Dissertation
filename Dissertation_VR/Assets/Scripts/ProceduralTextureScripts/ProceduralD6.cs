@@ -13,12 +13,17 @@ public class ProceduralD6 : MonoBehaviour
     List<int> triangles;
     bool colFlag = false;
     bool reTrig = true;
+    int faceVal;
 
     AudioSource audioSource;
     Vector3[][] face;
     static int faceCount = 6;
     int faceVertCount = 4;
-    string[] clipNames = new string[] { "guitarChordsD4-01", "guitarChordsD4-02", "guitarChordsD4-03", "guitarChordsD4-04", "guitarChordsD4-03", "guitarChordsD4-02" };
+    string[][] clipNames =
+        {
+        new string[] { "earthScrape", "earthScrape1", "earthHit", "ding1", "beep", "ding" },
+        new string[] { "scratch", "wobble", "bang", "groundScrape", "jetBoost", "metalScrape3" }
+    };
 
     static float C0 = 1f;
 
@@ -108,9 +113,10 @@ public class ProceduralD6 : MonoBehaviour
                     if (globalFace[i].Contains(col1) && globalFace[i].Contains(col2) && globalFace[i].Contains(col3) && globalFace[i].Contains(col4))
                     {
                         //print("D6 Face " + (i + 1) + " colliding");
-                        audioSource.Pause();
-                        audioSource.clip = Resources.Load(clipNames[i]) as AudioClip;
-                        audioSource.Play();
+                        faceVal = i;
+                        //audioSource.Pause();
+                        //audioSource.clip = Resources.Load(clipNames[i]) as AudioClip;
+                        //audioSource.Play();
                         colFlag = false;
                         //pause then play audio.
                     }
@@ -126,6 +132,22 @@ public class ProceduralD6 : MonoBehaviour
         {
             audioSource.Stop();
             reTrig = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 15)
+        {
+            audioSource.Stop();
+            audioSource.clip = Resources.Load(clipNames[0][faceVal]) as AudioClip;
+            audioSource.Play();
+        }
+        if (other.gameObject.layer == 16)
+        {
+            audioSource.Stop();
+            audioSource.clip = Resources.Load(clipNames[1][faceVal]) as AudioClip;
+            audioSource.Play();
         }
     }
 

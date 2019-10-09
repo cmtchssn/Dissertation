@@ -159,6 +159,12 @@ After meeting with Jesse last week, I decided to start working on time in the sc
 
 I built a second cylinder that travels faster than the first. I had to rewrite the trigger script to put `Stop()` instead of `Pause()` before `Play()` to have the sample play from its beginning as it enters the cylinder. Next time, I'll mess with layers, but what would really be great is being able to move the cylinder wherever I want to in the scene. Perhaps eventually changing it to a sphere that grows in all 3 directions would make that work well. Eventually, the timer should be able to be spawned in a scene wherever I want and have whatever speed I want. That way I can use several in 1 scene, and have them use layers that trigger different samples for each time object.
 
+### Day 030
+I'm going to mess with the time cylinders and make them each unique. I'll see what layering can do for me. I think if I use layers on the time cylinders, I can decide to use different sample sets in each object.
+So, actually, I set the time cylinder to a specific layer, then put the `OnTriggerEnter()` on the D*n*. If the trigger's layer is *a* then use *x* array of audio clips, if the trigger's layer is *b* then use *y* array of audio clips. I'm able to do this by declaring a `faceVal` variable that is taken from a for loop in `OnCollision Stay` where *i* = whatever face is touching the ground = the position in the array that defines what clip is loaded. This all seems to work fine.
+
+I put some new sounds in the scene, percussive field recordings, and they sound OK in moderation, but I want more from them. Perhaps that is where using mixers and effects comes into play. The next two things I need to work on are the registry that knows everything about every object in the scene and how to save a scene as a preset in-game.
+
 ---
 
 ### Jesse Meeting 001
@@ -197,7 +203,7 @@ Ask about garbage collection, collision reactivation. He was definitely able to 
 ### Jesse Meeting 011
 What the hell am I doing? How would you go about writing music for this scene? Looped playback seems tedious and uninteresting. Single sample playback sounds like too much work for the performer. Should I focus on rhythmic themes, harmonic ideas, drones, or what? 
 
-Triggers, different sizes, speeds that cause playback to specific Dn's. Use terrains to lead objects to beat areas. Chaotic oscillating planes? Save scenes as recordings to pull up later for performing/composing/editing.
+Triggers, different sizes, speeds that cause playback to specific D*n*'s. Use terrains to lead objects to beat areas. Chaotic oscillating planes? Save scenes as recordings to pull up later for performing/composing/editing.
 
 Make a registry that holds every object in the scene, and devise a way to tell any object based on any parameter to play.
 

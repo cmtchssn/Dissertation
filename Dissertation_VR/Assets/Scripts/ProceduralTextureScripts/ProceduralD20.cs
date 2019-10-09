@@ -146,6 +146,12 @@ public class ProceduralD20 : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        audioSource.Stop();
+        audioSource.Play();
+    }
+
     void MakeD20()
     {
         vertices = new List<Vector3>();
