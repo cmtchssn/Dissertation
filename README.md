@@ -208,3 +208,8 @@ Triggers, different sizes, speeds that cause playback to specific D*n*'s. Use te
 Make a registry that holds every object in the scene, and devise a way to tell any object based on any parameter to play.
 
 Start with the trigger and have fun!
+
+### Jesse Meeting 012
+I think it is time to show Jesse what I've got and discuss the direction I should take for the next week. Likely, I should start with connecting to mixers in the scene for some more interesting music, then move on to terrain.
+
+Spawn in hand. Script on camera that makes inspector. Making choices for audio files automatic. You want to drag and drop the audio in and have the code do the rest. Consolidate info about whole system set with an inspector for various values, like base names for audio, default sizes/volume/layer triggers/etc. 

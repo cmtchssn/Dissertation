@@ -21,7 +21,7 @@ public class ProceduralD6 : MonoBehaviour
     int faceVertCount = 4;
     string[][] clipNames =
         {
-        new string[] { "earthScrape", "earthScrape1", "earthHit", "ding1", "beep", "ding" },
+        new string[] { "guitarChordsD4-01", "guitarChordsD4-04", "earthHit", "ding1", "beep", "ding" },
         new string[] { "scratch", "wobble", "bang", "groundScrape", "jetBoost", "metalScrape3" }
     };
 

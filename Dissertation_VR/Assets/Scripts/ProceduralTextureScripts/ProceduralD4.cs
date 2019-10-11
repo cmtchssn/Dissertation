@@ -22,7 +22,7 @@ public class ProceduralD4 : MonoBehaviour
     string[][] clipNames = 
     {
         new string[] { "metalScrape", "metalScrape1", "metalScrape2", "metalScrape3" },
-        new string[] { "metalHit", "metalHit1", "metalHit2", "metalHit2" }
+        new string[] { "guitarChordsD4-01", "guitarChordsD4-02", "guitarChordsD4-03", "guitarChordsD4-04" }
     };
     
     static float C0 = 0.353553390593273762200422181052f;// = Mathf.Sqrt(2f) / 4f;
