@@ -165,6 +165,12 @@ So, actually, I set the time cylinder to a specific layer, then put the `OnTrigg
 
 I put some new sounds in the scene, percussive field recordings, and they sound OK in moderation, but I want more from them. Perhaps that is where using mixers and effects comes into play. The next two things I need to work on are the registry that knows everything about every object in the scene and how to save a scene as a preset in-game.
 
+### Day 031
+I'm here to work on building some code that will be dynamic and allow me to add sound files via drag and drop and then have the code name them and attach them to objects automatically. I started a bit, didn't accomplish much, but I did see some videos on how to edit Unity's inspector and read about C# collections, dictionaries, and lists.
+
+### Day 032
+I'm just going to work on audio script best practices today. I can't seem to get audio clip arrays to work still smh. I'll try again tomorrow.
+
 ---
 
 ### Jesse Meeting 001

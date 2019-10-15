@@ -5,6 +5,7 @@ using UnityEngine;
 public class GenerateObject : MonoBehaviour
 {
     GameObject emptyObj;
+    public GameObject D4;
     int count4 = 0;
     int count6 = 0;
     int count8 = 0;
@@ -22,12 +23,15 @@ public class GenerateObject : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            /*
             string name = "D4-" + count4;
             emptyObj = new GameObject(name); // consolidate these functions as one that can generate whatever based on key pressed
             emptyObj.transform.position = this.gameObject.transform.position; // learn how to adjust the position to right in front of the player
             emptyObj.AddComponent<ProceduralD4>(); // this should change based on input
             emptyObj.AddComponent<HTC.UnityPlugin.Vive.BasicGrabbable>();
             count4++;
+            */        
+            Instantiate(D4, new Vector3(0, 2, 0), Quaternion.identity);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {

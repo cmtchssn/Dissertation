@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8973547704178288514}
   - component: {fileID: 8973547704178288536}
   - component: {fileID: 8973547704178288539}
+  - component: {fileID: 4944926878713188544}
   m_Layer: 9
   m_Name: ProceduralD4
   m_TagString: Untagged
@@ -258,3 +259,42 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4944926878713188544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8973547704178288515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811d0bb157e59374ba5fc67546f0cd78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip:
+  - {fileID: 8300000, guid: 96daf3a6f7971304ebcd735dd00c7f10, type: 3}
+  - {fileID: 8300000, guid: 7bcd8016096c84b4fbaf8df45bc12d3f, type: 3}
+  - {fileID: 8300000, guid: 113db26d3ebed734f83bbe0461003f2e, type: 3}
+  - {fileID: 8300000, guid: 62fa4e4f25a548f4f880bc1d979efe54, type: 3}
+  - {fileID: 8300000, guid: df7880f45f9f2364895191c8a70095fc, type: 3}
+  - {fileID: 8300000, guid: 5295fc099235ac24da66e1359abdbcc7, type: 3}
+  - {fileID: 8300000, guid: 780613a8b5ea72e4489e22fb0bdbe395, type: 3}
+  - {fileID: 8300000, guid: be399f422ff4d4a4798ddb440cd6a7db, type: 3}
+  - {fileID: 8300000, guid: 08bcfa1815f7083428d6b7d9a320b860, type: 3}
+  - {fileID: 8300000, guid: 73c47b7ea50f37748b8b42e3bbb82f5b, type: 3}
+  - {fileID: 8300000, guid: 66c713f54a64da5448f89a31ca2562eb, type: 3}
+  - {fileID: 8300000, guid: 7171e82d7c9c6d84b829fbc951c06b00, type: 3}
+  - {fileID: 8300000, guid: 53b3be8d32b7e13408574b4db54d3b41, type: 3}
+  - {fileID: 8300000, guid: 7071933a0122e794f8f9b4fabf0978b4, type: 3}
+  - {fileID: 8300000, guid: 80e9d6971665e534984dbaec396f5f26, type: 3}
+  - {fileID: 8300000, guid: 70f37ac084e0b2e46b0995e116ec5f96, type: 3}
+  - {fileID: 8300000, guid: cf88f2c7e6a664c419b16d359a648236, type: 3}
+  - {fileID: 8300000, guid: b562c21f3b0b0ff4a808cbc0d65a8f75, type: 3}
+  - {fileID: 8300000, guid: 9c219419c45becb45a3e8a64cc5523f6, type: 3}
+  - {fileID: 8300000, guid: fd0e3af457556de4c976cb97298ee8ae, type: 3}
+  - {fileID: 8300000, guid: af7ac892b17809543ab632defc9a24d9, type: 3}
+  - {fileID: 8300000, guid: 8f5b0f1ac88750341a89b71d3d0a56df, type: 3}
+  - {fileID: 8300000, guid: d431a614930edcd478d7bd7fa980f75f, type: 3}
+  - {fileID: 8300000, guid: f846084a86bfdaa49ba2f7d8a87a9505, type: 3}
+  clippy: guitarChordD4-01
+  clipnum: 1

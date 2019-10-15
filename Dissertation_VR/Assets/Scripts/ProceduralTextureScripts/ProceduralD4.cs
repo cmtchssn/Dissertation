@@ -15,15 +15,18 @@ public class ProceduralD4 : MonoBehaviour
     bool reTrig = true;
     int faceVal;
 
+    AudioClipScript clips;
     AudioSource audioSource;
     Vector3[][] face;
     static int faceCount = 4;
     int faceVertCount = 3;
+    /*
     string[][] clipNames = 
     {
         new string[] { "metalScrape", "metalScrape1", "metalScrape2", "metalScrape3" },
         new string[] { "guitarChordsD4-01", "guitarChordsD4-02", "guitarChordsD4-03", "guitarChordsD4-04" }
     };
+    */
     
     static float C0 = 0.353553390593273762200422181052f;// = Mathf.Sqrt(2f) / 4f;
     static float C1 = C0 * 2f;
@@ -134,13 +137,15 @@ public class ProceduralD4 : MonoBehaviour
         if(other.gameObject.layer == 15)
         {
             audioSource.Stop();
-            audioSource.clip = Resources.Load(clipNames[0][faceVal]) as AudioClip;
+            audioSource.clip = clips.clip[faceVal];
+            //audioSource.clip = Resources.Load(clipNames[0][faceVal]) as AudioClip;
             audioSource.Play();
         }
         if(other.gameObject.layer == 16)
         {
             audioSource.Stop();
-            audioSource.clip = Resources.Load(clipNames[1][faceVal]) as AudioClip;
+            audioSource.clip = clips.clip[24 - faceVal]; 
+            //audioSource.clip = Resources.Load(clipNames[1][faceVal]) as AudioClip;
             audioSource.Play();
         }
     }
