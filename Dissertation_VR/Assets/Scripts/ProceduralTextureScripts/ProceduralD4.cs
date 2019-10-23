@@ -14,20 +14,11 @@ public class ProceduralD4 : MonoBehaviour
     bool colFlag = false;
     bool reTrig = true;
     int faceVal;
-
-    AudioClipScript clips;
-    AudioSource audioSource;
+    AudioClipScript bell;
     Vector3[][] face;
     static int faceCount = 4;
     int faceVertCount = 3;
-    /*
-    string[][] clipNames = 
-    {
-        new string[] { "metalScrape", "metalScrape1", "metalScrape2", "metalScrape3" },
-        new string[] { "guitarChordsD4-01", "guitarChordsD4-02", "guitarChordsD4-03", "guitarChordsD4-04" }
-    };
-    */
-    
+        
     static float C0 = 0.353553390593273762200422181052f;// = Mathf.Sqrt(2f) / 4f;
     static float C1 = C0 * 2f;
 
@@ -50,10 +41,12 @@ public class ProceduralD4 : MonoBehaviour
     public static Vector3[] faceVerticesD4(int dir)
     {
         Vector3[] fv = new Vector3[3]; // number of vertices per face
+
         for (int i = 0; i < fv.Length; i++)
         {
             fv[i] = verticesD4[faceTrianglesD4[dir][i]];
         }
+
         return fv;
     }
 
@@ -71,10 +64,7 @@ public class ProceduralD4 : MonoBehaviour
         MakeD4();
         UpdateMesh();
         meshCollider.convex = true;
-        audioSource = GetComponent<AudioSource>();
-        audioSource.spatialize = true;
-        audioSource.spatialBlend = 0.33f;
-        audioSource.playOnAwake = false;
+        bell = GetComponent<AudioClipScript>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -91,6 +81,7 @@ public class ProceduralD4 : MonoBehaviour
         if (colFlag)
         {
             string[] globalFace = new string[faceCount];
+
             for (int i = 0; i < faceCount; i++)
             {
                 for (int j = 0; j < faceVertCount; j++)
@@ -111,11 +102,9 @@ public class ProceduralD4 : MonoBehaviour
                     {
                         //print("D4 Face " + (i+1) + " colliding");
                         faceVal = i;
-                        //audioSource.Stop();
-                        //audioSource.clip = Resources.Load(clipNames[0][i]) as AudioClip;
-                        //audioSource.Play();
-                        colFlag = false;
                         //pause then play audio.
+                        bell.Toll(0, faceVal);
+                        colFlag = false;
                     }
                 }
             }
@@ -127,7 +116,7 @@ public class ProceduralD4 : MonoBehaviour
         print(collision.gameObject.tag);
         if (collision.collider.tag == "Floor")
         {
-            audioSource.Stop();
+            bell.Stop();
             reTrig = true;
         }
     }
@@ -136,17 +125,11 @@ public class ProceduralD4 : MonoBehaviour
     {
         if(other.gameObject.layer == 15)
         {
-            audioSource.Stop();
-            audioSource.clip = clips.clip[faceVal];
-            //audioSource.clip = Resources.Load(clipNames[0][faceVal]) as AudioClip;
-            audioSource.Play();
+            bell.Toll(1, faceVal);
         }
         if(other.gameObject.layer == 16)
         {
-            audioSource.Stop();
-            audioSource.clip = clips.clip[24 - faceVal]; 
-            //audioSource.clip = Resources.Load(clipNames[1][faceVal]) as AudioClip;
-            audioSource.Play();
+            bell.Toll(2, faceVal);
         }
     }
 
@@ -175,7 +158,6 @@ public class ProceduralD4 : MonoBehaviour
     void UpdateMesh()
     {
         mesh.Clear();
-
         mesh.vertices = vertices.ToArray();
         mesh.triangles = triangles.ToArray();
         mesh.RecalculateNormals();

@@ -171,6 +171,11 @@ I'm here to work on building some code that will be dynamic and allow me to add 
 ### Day 032
 I'm just going to work on audio script best practices today. I can't seem to get audio clip arrays to work still smh. I'll try again tomorrow.
 
+### Day 033
+Making one audio script that every D*n* can use is, I think, the best way to go. I'll start with making one that can change clips easily and is dynamic, prepared for adding/removing clips to the pool.
+
+I've got something. Right now the "AudioClipScript" is handling a jagged array of string values that correlate to audio clip names in the Resources folder in the Assets folder. I can't figure out how to get jagged arrays to work the way I want them to, but why do I need them? I could just add a new array for each genre of sample and store them in separate banks. I've got either way working just fine, but it still isn't as dynamic as I may need. I want random clips assigned to each bank/layer. Although, musically, random may not be the best way forward. Next time, I should see how much of the same code each script is using and try to separate the same stuff into one script and consolidate everything else. Then I'll have some nice prefabs to play with.
+
 ---
 
 ### Jesse Meeting 001
