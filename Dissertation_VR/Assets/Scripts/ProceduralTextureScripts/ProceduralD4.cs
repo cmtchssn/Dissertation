@@ -16,13 +16,14 @@ public class ProceduralD4 : MonoBehaviour
     int faceVal;
     AudioClipScript bell;
     Vector3[][] face;
-    static int faceCount = 4;
-    int faceVertCount = 3;
+    int faceCount = 4;
+    static int faceVertCount = 3;
         
     static float C0 = 0.353553390593273762200422181052f;// = Mathf.Sqrt(2f) / 4f;
-    static float C1 = C0 * 2f;
+    public static float size = 2f;
+    static float C1 = C0 * size;
 
-    public static Vector3[] verticesD4 =      // where each face connects in space
+    public Vector3[] verticesD4 =      // where each face connects in space
     {
         new Vector3( C1, -C1,  C1),
         new Vector3( C1,  C1, -C1),
@@ -38,9 +39,9 @@ public class ProceduralD4 : MonoBehaviour
         new int[] { 3, 2, 1 }
     };
 
-    public static Vector3[] faceVerticesD4(int dir)
+    public Vector3[] faceVerticesD4(int dir)
     {
-        Vector3[] fv = new Vector3[3]; // number of vertices per face
+        Vector3[] fv = new Vector3[faceVertCount]; // number of vertices per face
 
         for (int i = 0; i < fv.Length; i++)
         {
@@ -57,6 +58,11 @@ public class ProceduralD4 : MonoBehaviour
         meshCollider.sharedMesh = mesh;
         meshRend = GetComponent<MeshRenderer>();
         face = new Vector3[faceCount][];
+        //this.verticesD4
+        size = size + 0.5f;
+        C1 = C0 * size;
+        Debug.Log(size);
+        Debug.Log(C1);
     }
 
     void Start()
@@ -65,6 +71,7 @@ public class ProceduralD4 : MonoBehaviour
         UpdateMesh();
         meshCollider.convex = true;
         bell = GetComponent<AudioClipScript>();
+        
     }
 
     private void OnCollisionEnter(Collision collision)

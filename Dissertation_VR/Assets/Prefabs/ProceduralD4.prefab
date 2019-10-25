@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8973547704178288536}
   - component: {fileID: 8973547704178288539}
   - component: {fileID: 4944926878713188544}
+  - component: {fileID: 3006891821523495360}
   m_Layer: 9
   m_Name: ProceduralD4
   m_TagString: Untagged
@@ -125,6 +126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5daa65d15570ea45b4b5d7a725e5d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  verticesD4:
+  - {x: 0.70710677, y: -0.70710677, z: 0.70710677}
+  - {x: 0.70710677, y: 0.70710677, z: -0.70710677}
+  - {x: -0.70710677, y: 0.70710677, z: 0.70710677}
+  - {x: -0.70710677, y: -0.70710677, z: -0.70710677}
 --- !u!114 &8973547704178288536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,18 +277,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811d0bb157e59374ba5fc67546f0cd78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  metalHit:
-  - {fileID: 8300000, guid: 80e9d6971665e534984dbaec396f5f26, type: 3}
-  - {fileID: 8300000, guid: 70f37ac084e0b2e46b0995e116ec5f96, type: 3}
-  - {fileID: 8300000, guid: cf88f2c7e6a664c419b16d359a648236, type: 3}
-  - {fileID: 8300000, guid: b562c21f3b0b0ff4a808cbc0d65a8f75, type: 3}
-  guitar:
-  - {fileID: 8300000, guid: 73c47b7ea50f37748b8b42e3bbb82f5b, type: 3}
-  - {fileID: 8300000, guid: 66c713f54a64da5448f89a31ca2562eb, type: 3}
-  - {fileID: 8300000, guid: 7171e82d7c9c6d84b829fbc951c06b00, type: 3}
-  - {fileID: 8300000, guid: 53b3be8d32b7e13408574b4db54d3b41, type: 3}
-  metalScrape:
-  - {fileID: 8300000, guid: 9c219419c45becb45a3e8a64cc5523f6, type: 3}
-  - {fileID: 8300000, guid: fd0e3af457556de4c976cb97298ee8ae, type: 3}
-  - {fileID: 8300000, guid: af7ac892b17809543ab632defc9a24d9, type: 3}
-  - {fileID: 8300000, guid: 8f5b0f1ac88750341a89b71d3d0a56df, type: 3}
+--- !u!114 &3006891821523495360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8973547704178288515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f2d0fa1e7df3b459ffa22722bfb6bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bank:
+  - clip:
+    - {fileID: 8300000, guid: 80e9d6971665e534984dbaec396f5f26, type: 3}
+    - {fileID: 8300000, guid: 70f37ac084e0b2e46b0995e116ec5f96, type: 3}
+    - {fileID: 8300000, guid: cf88f2c7e6a664c419b16d359a648236, type: 3}
+    - {fileID: 8300000, guid: b562c21f3b0b0ff4a808cbc0d65a8f75, type: 3}
+  - clip:
+    - {fileID: 8300000, guid: 73c47b7ea50f37748b8b42e3bbb82f5b, type: 3}
+    - {fileID: 8300000, guid: 66c713f54a64da5448f89a31ca2562eb, type: 3}
+    - {fileID: 8300000, guid: 7171e82d7c9c6d84b829fbc951c06b00, type: 3}
+    - {fileID: 8300000, guid: 53b3be8d32b7e13408574b4db54d3b41, type: 3}
+  - clip:
+    - {fileID: 8300000, guid: 9c219419c45becb45a3e8a64cc5523f6, type: 3}
+    - {fileID: 8300000, guid: fd0e3af457556de4c976cb97298ee8ae, type: 3}
+    - {fileID: 8300000, guid: af7ac892b17809543ab632defc9a24d9, type: 3}
+    - {fileID: 8300000, guid: 8f5b0f1ac88750341a89b71d3d0a56df, type: 3}

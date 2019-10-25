@@ -708,7 +708,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863585371}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 2, z: 0}
+  m_LocalPosition: {x: 5, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -893,5 +893,150 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8973547704178288514, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: CS
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973547704178288514, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: size
+      value: 2.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: clipBank.clips.Array.data[0].clip.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: clipBank.clips.Array.data[1].clip.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: clipBank.clips.Array.data[2].clip.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: ar.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: clipBank.clips.Array.data[0].clip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 80e9d6971665e534984dbaec396f5f26, type: 3}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: clipBank.clips.Array.data[0].clip.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 70f37ac084e0b2e46b0995e116ec5f96, type: 3}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: clipBank.clips.Array.data[0].clip.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: cf88f2c7e6a664c419b16d359a648236, type: 3}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: clipBank.clips.Array.data[0].clip.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: b562c21f3b0b0ff4a808cbc0d65a8f75, type: 3}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: clipBank.clips.Array.data[1].clip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 73c47b7ea50f37748b8b42e3bbb82f5b, type: 3}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: clipBank.clips.Array.data[1].clip.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 66c713f54a64da5448f89a31ca2562eb, type: 3}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: clipBank.clips.Array.data[1].clip.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7171e82d7c9c6d84b829fbc951c06b00, type: 3}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: clipBank.clips.Array.data[1].clip.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 53b3be8d32b7e13408574b4db54d3b41, type: 3}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: clipBank.clips.Array.data[2].clip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9c219419c45becb45a3e8a64cc5523f6, type: 3}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: clipBank.clips.Array.data[2].clip.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: fd0e3af457556de4c976cb97298ee8ae, type: 3}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: clipBank.clips.Array.data[2].clip.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: af7ac892b17809543ab632defc9a24d9, type: 3}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: clipBank.clips.Array.data[2].clip.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8f5b0f1ac88750341a89b71d3d0a56df, type: 3}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: ar.Array.data[0]
+      value: cat
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: ar.Array.data[1]
+      value: DOP
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: ar.Array.data[2]
+      value: GLKAJSD
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: ar.Array.data[3]
+      value: JKDFJ
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: ar.Array.data[4]
+      value: JFIJF
+      objectReference: {fileID: 0}
+    - target: {fileID: 3006891821523495360, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: bank.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3006891821523495360, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: bank.Array.data[3].clip.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3006891821523495360, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: bank.Array.data[3].clip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 96daf3a6f7971304ebcd735dd00c7f10, type: 3}
+    - target: {fileID: 3006891821523495360, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: bank.Array.data[3].clip.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bcd8016096c84b4fbaf8df45bc12d3f, type: 3}
+    - target: {fileID: 3006891821523495360, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: bank.Array.data[3].clip.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 113db26d3ebed734f83bbe0461003f2e, type: 3}
+    - target: {fileID: 3006891821523495360, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: bank.Array.data[3].clip.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 62fa4e4f25a548f4f880bc1d979efe54, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9efe2bab6a8cbce43b8c11dd039d49c4, type: 3}

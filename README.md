@@ -176,6 +176,12 @@ Making one audio script that every D*n* can use is, I think, the best way to go.
 
 I've got something. Right now the "AudioClipScript" is handling a jagged array of string values that correlate to audio clip names in the Resources folder in the Assets folder. I can't figure out how to get jagged arrays to work the way I want them to, but why do I need them? I could just add a new array for each genre of sample and store them in separate banks. I've got either way working just fine, but it still isn't as dynamic as I may need. I want random clips assigned to each bank/layer. Although, musically, random may not be the best way forward. Next time, I should see how much of the same code each script is using and try to separate the same stuff into one script and consolidate everything else. Then I'll have some nice prefabs to play with.
 
+### Day 034
+I tried to improve the audio script, but was unsuccessful. I'm getting closer. It is tough to decide how I should be handling audio right now. I think the array for each sample genre works well enough, I just feel like it could be better. Which makes me think, "Why not just use Wwise?" I suppose I've given myself the challenge of using Unity exclusively to test its limits, but I don't really know if I'm testing any limits here. I'd like some examples of professional audio scripts as references.
+
+### Day 035
+I accidentally figured it out. I was trying to `GetComponent<ClipArray>()` but had not attached ClipArray.cs to my Game Object. Now that it is a component of the D4, it can be got. Now, can I procedurally place every audio clip I have into the serialized arrays without having to drag and drop each file individually?
+
 ---
 
 ### Jesse Meeting 001
@@ -224,3 +230,8 @@ Start with the trigger and have fun!
 I think it is time to show Jesse what I've got and discuss the direction I should take for the next week. Likely, I should start with connecting to mixers in the scene for some more interesting music, then move on to terrain.
 
 Spawn in hand. Script on camera that makes inspector. Making choices for audio files automatic. You want to drag and drop the audio in and have the code do the rest. Consolidate info about whole system set with an inspector for various values, like base names for audio, default sizes/volume/layer triggers/etc. 
+
+### Jesse Meeting 013
+This Null reference exception for the audioclip class I built is bothering me. Does he have insight to solving the problem? Should I not try to use jagged arrays? How can I make the D*n* scripts more modular? Do I need to?
+
+Make a texture showing time on the floor. Work on scaling objects, spawning in hand, spawning w/o keyboard, using a folder of audio clips to populate arrays.
