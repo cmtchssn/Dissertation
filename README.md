@@ -182,6 +182,16 @@ I tried to improve the audio script, but was unsuccessful. I'm getting closer. I
 ### Day 035
 I accidentally figured it out. I was trying to `GetComponent<ClipArray>()` but had not attached ClipArray.cs to my Game Object. Now that it is a component of the D4, it can be got. Now, can I procedurally place every audio clip I have into the serialized arrays without having to drag and drop each file individually?
 
+### Day 036
+Make a texture showing time on the floor. Work on scaling objects, spawning in hand, spawning w/o keyboard, using a folder of audio clips to populate arrays.
+
+I'll start with the texture, then research audio clips from folder.
+
+I made a new floor for the scene using a cylinder with a mesh collider on it instead of a plane. I was having issues with objects falling through the plane floor, so this should help. The cylinder shape also helps in that the top is a circle, which matches the time cylinders' animations. Using draw.io, I made a texture out of rainbow colored concentric circles to make a grid as a visual timing system for users. I placed the grid texture into a material for the new cylindrical floor and it looks great! I've got a cool looking rainbow color scheme to identify some form of meter.
+
+`UnityWebRequestMultimedia.GetAudioClip` seems like a reasonable place to start learning how to load audio clips from a folder. Try this next time.
+
+
 ---
 
 ### Jesse Meeting 001
