@@ -1119,6 +1119,11 @@ PrefabInstance:
       propertyPath: ar.Array.data[4]
       value: JFIJF
       objectReference: {fileID: 0}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: FileDirectory
+      value: C:\\Users\\localadmin\\Documents\\ChaseMitchusson\\Dissertation\\Dissertation_VR\\Assets\\Audio\\misc\\wobble.wav
+      objectReference: {fileID: 0}
     - target: {fileID: 3006891821523495360, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
         type: 3}
       propertyPath: bank.Array.size
@@ -1149,5 +1154,10 @@ PrefabInstance:
       propertyPath: bank.Array.data[3].clip.Array.data[3]
       value: 
       objectReference: {fileID: 8300000, guid: 62fa4e4f25a548f4f880bc1d979efe54, type: 3}
+    - target: {fileID: 8973547704178288516, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9efe2bab6a8cbce43b8c11dd039d49c4, type: 3}

@@ -191,6 +191,8 @@ I made a new floor for the scene using a cylinder with a mesh collider on it ins
 
 `UnityWebRequestMultimedia.GetAudioClip` seems like a reasonable place to start learning how to load audio clips from a folder. Try this next time.
 
+### Day 037
+Time to learn about unity web request. The web request example I tried worked, but it takes an exact file location and type. I'm now working with the System.IO library to use `Directory.EnumerateFile` and `Directory.EnumerateDirectories` to sift through a main directory filled with sub-directories, filled with .wav files. Once I crack that, I can stuff the .wav file results into a `List<AudioClip>[]` and pull clips based on sub-directory and file name. I'm getting close to it.
 
 ---
 

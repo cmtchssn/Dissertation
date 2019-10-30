@@ -1,58 +1,66 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class AudioClipScript : MonoBehaviour
 {
     ClipArray clipBank;
     AudioSource audioSource;
-    
-    /*
-    public string[][] clips =
-    {
-        new string[] { "metalHit", "metalHit1", "metalHit2", "metalHit3" },
-        new string[] { "guitarChordsD4-01", "guitarChordsD4-02", "guitarChordsD4-03", "guitarChordsD4-04" },
-        new string[] { "metalScrape", "metalScrape1", "metalScrape2", "metalScrape3" }
-    };
+    AudioClip clippy;
+    public string audioDirectory; // main directory containing sub-directories of wave files.
+    int subDirNum; // number of sub-directories containing wave files found in fileDirectory
+    List<AudioClip> Clips = new List<AudioClip>();
+    List<AudioClip>[] clippyArray;  // List array for wave files in sub-directories
 
-    public AudioClip[] metalHit = new AudioClip[4];
-    public AudioClip[] guitar = new AudioClip[4];
-    public AudioClip[] metalScrape = new AudioClip[4];
-    */
     private void Start()
     {
+        StartCoroutine(AudioFileFolder());
         clipBank = GetComponent<ClipArray>();
         audioSource = GetComponent<AudioSource>();
         audioSource.spatialize = true;
         audioSource.spatialBlend = 0.33f;
         audioSource.playOnAwake = false;
+
+        
+        clippyArray = new List<AudioClip>[subDirNum];
+        for (int i = 0; i < subDirNum; i++)
+        {
+            clippyArray[i] = new List<AudioClip>();
+        }
         //audioSource.outputAudioMixerGroup
     }
 
     public void Toll(int b, int faceVal)
     {
         audioSource.Stop();
-        //audioSource.clip = Resources.Load<AudioClip>(clips[bank][faceVal]);
-        /*
-        if (bank == 0)
-        {
-            audioSource.clip = metalHit[faceVal];
-        }
-        else if (bank == 1)
-        {
-            audioSource.clip = guitar[faceVal];
-        }
-        else if (bank == 2)
-        {
-            audioSource.clip = metalScrape[faceVal];
-        }
-        */
-        audioSource.clip = clipBank.bank[b].clip[faceVal];
+        clippy = Clips[0];
+        audioSource.clip = clippy;
         audioSource.Play();
     }
 
     public void Stop()
     {
         audioSource.Stop();
+    }
+
+    IEnumerator AudioFileFolder()
+    {
+        var wavFiles = Directory.EnumerateFiles(audioDirectory, "*.wav"); // wave files contained in audio directory and sub-directories.
+        var subDirs = Directory.EnumerateDirectories(audioDirectory, "*", SearchOption.AllDirectories); // sub-directories contained in audio directory.
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(audioDirectory, AudioType.WAV))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Clips.Add(DownloadHandlerAudioClip.GetContent(www));
+            }
+        }
     }
 }

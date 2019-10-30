@@ -20,8 +20,8 @@ public class ProceduralD4 : MonoBehaviour
     static int faceVertCount = 3;
         
     static float C0 = 0.353553390593273762200422181052f;// = Mathf.Sqrt(2f) / 4f;
-    public static float size = 2f;
-    static float C1 = C0 * size;
+    //public static float size = 2f;
+    static float C1 = C0 * 2f;
 
     public Vector3[] verticesD4 =      // where each face connects in space
     {
@@ -59,10 +59,10 @@ public class ProceduralD4 : MonoBehaviour
         meshRend = GetComponent<MeshRenderer>();
         face = new Vector3[faceCount][];
         //this.verticesD4
-        size = size + 0.5f;
-        C1 = C0 * size;
-        Debug.Log(size);
-        Debug.Log(C1);
+        //size = size + 0.5f;
+        //C1 = C0 * size;
+        //Debug.Log(size);
+        //Debug.Log(C1);
     }
 
     void Start()
@@ -120,7 +120,7 @@ public class ProceduralD4 : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        print(collision.gameObject.tag);
+        //print(collision.gameObject.tag);
         if (collision.collider.tag == "Floor")
         {
             bell.Stop();
