@@ -1124,6 +1124,11 @@ PrefabInstance:
       propertyPath: FileDirectory
       value: C:\\Users\\localadmin\\Documents\\ChaseMitchusson\\Dissertation\\Dissertation_VR\\Assets\\Audio\\misc\\wobble.wav
       objectReference: {fileID: 0}
+    - target: {fileID: 4944926878713188544, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
+        type: 3}
+      propertyPath: audioDirectory
+      value: Assets/Audio
+      objectReference: {fileID: 0}
     - target: {fileID: 3006891821523495360, guid: 9efe2bab6a8cbce43b8c11dd039d49c4,
         type: 3}
       propertyPath: bank.Array.size

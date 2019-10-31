@@ -9,7 +9,7 @@ public class AudioClipScript : MonoBehaviour
     ClipArray clipBank;
     AudioSource audioSource;
     AudioClip clippy;
-    public string audioDirectory; // main directory containing sub-directories of wave files.
+    public string audioDirectory = @"C:\Users\localadmin\Documents\ChaseMitchusson\Dissertation\Dissertation_VR\Assets\Audio"; // main directory containing sub-directories of wave files.
     int subDirNum; // number of sub-directories containing wave files found in fileDirectory
     List<AudioClip> Clips = new List<AudioClip>();
     List<AudioClip>[] clippyArray;  // List array for wave files in sub-directories
@@ -35,7 +35,6 @@ public class AudioClipScript : MonoBehaviour
     public void Toll(int b, int faceVal)
     {
         audioSource.Stop();
-        clippy = Clips[0];
         audioSource.clip = clippy;
         audioSource.Play();
     }
@@ -47,8 +46,22 @@ public class AudioClipScript : MonoBehaviour
 
     IEnumerator AudioFileFolder()
     {
-        var wavFiles = Directory.EnumerateFiles(audioDirectory, "*.wav"); // wave files contained in audio directory and sub-directories.
-        var subDirs = Directory.EnumerateDirectories(audioDirectory, "*", SearchOption.AllDirectories); // sub-directories contained in audio directory.
+        List<string> subDirs = new List<string>(Directory.EnumerateDirectories(audioDirectory));
+        foreach (var dir in subDirs)
+        {
+            Debug.Log($"{dir.Substring(dir.LastIndexOf(Path.DirectorySeparatorChar) + 1)}");
+        }
+        Debug.Log($"{subDirs.Count} directories found.");
+        subDirNum = subDirs.Count;
+
+        List<string> wavFiles = new List<string>(Directory.EnumerateFiles(audioDirectory, "*.wav", SearchOption.AllDirectories));
+        foreach (var wav in wavFiles)
+        {
+            Debug.Log($"{wav.Substring(wav.LastIndexOf(Path.DirectorySeparatorChar) + 1)}");
+        }
+        Debug.Log($"{wavFiles.Count} wave files found.");
+        Debug.Log($"{wavFiles[0]} is the first wave file.");
+
         using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(audioDirectory, AudioType.WAV))
         {
             yield return www.SendWebRequest();

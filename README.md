@@ -194,6 +194,13 @@ I made a new floor for the scene using a cylinder with a mesh collider on it ins
 ### Day 037
 Time to learn about unity web request. The web request example I tried worked, but it takes an exact file location and type. I'm now working with the System.IO library to use `Directory.EnumerateFile` and `Directory.EnumerateDirectories` to sift through a main directory filled with sub-directories, filled with .wav files. Once I crack that, I can stuff the .wav file results into a `List<AudioClip>[]` and pull clips based on sub-directory and file name. I'm getting close to it.
 
+### Day 038
+Time to finish what I started. I should be able to use the Directory class to add wave files to my lists. I've got my script enumerating directories and files, searching for any sub-directory and any wave file in all directories. It is finding what I am asking for. I think it is also adding it to a list, but if not, I will fix that soon. Then I need to use web request handlers on the wave file paths to convert them to audioclips.
+
+Gosh, I was so close. I had the unity web request working, but now it can't connect for some reason. Not really sure what the problem is. I'll check back tomorrow, and probably get help from Jesse.
+
+I think part of what is happening is the way the file names are being recording has both forward and back slashes, e.g. Assets/Audio\hammer.wav.
+
 ---
 
 ### Jesse Meeting 001
