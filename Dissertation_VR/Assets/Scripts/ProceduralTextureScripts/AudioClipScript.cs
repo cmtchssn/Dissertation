@@ -11,6 +11,7 @@ public class AudioClipScript : MonoBehaviour
     AudioClip clippy;
     public string audioDirectory = "C:\\Users\\localadmin\\Documents\\ChaseMitchusson\\Dissertation\\Dissertation_VR\\Assets\\Audio"; // main directory containing sub-directories of wave files.
     public string aDir = @"C:/Users/localadmin/Documents/ChaseMitchusson/Dissertation/Dissertation_VR/"; // main directory containing sub-directories of wave files.
+    // using a string like this won't allow others to use on other computers. I think Application.dataPath is the way to go, but I should look up how this would work on other peoples' computers.
     string m_Path;
     int subDirNum; // number of sub-directories containing wave files found in fileDirectory
     List<AudioClip> Clips = new List<AudioClip>();
