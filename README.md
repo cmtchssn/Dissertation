@@ -201,6 +201,9 @@ Gosh, I was so close. I had the unity web request working, but now it can't conn
 
 I think part of what is happening is the way the file names are being recording has both forward and back slashes, e.g. Assets/Audio\hammer.wav.
 
+### Day 039
+I'm trying to format the path so all of the slashes are facing the same way. I think Unity web request needs a full path name to work, so just having Asset/Audio\bangs\bang.wav won't work. I've made some progress with `Replace("\\","\");` and `Application.dataPath`, but am done for the day.
+
 ---
 
 ### Jesse Meeting 001
@@ -254,3 +257,6 @@ Spawn in hand. Script on camera that makes inspector. Making choices for audio f
 This Null reference exception for the audioclip class I built is bothering me. Does he have insight to solving the problem? Should I not try to use jagged arrays? How can I make the D*n* scripts more modular? Do I need to?
 
 Make a texture showing time on the floor. Work on scaling objects, spawning in hand, spawning w/o keyboard, using a folder of audio clips to populate arrays.
+
+### Jesse Meeting 014
+Formatting "Assets/Audio\hammer.wav". Ask about getting the enumerators working the way you want. I want to use banks so that triggers can play samples from different banks.
