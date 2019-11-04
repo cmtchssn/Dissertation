@@ -204,6 +204,11 @@ I think part of what is happening is the way the file names are being recording 
 ### Day 039
 I'm trying to format the path so all of the slashes are facing the same way. I think Unity web request needs a full path name to work, so just having Asset/Audio\bangs\bang.wav won't work. I've made some progress with `Replace("\\","\");` and `Application.dataPath`, but am done for the day.
 
+### Day 040
+So, I need to make a modular path to the audio folder because a harcoded-string will only work on one computer. I'm going to try to get `Application.dataPath` to work for me in a modular manner, and research what it takes to open folders/files on any device playing the build of the scene.
+
+I'm incredibly close. The file paths are acting fine now that I have added "/" to the end of each string, which forces the directory path to follow "/" format instead of "\". The coroutine is working as planned and I have a `List<AudioClip>[]` so I can call an audio clip like so, `clippyArray[0][0]`. The problem, I think, is that I am asking to change the `AudioSource.clip` to `clippyArray[0][0]` before `clippyArray[0][0]`'s lists are populated. I keep getting errors that say the Index was out of range. So if I call for index [0][0], and it is out of range, that means it doesn't exist yet. I don't know how to arrange them yet. Real quick, I'm going to try to make an if statement and see what happens. Holy shit that worked. I made a `clipReady` bool set to false that turns true after the coroutine finishes. If it is true then, `clippyArray` can be called as the new audio clip! Finally, I can read audio from a folder!
+
 ---
 
 ### Jesse Meeting 001

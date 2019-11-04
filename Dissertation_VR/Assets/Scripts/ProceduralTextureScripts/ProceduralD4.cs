@@ -110,7 +110,7 @@ public class ProceduralD4 : MonoBehaviour
                         //print("D4 Face " + (i+1) + " colliding");
                         faceVal = i;
                         //pause then play audio.
-                        bell.Toll(0, faceVal);
+                        bell.Toll(4, faceVal);
                         colFlag = false;
                     }
                 }
@@ -132,11 +132,11 @@ public class ProceduralD4 : MonoBehaviour
     {
         if(other.gameObject.layer == 15)
         {
-            bell.Toll(1, faceVal);
+            bell.Toll(2, faceVal);
         }
         if(other.gameObject.layer == 16)
         {
-            bell.Toll(2, faceVal);
+            bell.Toll(4, faceVal + 4);
         }
     }
 
