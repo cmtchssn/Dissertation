@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HTC.UnityPlugin.Vive;
 
 public class GenerateObject : MonoBehaviour
 {
     GameObject emptyObj;
+    public GameObject shapeMenu;
     public GameObject D4;
     int count4 = 0;
     int count6 = 0;
@@ -12,14 +14,48 @@ public class GenerateObject : MonoBehaviour
     int count10 = 0;
     int count12 = 0;
     int count20 = 0;
+    bool menuExists = false;
+
+    // a Scene where you use vive controllers to press against a force would be cool
+
+    void Awake()
+    {
+        shapeMenu.gameObject.SetActive(false);
+    }
 
     // Update is called once per frame
     void Update()
     {
         generateDn();
+        VivePress();
     }
 
-    void generateDn()
+    void VivePress()
+    {
+        if (!menuExists)
+        {
+            // Click menu button
+            if (ViveInput.GetPress(HandRole.RightHand, ControllerButton.Menu) || ViveInput.GetPress(HandRole.LeftHand, ControllerButton.Menu))
+            {
+                // A scrollable menu pops up with numbers and icons of the 6 spawnable objects
+                menuExists = true;
+                shapeMenu.gameObject.SetActive(true);
+                // Scroll up and down trackpad to highlight object you want to spawn
+                // click thumb pad to select highlighted object you want to spawn
+                // spawn that object as being held by the controller used to select and spawn object
+                // use trigger to throw/drop object from controller
+            }
+        } 
+    }
+
+    public void generateD4()
+    {
+        D4.name = "D4-" + count4;
+        Instantiate(D4, new Vector3(0, 2, 0), Quaternion.identity);
+        count4++;
+    }
+
+    public void generateDn()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {

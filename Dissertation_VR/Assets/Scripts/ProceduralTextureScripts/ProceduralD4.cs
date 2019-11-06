@@ -58,6 +58,9 @@ public class ProceduralD4 : MonoBehaviour
         meshCollider.sharedMesh = mesh;
         meshRend = GetComponent<MeshRenderer>();
         face = new Vector3[faceCount][];
+        
+        // Spawn resize info here:
+        // I think using transform scale may be the easy way to do it
         //this.verticesD4
         //size = size + 0.5f;
         //C1 = C0 * size;

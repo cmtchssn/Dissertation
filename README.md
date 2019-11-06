@@ -207,7 +207,14 @@ I'm trying to format the path so all of the slashes are facing the same way. I t
 ### Day 040
 So, I need to make a modular path to the audio folder because a harcoded-string will only work on one computer. I'm going to try to get `Application.dataPath` to work for me in a modular manner, and research what it takes to open folders/files on any device playing the build of the scene.
 
-I'm incredibly close. The file paths are acting fine now that I have added "/" to the end of each string, which forces the directory path to follow "/" format instead of "\". The coroutine is working as planned and I have a `List<AudioClip>[]` so I can call an audio clip like so, `clippyArray[0][0]`. The problem, I think, is that I am asking to change the `AudioSource.clip` to `clippyArray[0][0]` before `clippyArray[0][0]`'s lists are populated. I keep getting errors that say the Index was out of range. So if I call for index [0][0], and it is out of range, that means it doesn't exist yet. I don't know how to arrange them yet. Real quick, I'm going to try to make an if statement and see what happens. Holy shit that worked. I made a `clipReady` bool set to false that turns true after the coroutine finishes. If it is true then, `clippyArray` can be called as the new audio clip! Finally, I can read audio from a folder!
+I'm incredibly close. The file paths are acting fine now that I have added "/" to the end of each string, which forces the directory path to follow "/" format instead of "\". The coroutine is working as planned and I have a `List<AudioClip>[]` so I can call an audio clip like so, `clippyArray[0][0]`. The problem, I think, is that I am asking to change the `AudioSource.clip` to `clippyArray[0][0]` before `clippyArray[0][0]`'s lists are populated. I keep getting errors that say the Index was out of range. So if I call for `clippyArray[0][0]`, and it is out of range, that means it doesn't exist yet. I don't know how to arrange them yet. Real quick, I'm going to try to make an if statement and see what happens. Holy shit that worked. I made a `clipReady` bool set to false that turns true after the coroutine finishes. If it is true then, `clippyArray` can be called as the new audio clip! Finally, I can read audio from a folder!
+
+### Day 041
+Now with audio folder reading out of the way, I can focus on spawning objects using the vive controller instead of the keyboard. Ideally, I can spawn any D*n* into my hand in a held state.
+
+I've started working on the script to spawn and am taking things in order of code. First, click menu, then pop up a GUI menu, select D*n*, spawn D*n*. I just built a scrollable list of selections, but the scaling is off so I'll have to read how that works, but honestly, I'm going to put it off until later. I think getting functionality is the best step right now.
+
+The button appears on click, and spawns a D4 on click, but there are issues. I cannot see the button in VR, possibly a screen space/world space issue with the canvas. I cannot interact with the button using the Vive controller, just the mouse. Solving these two issues will go a long way.
 
 ---
 

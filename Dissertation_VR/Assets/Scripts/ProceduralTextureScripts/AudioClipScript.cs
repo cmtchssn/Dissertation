@@ -22,7 +22,7 @@ public class AudioClipScript : MonoBehaviour
         audioSource.spatialize = true;
         audioSource.spatialBlend = 0.33f;
         audioSource.playOnAwake = false;
-        //audioSource.outputAudioMixerGroup  
+        //audioSource.outputAudioMixerGroup info here for cool effects
     }
 
     public void Toll(int b, int faceVal)
@@ -79,6 +79,7 @@ public class AudioClipScript : MonoBehaviour
                 }
             }
         }
+
         clipReady = true;
     }
 }
