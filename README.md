@@ -216,6 +216,11 @@ I've started working on the script to spawn and am taking things in order of cod
 
 The button appears on click, and spawns a D4 on click, but there are issues. I cannot see the button in VR, possibly a screen space/world space issue with the canvas. I cannot interact with the button using the Vive controller, just the mouse. Solving these two issues will go a long way.
 
+### Day 042
+First, I need to make the list visible to the Vive headset. Then, I need to use vive controllers to interact with the list, probably with raycasting.
+
+Well, I finally looked up Vive's input development guide, and was quickly shown how to make an interactable menu in a few easy steps. **ALWAYS READ THE DOCUMENTATION.** I now have a menu that opens and closes after pressing the menu button on the controller, a raycast that highlights menu items, and triggers that select menu items. Right now, I can only spawn D4s in the middle of the room, but changing that comes next.
+
 ---
 
 ### Jesse Meeting 001

@@ -32,20 +32,27 @@ public class GenerateObject : MonoBehaviour
 
     void VivePress()
     {
-        if (!menuExists)
-        {
-            // Click menu button
-            if (ViveInput.GetPress(HandRole.RightHand, ControllerButton.Menu) || ViveInput.GetPress(HandRole.LeftHand, ControllerButton.Menu))
+        // Click menu button
+        if (ViveInput.GetPressUp(HandRole.RightHand, ControllerButton.Menu) || ViveInput.GetPressUp(HandRole.LeftHand, ControllerButton.Menu))
+        {   
+            if (!menuExists)
             {
                 // A scrollable menu pops up with numbers and icons of the 6 spawnable objects
-                menuExists = true;
                 shapeMenu.gameObject.SetActive(true);
+                menuExists = true;
+                Debug.Log("If: " + menuExists);
                 // Scroll up and down trackpad to highlight object you want to spawn
                 // click thumb pad to select highlighted object you want to spawn
                 // spawn that object as being held by the controller used to select and spawn object
                 // use trigger to throw/drop object from controller
             }
-        } 
+            else
+            {
+                shapeMenu.gameObject.SetActive(false);
+                menuExists = false;
+                Debug.Log("Else: " + menuExists);
+            }
+        }
     }
 
     public void generateD4()
