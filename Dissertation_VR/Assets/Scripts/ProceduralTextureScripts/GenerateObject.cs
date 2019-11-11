@@ -15,6 +15,7 @@ public class GenerateObject : MonoBehaviour
     int count12 = 0;
     int count20 = 0;
     bool menuExists = false;
+    public Transform mama;
 
     // a Scene where you use vive controllers to press against a force would be cool
 
@@ -58,7 +59,8 @@ public class GenerateObject : MonoBehaviour
     public void generateD4()
     {
         D4.name = "D4-" + count4;
-        Instantiate(D4, new Vector3(0, 2, 0), Quaternion.identity);
+        GameObject myD4 = Instantiate(D4, new Vector3(0, 2, 0), Quaternion.identity);
+        myD4.transform.parent = mama;
         count4++;
     }
 
@@ -67,7 +69,8 @@ public class GenerateObject : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             D4.name = "D4-" + count4;
-            Instantiate(D4, new Vector3(0, 2, 0), Quaternion.identity);
+            GameObject myD4 = Instantiate(D4, new Vector3(0, 2, 0), Quaternion.identity);
+            myD4.transform.parent = mama;
             count4++;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))

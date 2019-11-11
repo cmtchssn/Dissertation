@@ -221,6 +221,13 @@ First, I need to make the list visible to the Vive headset. Then, I need to use 
 
 Well, I finally looked up Vive's input development guide, and was quickly shown how to make an interactable menu in a few easy steps. **ALWAYS READ THE DOCUMENTATION.** I now have a menu that opens and closes after pressing the menu button on the controller, a raycast that highlights menu items, and triggers that select menu items. Right now, I can only spawn D4s in the middle of the room, but changing that comes next.
 
+### Day 043
+Work on scaling objects, spawning in hand, make prefabs of all objects to show of at seminar. Work on Saving first though, work on trackpad ui.
+
+Based on my notes above, I will first learn to save the scene. Then I will make all prefabs spawnable, then the trackpad ui.
+
+I can save a scene, but only one object in the scene. I've been trying to figure out how to expand this knowledge to saving everything in a scene. So every time I add a D*n* to the scene, I make it a child of a parent, empty "Dn Parent". Then I iterate through every child that parent has and save its name and transform position, hopefully to reload. I'm getting close, I think, to cracking this one, but it may take more time yet. Tomorrow, I should try to get all prefabs instantiating and fix the scrolling on the menu, just for presentation's sake. Then ask the devs how they save full scenes, and see if I can get some general advice.
+
 ---
 
 ### Jesse Meeting 001
@@ -276,4 +283,6 @@ This Null reference exception for the audioclip class I built is bothering me. D
 Make a texture showing time on the floor. Work on scaling objects, spawning in hand, spawning w/o keyboard, using a folder of audio clips to populate arrays.
 
 ### Jesse Meeting 014
-Formatting "Assets/Audio\hammer.wav". Ask about getting the enumerators working the way you want. I want to use banks so that triggers can play samples from different banks.
+Show off folder reading, new level shape/material, and menu. Discuss what comes next, and some job stuff (moving, freelance, non-academic jobs, pax vs. saving for potential interviews, real life shit).
+
+Keep track of how many wav files in each list.
