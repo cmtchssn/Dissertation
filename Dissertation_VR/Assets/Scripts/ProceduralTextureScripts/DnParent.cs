@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class DnParent : MonoBehaviour
 {
+    public void SaveTheChildren()
+    {
+        // When SaveState() is called, make a list of all game objects that are this object's children by name and transform.
+        // Maybe a dictionary is the way to go with this one
+        Debug.Log("Theoretically this worked");
+    }
+
     public void SaveState()
     {
+        SaveTheChildren();
         SaveSystem.SaveData(this);
     }
 

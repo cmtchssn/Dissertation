@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 625613371652632571}
   - component: {fileID: 625613371652632572}
   - component: {fileID: 625613371652632573}
+  - component: {fileID: -1609506912844869474}
   - component: {fileID: 625613371652632566}
   m_Layer: 13
   m_Name: ProceduralD12
@@ -162,6 +163,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: HTC.UnityPlugin.Vive.BasicGrabbable+UnityEventGrabbable, Assembly-CSharp,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &-1609506912844869474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625613371652632574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811d0bb157e59374ba5fc67546f0cd78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &625613371652632566
 AudioSource:
   m_ObjectHideFlags: 0

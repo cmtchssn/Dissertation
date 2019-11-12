@@ -8,6 +8,11 @@ public class GenerateObject : MonoBehaviour
     GameObject emptyObj;
     public GameObject shapeMenu;
     public GameObject D4;
+    public GameObject D6;
+    public GameObject D8;
+    public GameObject D10;
+    public GameObject D12;
+    public GameObject D20;
     int count4 = 0;
     int count6 = 0;
     int count8 = 0;
@@ -62,6 +67,46 @@ public class GenerateObject : MonoBehaviour
         GameObject myD4 = Instantiate(D4, new Vector3(0, 2, 0), Quaternion.identity);
         myD4.transform.parent = mama;
         count4++;
+    }
+
+    public void generateD6()
+    {
+        D6.name = "D6-" + count6;
+        GameObject myD6 = Instantiate(D6, new Vector3(0, 2, 0), Quaternion.identity);
+        myD6.transform.parent = mama;
+        count6++;
+    }
+
+    public void generateD8()
+    {
+        D8.name = "D8-" + count8;
+        GameObject myD8 = Instantiate(D8, new Vector3(0, 2, 0), Quaternion.identity);
+        myD8.transform.parent = mama;
+        count8++;
+    }
+
+    public void generateD10()
+    {
+        D10.name = "D10-" + count10;
+        GameObject myD10 = Instantiate(D10, new Vector3(0, 2, 0), Quaternion.identity);
+        myD10.transform.parent = mama;
+        count10++;
+    }
+
+    public void generateD12()
+    {
+        D12.name = "D12-" + count12;
+        GameObject myD12 = Instantiate(D12, new Vector3(0, 2, 0), Quaternion.identity);
+        myD12.transform.parent = mama;
+        count12++;
+    }
+
+    public void generateD20()
+    {
+        D20.name = "D20-" + count20;
+        GameObject myD20 = Instantiate(D20, new Vector3(0, 2, 0), Quaternion.identity);
+        myD20.transform.parent = mama;
+        count20++;
     }
 
     public void generateDn()

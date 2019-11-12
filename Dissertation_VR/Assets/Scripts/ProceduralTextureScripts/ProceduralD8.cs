@@ -13,12 +13,11 @@ public class ProceduralD8 : MonoBehaviour
     List<int> triangles;
     bool colFlag = false;
     bool reTrig = true;
-
-    AudioSource audioSource;
+    int faceVal;
+    AudioClipScript bell;
     Vector3[][] face;
     static int faceCount = 8;
     int faceVertCount = 3;
-    string[] clipNames = new string[] { "guitarChordsD4-01", "guitarChordsD4-02", "guitarChordsD4-03", "guitarChordsD4-04", "guitarChordsD4-01", "guitarChordsD4-02", "guitarChordsD4-03", "guitarChordsD4-04" };
 
     public static Vector3[] verticesD8 =
     {
@@ -68,10 +67,7 @@ public class ProceduralD8 : MonoBehaviour
         MakeD8();
         UpdateMesh();
         meshCollider.convex = true;
-        audioSource = GetComponent<AudioSource>();
-        audioSource.spatialize = true;
-        audioSource.spatialBlend = 0.33f;
-        audioSource.playOnAwake = false;
+        bell = GetComponent<AudioClipScript>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -107,11 +103,10 @@ public class ProceduralD8 : MonoBehaviour
                     if (globalFace[i].Contains(col1) && globalFace[i].Contains(col2) && globalFace[i].Contains(col3))
                     {
                         //print("D8 Face " + (i + 1) + " colliding");
-                        audioSource.Pause();
-                        audioSource.clip = Resources.Load(clipNames[i]) as AudioClip;
-                        audioSource.Play();
-                        colFlag = false;
+                        faceVal = i;
                         //pause then play audio.
+                        bell.Toll(0, faceVal);
+                        colFlag = false;
                     }
                 }
             }
@@ -123,15 +118,21 @@ public class ProceduralD8 : MonoBehaviour
         print(collision.gameObject.tag);
         if (collision.collider.tag == "Floor")
         {
-            audioSource.Stop();
+            bell.Stop();
             reTrig = true;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        audioSource.Stop();
-        audioSource.Play();
+        if (other.gameObject.layer == 15)
+        {
+            bell.Toll(0, faceVal + 6);
+        }
+        if (other.gameObject.layer == 16)
+        {
+            bell.Toll(0, faceVal + 12);
+        }
     }
 
     void MakeD8()

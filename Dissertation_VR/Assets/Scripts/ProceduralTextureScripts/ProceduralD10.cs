@@ -13,12 +13,11 @@ public class ProceduralD10 : MonoBehaviour
     List<int> triangles;
     bool colFlag = false;
     bool reTrig = true;
-
-    AudioSource audioSource;
+    int faceVal;
+    AudioClipScript bell;
     Vector3[][] face;
     static int faceCount = 10;
     int faceVertCount = 4;
-    string[] clipNames = new string[] { "guitarChordsD4-01", "guitarChordsD4-02", "guitarChordsD4-03", "guitarChordsD4-04", "guitarChordsD4-01", "guitarChordsD4-02", "guitarChordsD4-03", "guitarChordsD4-04", "guitarChordsD4-03", "guitarChordsD4-04" };
 
     static float C0 = 0.309016994374947424102293417183f;// = (Mathf.Sqrt(5f) - 1f) / 4f;
     static float C1 = 0.809016994374947424102293417183f;// (1f + Mathf.Sqrt(5f)) / 4f;
@@ -80,10 +79,7 @@ public class ProceduralD10 : MonoBehaviour
         MakeD10();
         UpdateMesh();
         meshCollider.convex = true;
-        audioSource = GetComponent<AudioSource>();
-        audioSource.spatialize = true;
-        audioSource.spatialBlend = 0.33f;
-        audioSource.playOnAwake = false;
+        bell = GetComponent<AudioClipScript>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -120,11 +116,10 @@ public class ProceduralD10 : MonoBehaviour
                     if (globalFace[i].Contains(col1) && globalFace[i].Contains(col2) && globalFace[i].Contains(col3) && globalFace[i].Contains(col4))
                     {
                         //print("D10 Face " + (i + 1) + " colliding");
-                        audioSource.Pause();
-                        audioSource.clip = Resources.Load(clipNames[i]) as AudioClip;
-                        audioSource.Play();
-                        colFlag = false;
+                        faceVal = i;
                         //pause then play audio.
+                        bell.Toll(0, faceVal);
+                        colFlag = false;
                     }
                 }
             }
@@ -136,15 +131,21 @@ public class ProceduralD10 : MonoBehaviour
         print(collision.gameObject.tag);
         if (collision.collider.tag == "Floor")
         {
-            audioSource.Stop();
+            bell.Stop();
             reTrig = true;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        audioSource.Stop();
-        audioSource.Play();
+        if (other.gameObject.layer == 15)
+        {
+            bell.Toll(0, faceVal + 10);
+        }
+        if (other.gameObject.layer == 16)
+        {
+            bell.Toll(0, 20 - faceVal);
+        }
     }
 
     void MakeD10()

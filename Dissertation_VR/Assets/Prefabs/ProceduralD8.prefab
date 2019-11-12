@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 6794267366933550069}
   - component: {fileID: 6794267366933550070}
   - component: {fileID: 6794267366933550071}
-  - component: {fileID: 6794267366933550072}
   - component: {fileID: 6794267366933550066}
   - component: {fileID: 6794267366933550067}
+  - component: {fileID: 6794267366933550072}
   - component: {fileID: 6794267366933550068}
+  - component: {fileID: 2655887838436918062}
   - component: {fileID: 6794267366933550065}
   m_Layer: 11
   m_Name: ProceduralD8
@@ -82,18 +83,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &6794267366933550072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6794267366933550073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 441b8e53b166ddb4d9393af8522c0957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &6794267366933550066
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -124,6 +113,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6794267366933550072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6794267366933550073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 441b8e53b166ddb4d9393af8522c0957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6794267366933550068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +163,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: HTC.UnityPlugin.Vive.BasicGrabbable+UnityEventGrabbable, Assembly-CSharp,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &2655887838436918062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6794267366933550073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811d0bb157e59374ba5fc67546f0cd78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &6794267366933550065
 AudioSource:
   m_ObjectHideFlags: 0

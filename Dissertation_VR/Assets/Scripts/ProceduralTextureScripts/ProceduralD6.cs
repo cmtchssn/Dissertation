@@ -14,16 +14,11 @@ public class ProceduralD6 : MonoBehaviour
     bool colFlag = false;
     bool reTrig = true;
     int faceVal;
-
-    AudioSource audioSource;
+    AudioClipScript bell;
     Vector3[][] face;
     static int faceCount = 6;
     int faceVertCount = 4;
-    string[][] clipNames =
-        {
-        new string[] { "guitarChordsD4-01", "guitarChordsD4-04", "earthHit", "ding1", "beep", "ding" },
-        new string[] { "scratch", "wobble", "bang", "groundScrape", "jetBoost", "metalScrape3" }
-    };
+    
 
     static float C0 = 1f;
 
@@ -73,10 +68,7 @@ public class ProceduralD6 : MonoBehaviour
         MakeD6();
         UpdateMesh();
         meshCollider.convex = true;
-        audioSource = GetComponent<AudioSource>();
-        audioSource.spatialize = true;
-        audioSource.spatialBlend = 0.33f;
-        audioSource.playOnAwake = false;
+        bell = GetComponent<AudioClipScript>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -114,11 +106,9 @@ public class ProceduralD6 : MonoBehaviour
                     {
                         //print("D6 Face " + (i + 1) + " colliding");
                         faceVal = i;
-                        //audioSource.Pause();
-                        //audioSource.clip = Resources.Load(clipNames[i]) as AudioClip;
-                        //audioSource.Play();
-                        colFlag = false;
                         //pause then play audio.
+                        bell.Toll(0, faceVal);
+                        colFlag = false;
                     }
                 }
             }
@@ -130,7 +120,7 @@ public class ProceduralD6 : MonoBehaviour
         print(collision.gameObject.tag);
         if (collision.collider.tag == "Floor")
         {
-            audioSource.Stop();
+            bell.Stop();
             reTrig = true;
         }
     }
@@ -139,15 +129,11 @@ public class ProceduralD6 : MonoBehaviour
     {
         if (other.gameObject.layer == 15)
         {
-            audioSource.Stop();
-            audioSource.clip = Resources.Load(clipNames[0][faceVal]) as AudioClip;
-            audioSource.Play();
+            bell.Toll(0, faceVal + 6);
         }
         if (other.gameObject.layer == 16)
         {
-            audioSource.Stop();
-            audioSource.clip = Resources.Load(clipNames[1][faceVal]) as AudioClip;
-            audioSource.Play();
+            bell.Toll(0, faceVal + 12);
         }
     }
 

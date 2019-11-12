@@ -228,6 +228,11 @@ Based on my notes above, I will first learn to save the scene. Then I will make 
 
 I can save a scene, but only one object in the scene. I've been trying to figure out how to expand this knowledge to saving everything in a scene. So every time I add a D*n* to the scene, I make it a child of a parent, empty "Dn Parent". Then I iterate through every child that parent has and save its name and transform position, hopefully to reload. I'm getting close, I think, to cracking this one, but it may take more time yet. Tomorrow, I should try to get all prefabs instantiating and fix the scrolling on the menu, just for presentation's sake. Then ask the devs how they save full scenes, and see if I can get some general advice.
 
+### Day 044
+Start with getting prefabs up to date, then work on the menu.
+
+For the demo today, I have all prefabs spawnable, and removed save/load from the menu to ignore scrolling. I'll still want to ask about saving probably.
+
 ---
 
 ### Jesse Meeting 001
