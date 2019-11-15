@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class DnParent : MonoBehaviour
 {
+    public Dictionary<string, GameObject> kids;
+
+    private void Start()
+    {
+        kids = new Dictionary<string, GameObject>();
+    }
+
+    void Update()
+    {
+
+    }
     public void SaveTheChildren()
     {
         // When SaveState() is called, make a list of all game objects that are this object's children by name and transform.

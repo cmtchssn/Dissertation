@@ -233,6 +233,12 @@ Start with getting prefabs up to date, then work on the menu.
 
 For the demo today, I have all prefabs spawnable, and removed save/load from the menu to ignore scrolling. I'll still want to ask about saving probably.
 
+### Day 045
+Make a capsule around the level that destroys gameobjects that pass through it. Done.
+Make a dictionary that holds all new instances of D*n* prefabs and removes them when they are destroyed.
+
+I'm working on it, but can't seem to reference and instantiate classes correctly in my code. Once I crack that egg, I'll be able to have a dictionary of every D*n* in the scene and keep track of their positions, possibly save their info.
+
 ---
 
 ### Jesse Meeting 001
@@ -291,3 +297,7 @@ Make a texture showing time on the floor. Work on scaling objects, spawning in h
 Show off folder reading, new level shape/material, and menu. Discuss what comes next, and some job stuff (moving, freelance, non-academic jobs, pax vs. saving for potential interviews, real life shit).
 
 Keep track of how many wav files in each list.
+
+### Jesse Meeting 015
+Ask about cases. Show off certain death. Talk about saving and today's demo.
+Use dictionaries to find locations of items, what color zones they are in, and manipulate based on location.

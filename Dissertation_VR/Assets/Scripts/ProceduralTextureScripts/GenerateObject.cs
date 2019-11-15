@@ -21,19 +21,29 @@ public class GenerateObject : MonoBehaviour
     int count20 = 0;
     bool menuExists = false;
     public Transform mama;
-
+    public DnParent mom;
+    //public Dictionary<string, GameObject> kids;
     // a Scene where you use vive controllers to press against a force would be cool
 
     void Awake()
     {
         shapeMenu.gameObject.SetActive(false);
+        mom = new DnParent();
+        mom.kids = new Dictionary<string, GameObject>();
+        //kids = new Dictionary<string, GameObject>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        generateDn();
         VivePress();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log("Destroy: " + mom.kids[other.gameObject.name]);
+        mom.kids.Remove(other.gameObject.name);
+        Destroy(other.gameObject);
     }
 
     void VivePress()
@@ -66,6 +76,8 @@ public class GenerateObject : MonoBehaviour
         D4.name = "D4-" + count4;
         GameObject myD4 = Instantiate(D4, new Vector3(0, 2, 0), Quaternion.identity);
         myD4.transform.parent = mama;
+        mom.kids.Add(D4.name + "(Clone)", D4);
+        Debug.Log("Generate: " + mom.kids[D4.name + "(Clone)"]);
         count4++;
     }
 
@@ -74,6 +86,7 @@ public class GenerateObject : MonoBehaviour
         D6.name = "D6-" + count6;
         GameObject myD6 = Instantiate(D6, new Vector3(0, 2, 0), Quaternion.identity);
         myD6.transform.parent = mama;
+        mom.kids.Add(D6.name, D6);
         count6++;
     }
 
@@ -82,6 +95,7 @@ public class GenerateObject : MonoBehaviour
         D8.name = "D8-" + count8;
         GameObject myD8 = Instantiate(D8, new Vector3(0, 2, 0), Quaternion.identity);
         myD8.transform.parent = mama;
+        mom.kids.Add(D8.name, D8);
         count8++;
     }
 
@@ -90,6 +104,7 @@ public class GenerateObject : MonoBehaviour
         D10.name = "D10-" + count10;
         GameObject myD10 = Instantiate(D10, new Vector3(0, 2, 0), Quaternion.identity);
         myD10.transform.parent = mama;
+        mom.kids.Add(D10.name, D10);
         count10++;
     }
 
@@ -98,6 +113,7 @@ public class GenerateObject : MonoBehaviour
         D12.name = "D12-" + count12;
         GameObject myD12 = Instantiate(D12, new Vector3(0, 2, 0), Quaternion.identity);
         myD12.transform.parent = mama;
+        mom.kids.Add(D12.name, D12);
         count12++;
     }
 
@@ -106,62 +122,7 @@ public class GenerateObject : MonoBehaviour
         D20.name = "D20-" + count20;
         GameObject myD20 = Instantiate(D20, new Vector3(0, 2, 0), Quaternion.identity);
         myD20.transform.parent = mama;
+        mom.kids.Add(D20.name, D20);
         count20++;
-    }
-
-    public void generateDn()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            D4.name = "D4-" + count4;
-            GameObject myD4 = Instantiate(D4, new Vector3(0, 2, 0), Quaternion.identity);
-            myD4.transform.parent = mama;
-            count4++;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            string name = "D6-" + count6;
-            emptyObj = new GameObject(name); // consolidate these functions as one that can generate whatever based on key pressed
-            emptyObj.transform.position = this.gameObject.transform.position; // learn how to adjust the position to right in front of the player
-            emptyObj.AddComponent<ProceduralD6>(); // this should change based on input
-            emptyObj.AddComponent<HTC.UnityPlugin.Vive.BasicGrabbable>();
-            count6++;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            string name = "D8-" + count8;
-            emptyObj = new GameObject(name); // consolidate these functions as one that can generate whatever based on key pressed
-            emptyObj.transform.position = this.gameObject.transform.position; // learn how to adjust the position to right in front of the player
-            emptyObj.AddComponent<ProceduralD8>(); // this should change based on input
-            emptyObj.AddComponent<HTC.UnityPlugin.Vive.BasicGrabbable>();
-            count8++;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            string name = "D10-" + count10;
-            emptyObj = new GameObject(name); // consolidate these functions as one that can generate whatever based on key pressed
-            emptyObj.transform.position = this.gameObject.transform.position; // learn how to adjust the position to right in front of the player
-            emptyObj.AddComponent<ProceduralD10>(); // this should change based on input
-            emptyObj.AddComponent<HTC.UnityPlugin.Vive.BasicGrabbable>();
-            count10++;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            string name = "D12-" + count12;
-            emptyObj = new GameObject(name); // consolidate these functions as one that can generate whatever based on key pressed
-            emptyObj.transform.position = this.gameObject.transform.position; // learn how to adjust the position to right in front of the player
-            emptyObj.AddComponent<ProceduralD12>(); // this should change based on input
-            emptyObj.AddComponent<HTC.UnityPlugin.Vive.BasicGrabbable>();
-            count12++;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            string name = "D20-" + count20;
-            emptyObj = new GameObject(name); // consolidate these functions as one that can generate whatever based on key pressed
-            emptyObj.transform.position = this.gameObject.transform.position; // learn how to adjust the position to right in front of the player
-            emptyObj.AddComponent<ProceduralD20>(); // this should change based on input
-            emptyObj.AddComponent<HTC.UnityPlugin.Vive.BasicGrabbable>();
-            count20++;
-        }
     }
 }

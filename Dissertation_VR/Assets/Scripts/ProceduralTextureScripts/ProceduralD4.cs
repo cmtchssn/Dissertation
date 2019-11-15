@@ -31,6 +31,8 @@ public class ProceduralD4 : MonoBehaviour
         new Vector3(-C1, -C1, -C1)
     };
 
+    //static int[][] faceytri = D4;
+
     public static int[][] faceTrianglesD4 =   // what order to connect vertices to create an outward facing mesh for each face
     {
         new int[] { 0, 1, 2 },
@@ -38,7 +40,15 @@ public class ProceduralD4 : MonoBehaviour
         new int[] { 2, 3, 0 },
         new int[] { 3, 2, 1 }
     };
-
+    /*
+    static int[][] D4 =
+    {
+        { 0, 1, 2 },
+        { 1, 0, 3 },
+        { 2, 3, 0 },
+        { 3, 2, 1 }
+    }
+    */
     public Vector3[] faceVerticesD4(int dir)
     {
         Vector3[] fv = new Vector3[faceVertCount]; // number of vertices per face
