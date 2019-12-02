@@ -239,6 +239,18 @@ Make a dictionary that holds all new instances of D*n* prefabs and removes them 
 
 I'm working on it, but can't seem to reference and instantiate classes correctly in my code. Once I crack that egg, I'll be able to have a dictionary of every D*n* in the scene and keep track of their positions, possibly save their info.
 
+### Day 046
+After showing my demo, I had some good questions from the crew. One that stuck with me was adding a top-down map view of the scene, so I'm going to add that today. Then I'll get back to cracking the serialization problem.
+
+The second camera is harder than expected in VR. I'm not sure how to do it.
+
+### Day 047
+Spawn in hand, scale objects while playing, moving terrain, saving progress, spawn time spheres, mini map, update spawn ui/ux, add wav during play. Added those to my scrum board.
+
+Today, I will make objects spawn in hand. Well, my objects are way to big for this to be convenient at all. If I use smaller objects, it will make sense, but right now they just appear around the player. Better than nothing.
+I also made a time cylinder today with variable sizes and speeds. I'm having a problem with the grabbing feature though. I have a parent sphere to show central location and a child sphere that expands and triggers playback. While a user is inside the expanded sphere, pressing the trigger will grab the entire object. This is not ideal. I only want to be able to grab the central sphere. I've tried switching parents, I tried adding a parent for the both of them, but nothing seems to work. I need to sort this and make it a prefab with parameters that account for what layer it is on, how big it is, and how fast it goes when spawned.
+
+
 ---
 
 ### Jesse Meeting 001
