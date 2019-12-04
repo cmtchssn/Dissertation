@@ -6,6 +6,7 @@ using HTC.UnityPlugin.Vive;
 public class GenerateObject : MonoBehaviour
 {
     GameObject emptyObj;
+    public GameObject playerCam;
     public GameObject shapeMenu;
     public GameObject D4;
     public GameObject D6;
@@ -15,6 +16,8 @@ public class GenerateObject : MonoBehaviour
     public GameObject D20;
     public GameObject rhs;
     public GameObject lhs;
+    public float dist = 2f;
+    Vector3 playerFront;
     int count4 = 0;
     int count6 = 0;
     int count8 = 0;
@@ -34,6 +37,7 @@ public class GenerateObject : MonoBehaviour
         mom = new DnParent();
         mom.kids = new Dictionary<string, GameObject>();
         //kids = new Dictionary<string, GameObject>();
+        playerFront = (playerCam.transform.forward * dist) + playerCam.transform.position;
     }
 
     // Update is called once per frame
@@ -87,16 +91,8 @@ public class GenerateObject : MonoBehaviour
     public void generateD4()
     {
         D4.name = "D4-" + count4;
-        if (right)
-        {
-            GameObject myD4 = Instantiate(D4, new Vector3(rhs.transform.position.x, rhs.transform.position.y + 2, rhs.transform.position.z), Quaternion.identity);
-            myD4.transform.parent = mama;
-        }
-        else
-        {
-            GameObject myD4 = Instantiate(D4, new Vector3(lhs.transform.position.x, lhs.transform.position.y + 2, lhs.transform.position.z), Quaternion.identity);
-            myD4.transform.parent = mama;
-        }
+        GameObject myD4 = Instantiate(D4, playerFront, Quaternion.identity);
+        myD4.transform.parent = mama;
         //Vector3 cont = ViveInput.Instance.transform.position;
         //mom.kids.Add(D4.name + "(Clone)", D4);
         //Debug.Log("Generate: " + mom.kids[D4.name + "(Clone)"]);

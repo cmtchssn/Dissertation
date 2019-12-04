@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Dn
+  - TimeSphere
   layers:
   - Default
   - TransparentFX

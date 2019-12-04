@@ -250,6 +250,10 @@ Spawn in hand, scale objects while playing, moving terrain, saving progress, spa
 Today, I will make objects spawn in hand. Well, my objects are way to big for this to be convenient at all. If I use smaller objects, it will make sense, but right now they just appear around the player. Better than nothing.
 I also made a time cylinder today with variable sizes and speeds. I'm having a problem with the grabbing feature though. I have a parent sphere to show central location and a child sphere that expands and triggers playback. While a user is inside the expanded sphere, pressing the trigger will grab the entire object. This is not ideal. I only want to be able to grab the central sphere. I've tried switching parents, I tried adding a parent for the both of them, but nothing seems to work. I need to sort this and make it a prefab with parameters that account for what layer it is on, how big it is, and how fast it goes when spawned.
 
+### Day 048
+See if I can figure out the sphere problem. Then check the scrum board.
+
+I solved the problem. I have an empty object called TimeAndSpace that holds a TimeSphere and a SpaceSphere. The TimeSphere's position is set to the SpaceSphere's position in `LateUpdate()`. Now, when I grab the SpaceSphere, the TimeSphere's collider is not interfering, and the TimeSphere always follows the SpaceSphere! I have set the TimeSphere to have variable sizes, speeds, offsets, and direction. I need to make them spawn next.
 
 ---
 
