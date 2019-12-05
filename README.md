@@ -255,6 +255,11 @@ See if I can figure out the sphere problem. Then check the scrum board.
 
 I solved the problem. I have an empty object called TimeAndSpace that holds a TimeSphere and a SpaceSphere. The TimeSphere's position is set to the SpaceSphere's position in `LateUpdate()`. Now, when I grab the SpaceSphere, the TimeSphere's collider is not interfering, and the TimeSphere always follows the SpaceSphere! I have set the TimeSphere to have variable sizes, speeds, offsets, and direction. I need to make them spawn next.
 
+### Day 049
+Work on TimeAndSpace spawn, layer attribute, and remove offset (which is a redundancy to min and max sizes).
+
+I got spawning and layer attributes working. They could both be better. I removed the offsets and played around to hear what the timespheres do differently from the cylinders. After a few minutes, it became apparent that I need to build height into the level. 2D triggering like this happens in electroplankton. Height is going to contribute in meaningful ways. Think about how to incorporate it. Maybe remove gravity from the D*n*'s? But then how wil we know what side they're on? You'll figure something out.
+
 ---
 
 ### Jesse Meeting 001

@@ -8,6 +8,7 @@ public class GenerateObject : MonoBehaviour
     GameObject emptyObj;
     public GameObject playerCam;
     public GameObject shapeMenu;
+    public GameObject timeSpace;
     public GameObject D4;
     public GameObject D6;
     public GameObject D8;
@@ -18,6 +19,7 @@ public class GenerateObject : MonoBehaviour
     public GameObject lhs;
     public float dist = 2f;
     Vector3 playerFront;
+    int countT = 0;
     int count4 = 0;
     int count6 = 0;
     int count8 = 0;
@@ -86,6 +88,14 @@ public class GenerateObject : MonoBehaviour
                 Debug.Log("Else: " + menuExists);
             }
         }
+    }
+
+    public void generateTime()
+    {
+        timeSpace.name = "TimeSpace-" + countT;
+        GameObject myTS = Instantiate(timeSpace, playerFront, Quaternion.identity);
+        myTS.transform.parent = mama;
+        countT++;
     }
 
     public void generateD4()
