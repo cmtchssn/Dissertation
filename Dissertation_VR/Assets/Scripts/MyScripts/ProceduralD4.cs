@@ -18,12 +18,14 @@ public class ProceduralD4 : MonoBehaviour
     Vector3[][] face;
     int faceCount = 4;
     static int faceVertCount = 3;
-        
+
+    #region D4 Stats
+
     static float C0 = 0.353553390593273762200422181052f;// = Mathf.Sqrt(2f) / 4f;
     //public static float size = 2f;
     static float C1 = C0 * 2f;
 
-    public Vector3[] verticesD4 =      // where each face connects in space
+    public static Vector3[] verticesD4 =      // where each face connects in space
     {
         new Vector3( C1, -C1,  C1),
         new Vector3( C1,  C1, -C1),
@@ -60,6 +62,7 @@ public class ProceduralD4 : MonoBehaviour
 
         return fv;
     }
+    #endregion
 
     private void Awake()
     {
@@ -153,6 +156,8 @@ public class ProceduralD4 : MonoBehaviour
         }
     }
 
+    #region D4 Make
+
     void MakeD4()
     {
         vertices = new List<Vector3>();
@@ -174,6 +179,7 @@ public class ProceduralD4 : MonoBehaviour
         triangles.Add(vCount - 3 + 1);
         triangles.Add(vCount - 3 + 2);
     }
+    #endregion
 
     void UpdateMesh()
     {
