@@ -18,6 +18,7 @@ public class ProceduralD4 : MonoBehaviour
     Vector3[][] face;
     int faceCount = 4;
     static int faceVertCount = 3;
+    TimeSphereScript ts;
 
     #region D4 Stats
 
@@ -146,13 +147,32 @@ public class ProceduralD4 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 15)
+        if (!ts.reverse)
         {
-            bell.Toll(0, faceVal);
+            if (other.gameObject.layer == 15)
+            {
+                bell.Toll(0, faceVal);
+            }
+            if (other.gameObject.layer == 16)
+            {
+                bell.Toll(0, faceVal + 4);
+            }
         }
-        if(other.gameObject.layer == 16)
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // Should the audio also play backwards?
+        if (ts.reverse)
         {
-            bell.Toll(0, faceVal + 4);
+            if (other.gameObject.layer == 15)
+            {
+                bell.Toll(0, faceVal);
+            }
+            if (other.gameObject.layer == 16)
+            {
+                bell.Toll(0, faceVal + 4);
+            }
         }
     }
 

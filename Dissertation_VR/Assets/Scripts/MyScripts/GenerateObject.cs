@@ -8,6 +8,7 @@ public class GenerateObject : MonoBehaviour
     GameObject emptyObj;
     public GameObject playerCam;
     public GameObject shapeMenu;
+    public GameObject timeMenu;
     public GameObject timeSpace;
     public GameObject D4;
     public GameObject D6;
@@ -30,6 +31,8 @@ public class GenerateObject : MonoBehaviour
     public Transform mama;
     public DnParent mom;
     bool right = true;
+    SpaceSphereScript sp;
+    bool timeUI = false;
     //public Dictionary<string, GameObject> kids;
     // a Scene where you use vive controllers to press against a force would be cool
 
@@ -40,6 +43,7 @@ public class GenerateObject : MonoBehaviour
         mom.kids = new Dictionary<string, GameObject>();
         //kids = new Dictionary<string, GameObject>();
         playerFront = (playerCam.transform.forward * dist) + playerCam.transform.position;
+        sp = new SpaceSphereScript();
     }
 
     // Update is called once per frame
@@ -57,37 +61,60 @@ public class GenerateObject : MonoBehaviour
 
     void VivePress()
     {
-        // Click menu button
-        if (ViveInput.GetPressUp(HandRole.RightHand, ControllerButton.Menu) || ViveInput.GetPressUp(HandRole.LeftHand, ControllerButton.Menu))
-        {   
-            if(ViveInput.GetPressUp(HandRole.RightHand, ControllerButton.Menu))
+        if (sp.sphereHold)
+        {
+            if (ViveInput.GetPressUp(HandRole.RightHand, ControllerButton.Menu) || ViveInput.GetPressUp(HandRole.LeftHand, ControllerButton.Menu))
             {
-                right = true;
-            }
-
-            if(ViveInput.GetPressUp(HandRole.LeftHand, ControllerButton.Menu))
-            {
-                right = false;
-            }
-
-            if (!menuExists)
-            {
-                // A scrollable menu pops up with numbers and icons of the 6 spawnable objects
-                shapeMenu.gameObject.SetActive(true);
-                menuExists = true;
-                Debug.Log("If: " + menuExists);
-                // Scroll up and down trackpad to highlight object you want to spawn
-                // click thumb pad to select highlighted object you want to spawn
-                // spawn that object as being held by the controller used to select and spawn object
-                // use trigger to throw/drop object from controller
-            }
-            else
-            {
-                shapeMenu.gameObject.SetActive(false);
-                menuExists = false;
-                Debug.Log("Else: " + menuExists);
+                if (!timeUI)
+                {
+                    //open timesphere menu
+                    shapeMenu.gameObject.SetActive(false);
+                    timeMenu.gameObject.SetActive(true);
+                }
+                else
+                {
+                    //open timesphere menu
+                    shapeMenu.gameObject.SetActive(false);
+                    timeMenu.gameObject.SetActive(false);
+                }
             }
         }
+        // Click menu button
+        if (!sp.sphereHold)
+        {
+            if (ViveInput.GetPressUp(HandRole.RightHand, ControllerButton.Menu) || ViveInput.GetPressUp(HandRole.LeftHand, ControllerButton.Menu))
+            {
+                if (ViveInput.GetPressUp(HandRole.RightHand, ControllerButton.Menu))
+                {
+                    right = true;
+                }
+
+                if (ViveInput.GetPressUp(HandRole.LeftHand, ControllerButton.Menu))
+                {
+                    right = false;
+                }
+
+                if (!menuExists)
+                {
+                    if (timeUI)
+                    {
+                        shapeMenu.gameObject.SetActive(false);
+                        menuExists = false;
+                    }
+                    else
+                    {
+                        shapeMenu.gameObject.SetActive(true);
+                        menuExists = true;
+                    }
+                }
+                else
+                {
+                    shapeMenu.gameObject.SetActive(false);
+                    menuExists = false;
+                }
+            }
+        }
+        
     }
 
     public void generateTime()

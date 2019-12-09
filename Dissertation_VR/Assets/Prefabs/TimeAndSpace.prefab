@@ -239,10 +239,16 @@ MonoBehaviour:
   layer: 0
   minScale: {x: 1, y: 1, z: 1}
   maxScale: {x: 120, y: 120, z: 120}
+  minSlide: 0
+  maxSlide: 0
   repeatable: 1
   reverse: 0
   speed: 1
   duration: 5
+  minOffset: {x: 0, y: 0, z: 0}
+  maxOffset: {x: 0, y: 0, z: 0}
+  myDrop: {fileID: 0}
+  myMinSlider: {fileID: 0}
 --- !u!1 &1939199382579775763
 GameObject:
   m_ObjectHideFlags: 0

@@ -269,6 +269,11 @@ Today I need to make the reverse time function properly and maybe move some code
 
 I've got an idea, but not sure that it can work. I'll mull it over. Basically, look at the name of the D*n*, then declare a variable of the class based on name. It isn't working the way I think it should. I think there is much to optimize in all of my code.
 
+### Day 051
+Working on UGUI for timespheres so I can make an etude. I'll add UI for copying, deleting, editing the spheres, which includes sliders for min/max sizes and speed and a checkbox for reverse option.
+
+The UGUI exists, I need to connect it to the spheres so that they affect each copy individually, not all spheres at once. I'll also look at making the time menu hide the other menu so nothing is overlapping. I'm having to use sliders for the layer options because I couldn't figure out dropdown in VR, but it should be fine. I'm not adding the copy feature yet. If I can figure it out while learning how the menu script will work, then I'll add it.
+
 ---
 
 ### Jesse Meeting 001

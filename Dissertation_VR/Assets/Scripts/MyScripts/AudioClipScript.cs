@@ -31,7 +31,7 @@ public class AudioClipScript : MonoBehaviour
         audioSource.spatialize = true;
         audioSource.spatialBlend = 0.33f;
         audioSource.playOnAwake = false;
-        id = gameObject.name;
+        /*id = gameObject.name;
         
         Debug.Log("id: " + id);
         if (id.Contains("D4"))
@@ -58,11 +58,11 @@ public class AudioClipScript : MonoBehaviour
         else if (id.Contains("D10"))
         {
             d20 = GetComponent<ProceduralD20>();
-        }
+        }*/
         
         //audioSource.outputAudioMixerGroup info here for cool effects
     }
-
+/*
     private void OnTriggerEnter(Collider other)
     {
         if (!ts.reverse)
@@ -93,6 +93,7 @@ public class AudioClipScript : MonoBehaviour
             }
         }
     }
+*/
 
     public void Toll(int b, int faceVal)
     {
