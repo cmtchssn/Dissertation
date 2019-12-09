@@ -13,11 +13,13 @@ public class ProceduralD4 : MonoBehaviour
     List<int> triangles;
     bool colFlag = false;
     bool reTrig = true;
-    int faceVal;
+    public int faceVal;
     AudioClipScript bell;
     Vector3[][] face;
     int faceCount = 4;
     static int faceVertCount = 3;
+    TimeSphereScript ts;
+    public int id = 4;
         
     static float C0 = 0.353553390593273762200422181052f;// = Mathf.Sqrt(2f) / 4f;
     //public static float size = 2f;
@@ -84,7 +86,7 @@ public class ProceduralD4 : MonoBehaviour
         UpdateMesh();
         meshCollider.convex = true;
         bell = GetComponent<AudioClipScript>();
-        
+        ts = GetComponent<TimeSphereScript>();        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -143,13 +145,32 @@ public class ProceduralD4 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 15)
+        if (!ts.reverse)
         {
-            bell.Toll(0, faceVal);
+            if (other.gameObject.layer == 15)
+            {
+                bell.Toll(0, faceVal);
+            }
+            if (other.gameObject.layer == 16)
+            {
+                bell.Toll(0, faceVal + 4);
+            }
         }
-        if(other.gameObject.layer == 16)
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // Should the audio also play backwards?
+        if (ts.reverse)
         {
-            bell.Toll(0, faceVal + 4);
+            if (other.gameObject.layer == 15)
+            {
+                bell.Toll(0, faceVal);
+            }
+            if (other.gameObject.layer == 16)
+            {
+                bell.Toll(0, faceVal + 4);
+            }
         }
     }
 

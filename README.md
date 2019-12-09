@@ -260,6 +260,15 @@ Work on TimeAndSpace spawn, layer attribute, and remove offset (which is a redun
 
 I got spawning and layer attributes working. They could both be better. I removed the offsets and played around to hear what the timespheres do differently from the cylinders. After a few minutes, it became apparent that I need to build height into the level. 2D triggering like this happens in electroplankton. Height is going to contribute in meaningful ways. Think about how to incorporate it. Maybe remove gravity from the D*n*'s? But then how wil we know what side they're on? You'll figure something out.
 
+### Day 050
+So, on the topic of height in the game, I could make a large globe for the player to walk on instead of a floor. That way as the time spheres pulse outward, they can pass through the globe and contact D*n* on the other side. This sort of simulates height, but also on the globe I can add hills and valleys to exaggerate the importance of height. Just a thought.
+
+I could also encourage stacking D*n*. Or have a way to elevate the segment of ground the D*n* is on, like a column that the player can extrude up or down.
+
+Today I need to make the reverse time function properly and maybe move some code from ProceduralD*n* to the general audio script. There is probably a better way to organize what I have.
+
+I've got an idea, but not sure that it can work. I'll mull it over. Basically, look at the name of the D*n*, then declare a variable of the class based on name. It isn't working the way I think it should. I think there is much to optimize in all of my code.
+
 ---
 
 ### Jesse Meeting 001
