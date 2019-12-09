@@ -13,19 +13,19 @@ public class ProceduralD4 : MonoBehaviour
     List<int> triangles;
     bool colFlag = false;
     bool reTrig = true;
-    public int faceVal;
+    int faceVal;
     AudioClipScript bell;
     Vector3[][] face;
     int faceCount = 4;
     static int faceVertCount = 3;
-    TimeSphereScript ts;
-    public int id = 4;
-        
+
+    #region D4 Stats
+
     static float C0 = 0.353553390593273762200422181052f;// = Mathf.Sqrt(2f) / 4f;
     //public static float size = 2f;
     static float C1 = C0 * 2f;
 
-    public Vector3[] verticesD4 =      // where each face connects in space
+    public static Vector3[] verticesD4 =      // where each face connects in space
     {
         new Vector3( C1, -C1,  C1),
         new Vector3( C1,  C1, -C1),
@@ -62,6 +62,7 @@ public class ProceduralD4 : MonoBehaviour
 
         return fv;
     }
+    #endregion
 
     private void Awake()
     {
@@ -86,7 +87,7 @@ public class ProceduralD4 : MonoBehaviour
         UpdateMesh();
         meshCollider.convex = true;
         bell = GetComponent<AudioClipScript>();
-        ts = GetComponent<TimeSphereScript>();        
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -145,34 +146,17 @@ public class ProceduralD4 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!ts.reverse)
+        if(other.gameObject.layer == 15)
         {
-            if (other.gameObject.layer == 15)
-            {
-                bell.Toll(0, faceVal);
-            }
-            if (other.gameObject.layer == 16)
-            {
-                bell.Toll(0, faceVal + 4);
-            }
+            bell.Toll(0, faceVal);
+        }
+        if(other.gameObject.layer == 16)
+        {
+            bell.Toll(0, faceVal + 4);
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        // Should the audio also play backwards?
-        if (ts.reverse)
-        {
-            if (other.gameObject.layer == 15)
-            {
-                bell.Toll(0, faceVal);
-            }
-            if (other.gameObject.layer == 16)
-            {
-                bell.Toll(0, faceVal + 4);
-            }
-        }
-    }
+    #region D4 Make
 
     void MakeD4()
     {
@@ -195,6 +179,7 @@ public class ProceduralD4 : MonoBehaviour
         triangles.Add(vCount - 3 + 1);
         triangles.Add(vCount - 3 + 2);
     }
+    #endregion
 
     void UpdateMesh()
     {
