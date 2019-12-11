@@ -105,7 +105,7 @@ public class ProceduralD4 : MonoBehaviour
         if (colFlag)
         {
             string[] globalFace = new string[faceCount];
-
+            //Get global positions of each face vertex, to string, transform them to local position for later comparisons to determine what face is touching the floor.
             for (int i = 0; i < faceCount; i++)
             {
                 for (int j = 0; j < faceVertCount; j++)
@@ -147,8 +147,8 @@ public class ProceduralD4 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!ts.reverse)
-        {
+        //if (!ts.reverse)
+        //{
             if (other.gameObject.layer == 15)
             {
                 bell.Toll(0, faceVal);
@@ -157,14 +157,14 @@ public class ProceduralD4 : MonoBehaviour
             {
                 bell.Toll(0, faceVal + 4);
             }
-        }
+        //}
     }
 
     private void OnTriggerExit(Collider other)
     {
         // Should the audio also play backwards?
-        if (ts.reverse)
-        {
+        //if (ts.reverse)
+        //{
             if (other.gameObject.layer == 15)
             {
                 bell.Toll(0, faceVal);
@@ -173,7 +173,7 @@ public class ProceduralD4 : MonoBehaviour
             {
                 bell.Toll(0, faceVal + 4);
             }
-        }
+        //}
     }
 
     #region D4 Make

@@ -4,8 +4,51 @@ using UnityEngine;
 
 public class Dn
 {
-    Vector3[] vertices;// = new Vector3[20]; //maybe I can use this in faceVertices
-    int[][] faceTriangles;// = new int[20][];
+    /*
+    public float C0;
+    public float C1;
+    public float C2;
+
+    public Vector3[] vertices;
+    public Vector3[] faceVertices;
+    public Vector3[][] face;
+
+    public int faceCount;
+    public int faceVertCount;
+    public int[][] faceTriangles;
+
+    public List<Vector3> makeVertices;
+    public List<int> makeTriangles;
+    public void D4()
+    {
+        #region D4 Stats
+        C0 = 0.353553390593273762200422181052f;// = Mathf.Sqrt(2f) / 4f;
+        C1 = C0 * 2f;
+        faceCount = 4;
+        faceVertCount = 3;
+
+        vertices = new Vector3[4]
+        {
+            new Vector3(C1, -C1, C1),
+            new Vector3(C1, C1, -C1),
+            new Vector3(-C1, C1, C1),
+            new Vector3(-C1, -C1, -C1)
+        };
+
+        faceTriangles = new int[4][]  // what order to connect vertices to create an outward facing mesh for each face
+        {
+            new int[] { 0, 1, 2 },
+            new int[] { 1, 0, 3 },
+            new int[] { 2, 3, 0 },
+            new int[] { 3, 2, 1 }
+        };
+        #endregion
+    }
+    */
+    #region Early Try
+    
+    Vector3[] vertices;
+    int[][] faceTriangles;
     List<Vector3> makeVertices;
     List<int> makeTriangles;
     Vector3[][] face;
@@ -154,7 +197,7 @@ public class Dn
         new int[] { 9, 10,  5,  1 },
         new int[] { 9,  1,  3,  7 },
         new int[] { 9,  7, 11,  6 },
-        new int[] { 9,  6,  2,  0 }  
+        new int[] { 9,  6,  2,  0 }
     };
     #endregion
 
@@ -276,7 +319,7 @@ public class Dn
         face[dir] = faceVertices(dir);
         makeVertices.AddRange(face[dir]);
         int vCount = makeVertices.Count;
-        
+
         switch (faceSwitch)
         {
             case 4:
@@ -322,6 +365,8 @@ public class Dn
                 makeTriangles.Add(vCount - 3 + 2);
                 break;
         }
-        
+
     }
+    
+    #endregion
 }

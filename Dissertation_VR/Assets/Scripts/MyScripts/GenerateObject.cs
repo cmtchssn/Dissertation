@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using HTC.UnityPlugin.Vive;
+using UnityEngine.UI;
 
 public class GenerateObject : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class GenerateObject : MonoBehaviour
     public GameObject shapeMenu;
     public GameObject timeMenu;
     public GameObject timeSpace;
+    public GameObject spaceSphere;
+    public GameObject timeSphere;
+    public SpaceSphereScript sp;
     public GameObject D4;
     public GameObject D6;
     public GameObject D8;
@@ -30,9 +34,8 @@ public class GenerateObject : MonoBehaviour
     bool menuExists = false;
     public Transform mama;
     public DnParent mom;
-    bool right = true;
-    SpaceSphereScript sp;
     bool timeUI = false;
+    
     //public Dictionary<string, GameObject> kids;
     // a Scene where you use vive controllers to press against a force would be cool
 
@@ -43,7 +46,7 @@ public class GenerateObject : MonoBehaviour
         mom.kids = new Dictionary<string, GameObject>();
         //kids = new Dictionary<string, GameObject>();
         playerFront = (playerCam.transform.forward * dist) + playerCam.transform.position;
-        sp = new SpaceSphereScript();
+        sp = spaceSphere.GetComponent<SpaceSphereScript>();
     }
 
     // Update is called once per frame
@@ -51,7 +54,7 @@ public class GenerateObject : MonoBehaviour
     {
         VivePress();
     }
-
+    
     private void OnTriggerExit(Collider other)
     {
         //Debug.Log("Destroy: " + mom.kids[other.gameObject.name]);
@@ -61,39 +64,11 @@ public class GenerateObject : MonoBehaviour
 
     void VivePress()
     {
-        if (sp.sphereHold)
-        {
-            if (ViveInput.GetPressUp(HandRole.RightHand, ControllerButton.Menu) || ViveInput.GetPressUp(HandRole.LeftHand, ControllerButton.Menu))
-            {
-                if (!timeUI)
-                {
-                    //open timesphere menu
-                    shapeMenu.gameObject.SetActive(false);
-                    timeMenu.gameObject.SetActive(true);
-                }
-                else
-                {
-                    //open timesphere menu
-                    shapeMenu.gameObject.SetActive(false);
-                    timeMenu.gameObject.SetActive(false);
-                }
-            }
-        }
         // Click menu button
         if (!sp.sphereHold)
         {
             if (ViveInput.GetPressUp(HandRole.RightHand, ControllerButton.Menu) || ViveInput.GetPressUp(HandRole.LeftHand, ControllerButton.Menu))
             {
-                if (ViveInput.GetPressUp(HandRole.RightHand, ControllerButton.Menu))
-                {
-                    right = true;
-                }
-
-                if (ViveInput.GetPressUp(HandRole.LeftHand, ControllerButton.Menu))
-                {
-                    right = false;
-                }
-
                 if (!menuExists)
                 {
                     if (timeUI)
@@ -104,6 +79,7 @@ public class GenerateObject : MonoBehaviour
                     else
                     {
                         shapeMenu.gameObject.SetActive(true);
+                        sp.timeMenu.gameObject.SetActive(false);
                         menuExists = true;
                     }
                 }
@@ -111,6 +87,8 @@ public class GenerateObject : MonoBehaviour
                 {
                     shapeMenu.gameObject.SetActive(false);
                     menuExists = false;
+                    sp.timeMenu.gameObject.SetActive(false);
+                    timeUI = false;
                 }
             }
         }
@@ -139,16 +117,8 @@ public class GenerateObject : MonoBehaviour
     public void generateD6()
     {
         D6.name = "D6-" + count6;
-        if (right)
-        {
-            GameObject myD6 = Instantiate(D6, new Vector3(rhs.transform.position.x, rhs.transform.position.y + 2, rhs.transform.position.z), Quaternion.identity);
-            myD6.transform.parent = mama;
-        }
-        else
-        {
-            GameObject myD6 = Instantiate(D6, new Vector3(lhs.transform.position.x, lhs.transform.position.y + 2, lhs.transform.position.z), Quaternion.identity);
-            myD6.transform.parent = mama;
-        }
+        GameObject myD6 = Instantiate(D6, new Vector3(lhs.transform.position.x, lhs.transform.position.y + 2, lhs.transform.position.z), Quaternion.identity);
+        myD6.transform.parent = mama;
         mom.kids.Add(D6.name, D6);
         count6++;
     }
@@ -156,16 +126,8 @@ public class GenerateObject : MonoBehaviour
     public void generateD8()
     {
         D8.name = "D8-" + count8;
-        if (right)
-        {
-            GameObject myD8 = Instantiate(D8, new Vector3(rhs.transform.position.x, rhs.transform.position.y + 2, rhs.transform.position.z), Quaternion.identity);
-            myD8.transform.parent = mama;
-        }
-        else
-        {
-            GameObject myD8 = Instantiate(D8, new Vector3(lhs.transform.position.x, lhs.transform.position.y + 2, lhs.transform.position.z), Quaternion.identity);
-            myD8.transform.parent = mama;
-        }
+        GameObject myD8 = Instantiate(D8, new Vector3(rhs.transform.position.x, rhs.transform.position.y + 2, rhs.transform.position.z), Quaternion.identity);
+        myD8.transform.parent = mama;
         mom.kids.Add(D8.name, D8);
         count8++;
     }
@@ -173,16 +135,8 @@ public class GenerateObject : MonoBehaviour
     public void generateD10()
     {
         D10.name = "D10-" + count10;
-        if (right)
-        {
-            GameObject myD10 = Instantiate(D10, new Vector3(rhs.transform.position.x, rhs.transform.position.y + 2, rhs.transform.position.z), Quaternion.identity);
-            myD10.transform.parent = mama;
-        }
-        else
-        {
-            GameObject myD10 = Instantiate(D10, new Vector3(lhs.transform.position.x, lhs.transform.position.y + 2, lhs.transform.position.z), Quaternion.identity);
-            myD10.transform.parent = mama;
-        }
+        GameObject myD10 = Instantiate(D10, new Vector3(lhs.transform.position.x, lhs.transform.position.y + 2, lhs.transform.position.z), Quaternion.identity);
+        myD10.transform.parent = mama;
         mom.kids.Add(D10.name, D10);
         count10++;
     }
@@ -190,16 +144,8 @@ public class GenerateObject : MonoBehaviour
     public void generateD12()
     {
         D12.name = "D12-" + count12;
-        if (right)
-        {
-            GameObject myD12 = Instantiate(D12, new Vector3(rhs.transform.position.x, rhs.transform.position.y + 2, rhs.transform.position.z), Quaternion.identity);
-            myD12.transform.parent = mama;
-        }
-        else
-        {
-            GameObject myD12 = Instantiate(D12, new Vector3(lhs.transform.position.x, lhs.transform.position.y + 2, lhs.transform.position.z), Quaternion.identity);
-            myD12.transform.parent = mama;
-        }
+        GameObject myD12 = Instantiate(D12, new Vector3(lhs.transform.position.x, lhs.transform.position.y + 2, lhs.transform.position.z), Quaternion.identity);
+        myD12.transform.parent = mama;
         mom.kids.Add(D12.name, D12);
         count12++;
     }
@@ -207,17 +153,14 @@ public class GenerateObject : MonoBehaviour
     public void generateD20()
     {
         D20.name = "D20-" + count20;
-        if (right)
-        {
-            GameObject myD20 = Instantiate(D20, new Vector3(rhs.transform.position.x, rhs.transform.position.y + 2, rhs.transform.position.z), Quaternion.identity);
-            myD20.transform.parent = mama;
-        }
-        else
-        {
-            GameObject myD20 = Instantiate(D20, new Vector3(lhs.transform.position.x, lhs.transform.position.y + 2, lhs.transform.position.z), Quaternion.identity);
-            myD20.transform.parent = mama;
-        }
+        GameObject myD20 = Instantiate(D20, new Vector3(lhs.transform.position.x, lhs.transform.position.y + 2, lhs.transform.position.z), Quaternion.identity);
+        myD20.transform.parent = mama;
         mom.kids.Add(D20.name, D20);
         count20++;
+    }
+
+    public void editTimeSphere()
+    {
+
     }
 }

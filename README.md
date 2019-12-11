@@ -274,6 +274,18 @@ Working on UGUI for timespheres so I can make an etude. I'll add UI for copying,
 
 The UGUI exists, I need to connect it to the spheres so that they affect each copy individually, not all spheres at once. I'll also look at making the time menu hide the other menu so nothing is overlapping. I'm having to use sliders for the layer options because I couldn't figure out dropdown in VR, but it should be fine. I'm not adding the copy feature yet. If I can figure it out while learning how the menu script will work, then I'll add it.
 
+### Day 052
+I'm so damn determined to get the programming structures for this project correct. I'm going to spend today trying to use object-oriented techniques to make all of my objects better. It will slow me down, sure, but in the long run this is what I need and will help with other problems I having. I'm just reading through Microsoft's C# overview to learn these techniques and they seem, obviously, incredibly helpful. 
+
+I'm so impatient. I can't afford the time this takes right now. I'm going to brute force my way into getting the ui menu for the spheres to work so I can write some music.
+
+A very aggravating day. Suffice it to say, nothing works like I want. 
+
+### Day 053
+Back at it again. Should I do nested class with the space and time spheres or brute force? I'm going to think on how to brute force first, then I'll see about nested classes if that doesn't work.
+
+I worked on getting the ui to just show up for most of the time today. I finally have it showing up again. The sliders only work for the first timeandspacesphere in the scene, and only for speed and reverse. I can delete that one, but cannot spawn a new one. I need to understand how to use these in a modular way or it will never work.
+
 ---
 
 ### Jesse Meeting 001

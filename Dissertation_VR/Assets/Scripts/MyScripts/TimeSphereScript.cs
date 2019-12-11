@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class TimeSphereScript : MonoBehaviour
 {
     public GameObject spaceSphere;
+    public GameObject timeAndSpace;
+    SpaceSphereScript sp;
     int[] layerPool = new int[] { 15, 16 };
     public int layer = 0;
     public Vector3 minScale;
@@ -16,20 +18,22 @@ public class TimeSphereScript : MonoBehaviour
     public bool reverse;
     public float speed = 1f;
     public float duration = 5f;
-    public Vector3 minOffset = new Vector3(0, 0, 0);
-    public Vector3 maxOffset = new Vector3(0, 0, 0);
-    public Dropdown myDrop;
-    public Slider myMinSlider;
-    public Slider myMaxSlider;
-    string myName;
-
+    //public Vector3 minOffset = new Vector3(0, 0, 0);
+    //public Vector3 maxOffset = new Vector3(0, 0, 0);
+    public Slider layerS;
+    public Slider minS;
+    public Slider maxS;
+    public Slider speedS;
+    public Toggle revT;
+    
     IEnumerator Start ()
     {
-        myName = gameObject.name;
-        myDrop = GetComponent<Dropdown>();
-        myMinSlider = GetComponent<Slider>();
-        minScale = new Vector3(minSlide, minSlide, minSlide);
+        sp = spaceSphere.GetComponent<SpaceSphereScript>();
+        SetLayer();
+        SetSpeed();
+        SetRev();
         maxScale = new Vector3(maxSlide, maxSlide, maxSlide);
+        minScale = new Vector3(minSlide, minSlide, minSlide);
         //minScale = transform.localScale;
         while (repeatable)
         {
@@ -51,6 +55,8 @@ public class TimeSphereScript : MonoBehaviour
 
     public IEnumerator RepeatLerp(Vector3 a, Vector3 b, float time)
     {
+        //SetMin();
+        //SetMax();
         gameObject.layer = layerPool[layer];
         float i = 0.0f;
         float rate = (1.0f / time) * speed;
@@ -62,19 +68,34 @@ public class TimeSphereScript : MonoBehaviour
         }
     }
 
-    public void LayerDropDown()
+    public void SetLayer()
     {
-        gameObject.layer = myDrop.value;
+        layer = (int) layerS.value;
     }
 
-    public void minSlider()
+    public void SetMin()
     {
-        //gameObject.minSlide = myMinSlider.value;
+        minSlide = minS.value;
     }
 
-    public void SliderValue()
+    public void SetMax()
     {
-
+        maxSlide = maxS.value;
     }
 
+    public void SetSpeed()
+    {
+        speed = speedS.value;
+    }
+
+    public void SetRev()
+    {
+        reverse = revT.isOn;
+    }
+
+    public void Del()
+    {
+        sp.sphereHold = false;
+        Destroy(timeAndSpace);
+    }
 }

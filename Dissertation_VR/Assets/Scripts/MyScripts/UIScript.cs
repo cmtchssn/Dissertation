@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class UIScript : MonoBehaviour
 {
     public Slider slider;
-    private Text text;
+    public Text text;
     public string preMess;
+
     // Start is called before the first frame update
     void Start()
     {
-        text = GetComponent<Text>();
+        //text = GetComponent<Text>();
         ShowSliderValue();
     }
 

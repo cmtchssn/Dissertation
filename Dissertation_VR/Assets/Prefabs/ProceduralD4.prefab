@@ -125,11 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5daa65d15570ea45b4b5d7a725e5d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticesD4:
-  - {x: 0.70710677, y: -0.70710677, z: 0.70710677}
-  - {x: 0.70710677, y: 0.70710677, z: -0.70710677}
-  - {x: -0.70710677, y: 0.70710677, z: 0.70710677}
-  - {x: -0.70710677, y: -0.70710677, z: -0.70710677}
 --- !u!114 &8973547704178288536
 MonoBehaviour:
   m_ObjectHideFlags: 0
