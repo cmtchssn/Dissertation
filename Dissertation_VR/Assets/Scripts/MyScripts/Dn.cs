@@ -4,91 +4,13 @@ using UnityEngine;
 
 public class Dn
 {
-    /*
-    public float C0;
-    public float C1;
-    public float C2;
-
-    public Vector3[] vertices;
-    public Vector3[] faceVertices;
-    public Vector3[][] face;
-
-    public int faceCount;
-    public int faceVertCount;
-    public int[][] faceTriangles;
-
-    public List<Vector3> makeVertices;
-    public List<int> makeTriangles;
-    public void D4()
-    {
-        #region D4 Stats
-        C0 = 0.353553390593273762200422181052f;// = Mathf.Sqrt(2f) / 4f;
-        C1 = C0 * 2f;
-        faceCount = 4;
-        faceVertCount = 3;
-
-        vertices = new Vector3[4]
-        {
-            new Vector3(C1, -C1, C1),
-            new Vector3(C1, C1, -C1),
-            new Vector3(-C1, C1, C1),
-            new Vector3(-C1, -C1, -C1)
-        };
-
-        faceTriangles = new int[4][]  // what order to connect vertices to create an outward facing mesh for each face
-        {
-            new int[] { 0, 1, 2 },
-            new int[] { 1, 0, 3 },
-            new int[] { 2, 3, 0 },
-            new int[] { 3, 2, 1 }
-        };
-        #endregion
-    }
-    */
-    #region Early Try
-    
     Vector3[] vertices;
     int[][] faceTriangles;
-    List<Vector3> makeVertices;
-    List<int> makeTriangles;
+    public List<Vector3> makeVertices;
+    public List<int> makeTriangles;
     Vector3[][] face;
     int faceVertCount;
     int faceSwitch;
-
-    public int FaceCount { get; set; }
-    public Dn(int faceNum)
-    {
-        FaceCount = faceNum;
-        faceSwitch = FaceCount;
-        switch (faceSwitch)
-        {
-            case 4:
-                vertices = verticesD4;
-                faceTriangles = faceTrianglesD4;
-                break;
-            case 6:
-                vertices = verticesD6;
-                faceTriangles = faceTrianglesD6;
-                break;
-            case 8:
-                vertices = verticesD8;
-                faceTriangles = faceTrianglesD8;
-                break;
-            case 10:
-                vertices = verticesD10;
-                faceTriangles = faceTrianglesD10;
-                break;
-            case 12:
-                vertices = verticesD12;
-                faceTriangles = faceTrianglesD12;
-                break;
-            case 20:
-                vertices = verticesD20;
-                faceTriangles = faceTrianglesD20;
-                break;
-        }
-
-    }
 
     #region D4 Stats
     static float d4a = 0.353553390593273762200422181052f;// = Mathf.Sqrt(2f) / 4f;
@@ -290,83 +212,116 @@ public class Dn
     };
     #endregion
 
-    public Vector3[] faceVertices(int dir)
+    public int FaceCount { get; set; }
+    public Dn(int faceNum)
     {
-        faceVertCount = faceTriangles.Length;
-        Vector3[] fv = new Vector3[faceVertCount]; // number of vertices per face
-
-        for (int i = 0; i < fv.Length; i++)
-        {
-            fv[i] = vertices[faceTriangles[dir][i]];
-        }
-
-        return fv;
-    }
-
-    void Make()
-    {
-        makeVertices = new List<Vector3>();
-        makeTriangles = new List<int>();
-
-        for (int i = 0; i < FaceCount; i++)     // i < number of faces shape has
-        {
-            MakeFace(i);
-        }
-    }
-
-    void MakeFace(int dir)
-    {
-        face[dir] = faceVertices(dir);
-        makeVertices.AddRange(face[dir]);
-        int vCount = makeVertices.Count;
-
+        FaceCount = faceNum;
+        faceSwitch = FaceCount;
         switch (faceSwitch)
         {
             case 4:
-                makeTriangles.Add(vCount - 3);
-                makeTriangles.Add(vCount - 3 + 1);
-                makeTriangles.Add(vCount - 3 + 2);
+                vertices = verticesD4;
+                faceTriangles = faceTrianglesD4;
                 break;
             case 6:
-                makeTriangles.Add(vCount - 4);
-                makeTriangles.Add(vCount - 4 + 1);
-                makeTriangles.Add(vCount - 4 + 2);
-                makeTriangles.Add(vCount - 4);
-                makeTriangles.Add(vCount - 4 + 2);
-                makeTriangles.Add(vCount - 4 + 3);
+                vertices = verticesD6;
+                faceTriangles = faceTrianglesD6;
                 break;
             case 8:
-                makeTriangles.Add(vCount - 3);
-                makeTriangles.Add(vCount - 3 + 1);
-                makeTriangles.Add(vCount - 3 + 2);
+                vertices = verticesD8;
+                faceTriangles = faceTrianglesD8;
                 break;
             case 10:
-                makeTriangles.Add(vCount - 4);
-                makeTriangles.Add(vCount - 4 + 1);
-                makeTriangles.Add(vCount - 4 + 2);
-                makeTriangles.Add(vCount - 4);
-                makeTriangles.Add(vCount - 4 + 2);
-                makeTriangles.Add(vCount - 4 + 3);
+                vertices = verticesD10;
+                faceTriangles = faceTrianglesD10;
                 break;
             case 12:
-                makeTriangles.Add(vCount - 5);
-                makeTriangles.Add(vCount - 5 + 1);
-                makeTriangles.Add(vCount - 5 + 2);
-                makeTriangles.Add(vCount - 5);
-                makeTriangles.Add(vCount - 5 + 2);
-                makeTriangles.Add(vCount - 5 + 3);
-                makeTriangles.Add(vCount - 5);
-                makeTriangles.Add(vCount - 5 + 3);
-                makeTriangles.Add(vCount - 5 + 4);
+                vertices = verticesD12;
+                faceTriangles = faceTrianglesD12;
                 break;
             case 20:
-                makeTriangles.Add(vCount - 3);
-                makeTriangles.Add(vCount - 3 + 1);
-                makeTriangles.Add(vCount - 3 + 2);
+                vertices = verticesD20;
+                faceTriangles = faceTrianglesD20;
                 break;
         }
 
+        Vector3[] faceVertices(int dir)
+        {
+            faceVertCount = faceTriangles.Length;
+            Vector3[] fv = new Vector3[faceVertCount]; // number of vertices per face
+
+            for (int i = 0; i < fv.Length; i++)
+            {
+                fv[i] = vertices[faceTriangles[dir][i]];
+            }
+
+            return fv;
+        }
+
+        void Make()
+        {
+            makeVertices = new List<Vector3>();
+            makeTriangles = new List<int>();
+
+            for (int i = 0; i < FaceCount; i++)     // i < number of faces shape has
+            {
+                MakeFace(i);
+            }
+        }
+
+        void MakeFace(int dir)
+        {
+            face[dir] = faceVertices(dir);
+            makeVertices.AddRange(face[dir]);
+            int vCount = makeVertices.Count;
+
+            switch (faceSwitch)
+            {
+                case 4:
+                    makeTriangles.Add(vCount - 3);
+                    makeTriangles.Add(vCount - 3 + 1);
+                    makeTriangles.Add(vCount - 3 + 2);
+                    break;
+                case 6:
+                    makeTriangles.Add(vCount - 4);
+                    makeTriangles.Add(vCount - 4 + 1);
+                    makeTriangles.Add(vCount - 4 + 2);
+                    makeTriangles.Add(vCount - 4);
+                    makeTriangles.Add(vCount - 4 + 2);
+                    makeTriangles.Add(vCount - 4 + 3);
+                    break;
+                case 8:
+                    makeTriangles.Add(vCount - 3);
+                    makeTriangles.Add(vCount - 3 + 1);
+                    makeTriangles.Add(vCount - 3 + 2);
+                    break;
+                case 10:
+                    makeTriangles.Add(vCount - 4);
+                    makeTriangles.Add(vCount - 4 + 1);
+                    makeTriangles.Add(vCount - 4 + 2);
+                    makeTriangles.Add(vCount - 4);
+                    makeTriangles.Add(vCount - 4 + 2);
+                    makeTriangles.Add(vCount - 4 + 3);
+                    break;
+                case 12:
+                    makeTriangles.Add(vCount - 5);
+                    makeTriangles.Add(vCount - 5 + 1);
+                    makeTriangles.Add(vCount - 5 + 2);
+                    makeTriangles.Add(vCount - 5);
+                    makeTriangles.Add(vCount - 5 + 2);
+                    makeTriangles.Add(vCount - 5 + 3);
+                    makeTriangles.Add(vCount - 5);
+                    makeTriangles.Add(vCount - 5 + 3);
+                    makeTriangles.Add(vCount - 5 + 4);
+                    break;
+                case 20:
+                    makeTriangles.Add(vCount - 3);
+                    makeTriangles.Add(vCount - 3 + 1);
+                    makeTriangles.Add(vCount - 3 + 2);
+                    break;
+            }
+        }
+                
+        Make();
     }
-    
-    #endregion
 }
