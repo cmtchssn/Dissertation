@@ -21,4 +21,5 @@ public class UIScript : MonoBehaviour
         float mess = slider.value;
         text.text = preMess + ": " + mess.ToString();
     }
+
 }

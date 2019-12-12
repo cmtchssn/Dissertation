@@ -11,10 +11,12 @@ public class SpaceSphereScript : MonoBehaviour
     bool timeUI = false;
     public GameObject shapeMenu;
     public GameObject timeMenu;
+    public GameObject tmPrefab;
     //bool shapeUI = false;
     public Canvas canvas;
     //public GenerateObject genObj;
     public Camera cam;
+    public int sphereHoldID;
 
     private void Update()
     {
@@ -23,8 +25,6 @@ public class SpaceSphereScript : MonoBehaviour
 
     private void LateUpdate()
     {
-        //canvas.transform.parent = cam.transform;
-        canvas.transform.localPosition = Vector3.forward * 2;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,7 +32,9 @@ public class SpaceSphereScript : MonoBehaviour
         if (other.gameObject == (right||left))
         {
             sphereHold = true;
-            Debug.Log("sphereHold on enter is: " + sphereHold);
+            sphereHoldID = GetInstanceID();
+            
+            Debug.Log("sphereHold on enter is: " + sphereHold + ". And its name is " + sphereHoldID.ToString());
         }
         else
         {

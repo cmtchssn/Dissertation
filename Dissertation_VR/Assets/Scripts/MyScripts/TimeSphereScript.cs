@@ -20,18 +20,10 @@ public class TimeSphereScript : MonoBehaviour
     public float duration = 5f;
     //public Vector3 minOffset = new Vector3(0, 0, 0);
     //public Vector3 maxOffset = new Vector3(0, 0, 0);
-    public Slider layerS;
-    public Slider minS;
-    public Slider maxS;
-    public Slider speedS;
-    public Toggle revT;
     
     IEnumerator Start ()
     {
         sp = spaceSphere.GetComponent<SpaceSphereScript>();
-        SetLayer();
-        SetSpeed();
-        SetRev();
         maxScale = new Vector3(maxSlide, maxSlide, maxSlide);
         minScale = new Vector3(minSlide, minSlide, minSlide);
         //minScale = transform.localScale;
@@ -55,8 +47,6 @@ public class TimeSphereScript : MonoBehaviour
 
     public IEnumerator RepeatLerp(Vector3 a, Vector3 b, float time)
     {
-        //SetMin();
-        //SetMax();
         gameObject.layer = layerPool[layer];
         float i = 0.0f;
         float rate = (1.0f / time) * speed;
@@ -68,29 +58,29 @@ public class TimeSphereScript : MonoBehaviour
         }
     }
 
-    public void SetLayer()
+    public void SetLayer(float s)
     {
-        layer = (int) layerS.value;
+        layer = (int) s;
     }
 
-    public void SetMin()
+    public void SetMin(float s)
     {
-        minSlide = minS.value;
+        minSlide = s;
     }
 
-    public void SetMax()
+    public void SetMax(float s)
     {
-        maxSlide = maxS.value;
+        maxSlide = s;
     }
 
-    public void SetSpeed()
+    public void SetSpeed(float s)
     {
-        speed = speedS.value;
+        speed = s;
     }
 
-    public void SetRev()
+    public void SetRev(bool t)
     {
-        reverse = revT.isOn;
+        reverse = t;
     }
 
     public void Del()

@@ -286,6 +286,11 @@ Back at it again. Should I do nested class with the space and time spheres or br
 
 I worked on getting the ui to just show up for most of the time today. I finally have it showing up again. The sliders only work for the first timeandspacesphere in the scene, and only for speed and reverse. I can delete that one, but cannot spawn a new one. I need to understand how to use these in a modular way or it will never work.
 
+### Day 054
+Let's just have a nice day where I work on a slider communicating with a time sphere.
+
+I'm at least where I started on Tuesday. I've got a UI that doesn't affect size, and only affects the one time sphere. I'll have a meeting with Jesse tomorrow and hope he can help.
+
 ---
 
 ### Jesse Meeting 001
@@ -348,3 +353,6 @@ Keep track of how many wav files in each list.
 ### Jesse Meeting 015
 Ask about cases. Show off certain death. Talk about saving and today's demo.
 Use dictionaries to find locations of items, what color zones they are in, and manipulate based on location.
+
+### Jesse Meeting 016
+Recital Time.
