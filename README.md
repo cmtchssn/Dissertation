@@ -291,6 +291,12 @@ Let's just have a nice day where I work on a slider communicating with a time sp
 
 I'm at least where I started on Tuesday. I've got a UI that doesn't affect size, and only affects the one time sphere. I'll have a meeting with Jesse tomorrow and hope he can help.
 
+### Day 055
+I have an idea. I will make a scriptable object with the values from the time menu sliders. Then use the spheres to grab data from the scriptable object when neccessary. This seriously seems like the right thing to do, but my sliders don't change anything now. I don't know how to explain it. If I understood my coroutines better, maybe I could figure it out. I'll look up more on how scriptable objects interact later.
+
+I finally fucking did it!! I use the scriptable object to set the values of any timeSphere in the scene. When I enter a spaceSphere trigger to select it, I find the parent of the spaceSphere and the child at index 0 of the timeAndSpace object to set a bool to true. That means I'm touching this spaceSphere and its sibling is this timeSphere, and the sliders should update this timeSphere only and it freaking works! I only tested 2 timeAndSpace objects so far in the scene, but they worked great! Now, for some reason one of them is triggering audio to play twice, I think is has to do with a triggerexit issue, but I'll deal with that later. Now I can make my first etude! Woohoo!
+
+
 ---
 
 ### Jesse Meeting 001
@@ -355,4 +361,4 @@ Ask about cases. Show off certain death. Talk about saving and today's demo.
 Use dictionaries to find locations of items, what color zones they are in, and manipulate based on location.
 
 ### Jesse Meeting 016
-Recital Time.
+Recital Time, new pc

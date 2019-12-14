@@ -17,29 +17,26 @@ public class SpaceSphereScript : MonoBehaviour
     //public GenerateObject genObj;
     public Camera cam;
     public int sphereHoldID;
+    public string trigSib;
+    public bool thisTime;
 
     private void Update()
     {
         VivePress();
     }
 
-    private void LateUpdate()
-    {
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == (right||left))
         {
+            trigSib = transform.parent.GetChild(0).ToString();
+            Debug.Log("TrigSib: " + trigSib);
             sphereHold = true;
-            sphereHoldID = GetInstanceID();
-            
-            Debug.Log("sphereHold on enter is: " + sphereHold + ". And its name is " + sphereHoldID.ToString());
+            thisTime = true;
         }
         else
         {
             sphereHold = false;
-            Debug.Log("sphereHold on enter w/o controller is: " + sphereHold);
         }
     }
 
@@ -48,7 +45,6 @@ public class SpaceSphereScript : MonoBehaviour
         if (other.gameObject == (right||left))
         {
             sphereHold = false;
-            Debug.Log("sphereHold on exit is: " + sphereHold);
         }
     }
 

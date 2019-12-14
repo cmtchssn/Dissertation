@@ -18,14 +18,12 @@ public class TimeSphereScript : MonoBehaviour
     public bool reverse;
     public float speed = 1f;
     public float duration = 5f;
-    //public Vector3 minOffset = new Vector3(0, 0, 0);
-    //public Vector3 maxOffset = new Vector3(0, 0, 0);
+    public timeMenuValues tmv;
     
     IEnumerator Start ()
     {
         sp = spaceSphere.GetComponent<SpaceSphereScript>();
-        maxScale = new Vector3(maxSlide, maxSlide, maxSlide);
-        minScale = new Vector3(minSlide, minSlide, minSlide);
+        
         //minScale = transform.localScale;
         while (repeatable)
         {
@@ -42,11 +40,19 @@ public class TimeSphereScript : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (sp.sphereHold && sp.thisTime)
+        {
+            SetTimeValues();
+            //Debug.Log("SetTimeValues has just Run.");
+        }
         transform.position = spaceSphere.transform.position;
     }
 
     public IEnumerator RepeatLerp(Vector3 a, Vector3 b, float time)
     {
+        //Debug.Log("minSlide: " + minSlide + " and maxSlide: " + maxSlide);
+        maxScale = new Vector3(maxSlide, maxSlide, maxSlide);
+        minScale = new Vector3(minSlide, minSlide, minSlide);
         gameObject.layer = layerPool[layer];
         float i = 0.0f;
         float rate = (1.0f / time) * speed;
@@ -58,31 +64,16 @@ public class TimeSphereScript : MonoBehaviour
         }
     }
 
-    public void SetLayer(float s)
+    public void SetTimeValues()
     {
-        layer = (int) s;
+        layer = tmv.layerVal;
+        minSlide = tmv.minSizeVal;
+        maxSlide = tmv.maxSizeVal;
+        speed = tmv.speedVal;
+        duration = tmv.durationVal;
+        reverse = tmv.reverseVal;
     }
-
-    public void SetMin(float s)
-    {
-        minSlide = s;
-    }
-
-    public void SetMax(float s)
-    {
-        maxSlide = s;
-    }
-
-    public void SetSpeed(float s)
-    {
-        speed = s;
-    }
-
-    public void SetRev(bool t)
-    {
-        reverse = t;
-    }
-
+    
     public void Del()
     {
         sp.sphereHold = false;

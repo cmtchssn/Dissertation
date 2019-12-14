@@ -23,7 +23,6 @@ public class GenerateObject : MonoBehaviour
     public GameObject rhs;
     public GameObject lhs;
     public float dist = 2f;
-    Vector3 playerFront;
     int countT = 0;
     int count4 = 0;
     int count6 = 0;
@@ -45,7 +44,6 @@ public class GenerateObject : MonoBehaviour
         mom = new DnParent();
         mom.kids = new Dictionary<string, GameObject>();
         //kids = new Dictionary<string, GameObject>();
-        playerFront = (playerCam.transform.forward * dist) + playerCam.transform.position;
         sp = spaceSphere.GetComponent<SpaceSphereScript>();
     }
 
@@ -98,7 +96,7 @@ public class GenerateObject : MonoBehaviour
     public void generateTime()
     {
         timeSpace.name = "TimeSpace-" + countT;
-        GameObject myTS = Instantiate(timeSpace, playerFront, Quaternion.identity);
+        GameObject myTS = Instantiate(timeSpace, new Vector3(0, 2, 0), Quaternion.identity);
         myTS.transform.parent = mama;
         countT++;
     }
@@ -106,7 +104,7 @@ public class GenerateObject : MonoBehaviour
     public void generateD4()
     {
         D4.name = "D4-" + count4;
-        GameObject myD4 = Instantiate(D4, playerFront, Quaternion.identity);
+        GameObject myD4 = Instantiate(D4, new Vector3(0, 2, 0), Quaternion.identity);
         myD4.transform.parent = mama;
         //Vector3 cont = ViveInput.Instance.transform.position;
         //mom.kids.Add(D4.name + "(Clone)", D4);

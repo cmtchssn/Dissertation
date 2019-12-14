@@ -399,6 +399,7 @@ MonoBehaviour:
   reverse: 0
   speed: 1
   duration: 5
+  tmv: {fileID: 11400000, guid: 840846d154551f14b842eefdf2a93a05, type: 2}
 --- !u!135 &580197788
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3735,6 +3736,8 @@ MonoBehaviour:
   canvas: {fileID: 1931593256}
   cam: {fileID: 272759390}
   sphereHoldID: 0
+  trigSib: 
+  thisTime: 0
 --- !u!1 &3018998036495293280
 GameObject:
   m_ObjectHideFlags: 0
@@ -4090,8 +4093,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 580197787}
-        m_MethodName: SetRev
+      - m_Target: {fileID: 11400000, guid: 840846d154551f14b842eefdf2a93a05, type: 2}
+        m_MethodName: SetReverseVal
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5341,8 +5344,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 580197787}
-        m_MethodName: SetSpeed
+      - m_Target: {fileID: 11400000, guid: 840846d154551f14b842eefdf2a93a05, type: 2}
+        m_MethodName: SetSpeedVal
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5437,8 +5440,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 580197787}
-        m_MethodName: SetMax
+      - m_Target: {fileID: 11400000, guid: 840846d154551f14b842eefdf2a93a05, type: 2}
+        m_MethodName: SetMaxSizeVal
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5714,7 +5717,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 149
   m_WholeNumbers: 1
-  m_Value: 1
+  m_Value: 2.54
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -5729,8 +5732,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 580197787}
-        m_MethodName: SetMin
+      - m_Target: {fileID: 11400000, guid: 840846d154551f14b842eefdf2a93a05, type: 2}
+        m_MethodName: SetMinSizeVal
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6596,8 +6599,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 580197787}
-        m_MethodName: SetLayer
+      - m_Target: {fileID: 11400000, guid: 840846d154551f14b842eefdf2a93a05, type: 2}
+        m_MethodName: SetLayerVal
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
