@@ -361,4 +361,4 @@ Ask about cases. Show off certain death. Talk about saving and today's demo.
 Use dictionaries to find locations of items, what color zones they are in, and manipulate based on location.
 
 ### Jesse Meeting 016
-Recital Time, new pc
+Terrain plan, figuring out how to hook up audio effects. NIME paper submission. How can I command multiple timespheres at once? Some sort of custom conducting mode for each piece?
