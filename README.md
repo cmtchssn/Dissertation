@@ -296,6 +296,10 @@ I have an idea. I will make a scriptable object with the values from the time me
 
 I finally fucking did it!! I use the scriptable object to set the values of any timeSphere in the scene. When I enter a spaceSphere trigger to select it, I find the parent of the spaceSphere and the child at index 0 of the timeAndSpace object to set a bool to true. That means I'm touching this spaceSphere and its sibling is this timeSphere, and the sliders should update this timeSphere only and it freaking works! I only tested 2 timeAndSpace objects so far in the scene, but they worked great! Now, for some reason one of them is triggering audio to play twice, I think is has to do with a triggerexit issue, but I'll deal with that later. Now I can make my first etude! Woohoo!
 
+### Day 056
+I'm back at it today. I've got two major changes to make. First, procedural terrain height changes based on perlin noise. Second, a way to connect audio to effects. I also need to add new samples to play with, but they are on my laptop, so I'll have to do that at home, I guess.
+
+Holy shit, these vids are awesome, I can already make noise and color maps, and edit their attributes in the inspector. I'm going to watch all of the vids and then decide how to edit things for myself.
 
 ---
 
