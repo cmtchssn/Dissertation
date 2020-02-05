@@ -402,20 +402,26 @@ MonoBehaviour:
   drawMode: 1
   mapWidth: 150
   mapHeight: 150
-  noiseScale: 9.95
+  noiseScale: 30.11
   octaves: 4
-  persistance: 0
-  lacunarity: 3.04
-  seed: 33
-  offset: {x: 3.31, y: 19.63}
+  persistance: 0.22
+  lacunarity: 1.4
+  seed: 1
+  offset: {x: 0, y: 0}
   autoUpdate: 1
   regions:
-  - name: Water
-    height: 0.4
-    color: {r: 0.52799034, g: 0.69677204, b: 0.990566, a: 0}
-  - name: Land
+  - name: -1
+    height: 0.25
+    color: {r: 0, g: 0.59159756, b: 1, a: 0}
+  - name: -0.5
+    height: 0.5
+    color: {r: 1, g: 0.8106556, b: 0.4575472, a: 0}
+  - name: 0.5
+    height: 0.75
+    color: {r: 0.5680525, g: 0.8862745, b: 0.5137255, a: 0}
+  - name: 1
     height: 1
-    color: {r: 0.68833506, g: 0.8867924, b: 0.51450694, a: 0}
+    color: {r: 0.8207547, g: 0.47866705, b: 0.41424885, a: 0}
 --- !u!4 &547980701
 Transform:
   m_ObjectHideFlags: 0

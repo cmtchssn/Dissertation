@@ -301,6 +301,12 @@ I'm back at it today. I've got two major changes to make. First, procedural terr
 
 Holy shit, these vids are awesome, I can already make noise and color maps, and edit their attributes in the inspector. I'm going to watch all of the vids and then decide how to edit things for myself.
 
+### Day 057
+Continuing these vids. I'll only have time for 1 or 2 today.
+
+Super short day, didn't finish ep 5, but made it to 11:30 in the vid.
+Gotta blast!
+
 ---
 
 ### Jesse Meeting 001
