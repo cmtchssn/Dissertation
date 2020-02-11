@@ -307,6 +307,11 @@ Continuing these vids. I'll only have time for 1 or 2 today.
 Super short day, didn't finish ep 5, but made it to 11:30 in the vid.
 Gotta blast!
 
+### Day 058
+It took me a week, but I'm back. It is go time. Finishing up the noise terrain vids this week. Hopefully it is a full feature by Friday.
+
+Got some great features working. Plugging away at the tutorials. Be back tomorrow for more.
+
 ---
 
 ### Jesse Meeting 001
