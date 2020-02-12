@@ -312,6 +312,13 @@ It took me a week, but I'm back. It is go time. Finishing up the noise terrain v
 
 Got some great features working. Plugging away at the tutorials. Be back tomorrow for more.
 
+### Day 059
+I'm back again today. Time to get to work.
+
+I have height, it looks good, but I think I have to recreate the mesh whenever I move the noise across the floor. I'll do some more tests where I actually move terrain while making music. Another probable issue is finding how high to make the world. It may be best to start with a flat map at 0y then change depths of map mid game. Other than those two immediate issues, this is an excellent addition to the sequencer and will be used to write scores. For writing VR scores, I think adding terrain animations and drop-off points for dice and spheres will work quite well. I'm going to watch some more tutorials in case I miss something good, but for the most part, this feature is working well.
+
+I got the mesh updating/changing everytime I change a map param. There is the possibility of objects falling through the mesh as it is changing. I should find a way to optimize that.
+
 ---
 
 ### Jesse Meeting 001
