@@ -7,7 +7,7 @@ public class MapGenerator : MonoBehaviour
     public enum DrawMode { NoiseMap, ColorMap, Mesh, FalloffMap };
     public DrawMode drawMode;
 
-    const int mapChunkSize = 121;
+    const int mapChunkSize = 61;
     [Range(0,6)]
     public int levelOfDetail;
     public float noiseScale;
@@ -29,12 +29,17 @@ public class MapGenerator : MonoBehaviour
 
     public TerrainType[] regions;
 
+    //public MeshCollider meshCollider;
+
     float[,] falloffMap;
-    MeshCollider meshCol;
 
     private void Awake()
     {
         falloffMap = FalloffGenerator.GenerateFalloffMap(mapChunkSize);
+    }
+
+    private void LateUpdate()
+    {
         GenerateMap();
     }
 

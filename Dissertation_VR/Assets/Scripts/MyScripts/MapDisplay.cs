@@ -19,8 +19,6 @@ public class MapDisplay : MonoBehaviour
     {
         meshFilter.sharedMesh = meshData.CreateMesh();
         meshRenderer.sharedMaterial.SetTexture("_BaseMap", texture);
-        meshFilter.mesh.RecalculateBounds();
-        meshCollider.sharedMesh = null;
-        meshCollider.sharedMesh = meshFilter.mesh;
+        meshCollider.sharedMesh = meshFilter.sharedMesh;
     }
 }

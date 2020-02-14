@@ -319,6 +319,11 @@ I have height, it looks good, but I think I have to recreate the mesh whenever I
 
 I got the mesh updating/changing everytime I change a map param. There is the possibility of objects falling through the mesh as it is changing. I should find a way to optimize that.
 
+### Day 060
+I'm going to run a deep profiler on the game and see where the lag is coming from. I have a hunch it is the constant collider replacement.
+
+I've fiddled around a bit, and decided to try to update mesh and colliders only when their values change. Fortunately, Sebastian Lague has a video on this in the same procedural tutorial playlist. I'll watch E15 tomorrow and get working on it.
+
 ---
 
 ### Jesse Meeting 001
@@ -384,3 +389,8 @@ Use dictionaries to find locations of items, what color zones they are in, and m
 
 ### Jesse Meeting 016
 Terrain plan, figuring out how to hook up audio effects. NIME paper submission. How can I command multiple timespheres at once? Some sort of custom conducting mode for each piece?
+
+### Jesse Meeting 017
+Going to show of the noise maps and demo the possibilities, but also show what isn't quite working and how I'll be fixing it (hopefully). More importantly, talking about working at Meow Wolf. How do I get a job? What makes me competitive/stand out?
+
+Showed it off, talked a lot about where the rest of the project is heading. I love the idea of using probability of playback by timespheres as a variable based on how many dice exist. It adds an arranged element to help with the repetitive nature of my work. Definitely look into that. Another option is to select areas of the floor in some way to only play back or not play back to give the composer some more control over arrangement, but the probability one speaks more to the indeterminate aspects of what I'm doing.
