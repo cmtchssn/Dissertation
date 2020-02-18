@@ -324,6 +324,11 @@ I'm going to run a deep profiler on the game and see where the lag is coming fro
 
 I've fiddled around a bit, and decided to try to update mesh and colliders only when their values change. Fortunately, Sebastian Lague has a video on this in the same procedural tutorial playlist. I'll watch E15 tomorrow and get working on it.
 
+### Day 061
+Here to do the day. Just going to go through the scriptable object video and see how it helps my project.
+
+So it is now a scriptable object that updates in editor and during play, but I can't animate the values changing over time. I have to find a way to do that. It is possible to have the object read from a JSON file, but I don't know that it will animate it. Maybe I can code some lerps in a data script and have mapgenerator.cs call them and pass them to the scriptable object?
+
 ---
 
 ### Jesse Meeting 001
