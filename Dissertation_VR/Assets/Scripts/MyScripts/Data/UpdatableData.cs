@@ -17,9 +17,6 @@ public class UpdatableData : ScriptableObject
 
     public void NotifyOfUpdatedValues()
     {
-        if (OnValuesUpdated != null)
-        {
-            OnValuesUpdated();
-        }
+        OnValuesUpdated?.Invoke();
     }
 }

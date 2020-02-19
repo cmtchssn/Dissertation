@@ -329,6 +329,11 @@ Here to do the day. Just going to go through the scriptable object video and see
 
 So it is now a scriptable object that updates in editor and during play, but I can't animate the values changing over time. I have to find a way to do that. It is possible to have the object read from a JSON file, but I don't know that it will animate it. Maybe I can code some lerps in a data script and have mapgenerator.cs call them and pass them to the scriptable object?
 
+### Day 062
+Let's try to do some scripts with lerps. Random ranges and the like.
+
+So everytime I press the button, the land generates. But it isn't actually lerping like I want. It just sort of jumps to the next value. I want slow gradual change. Maybe multiplying Time.deltatime by a very small number is the way to go...That did nothing. I need the map to update at every point of interpolation and can't figure out how yet. 
+
 ---
 
 ### Jesse Meeting 001
