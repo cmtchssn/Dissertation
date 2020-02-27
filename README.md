@@ -334,6 +334,16 @@ Let's try to do some scripts with lerps. Random ranges and the like.
 
 So everytime I press the button, the land generates. But it isn't actually lerping like I want. It just sort of jumps to the next value. I want slow gradual change. Maybe multiplying Time.deltatime by a very small number is the way to go...That did nothing. I need the map to update at every point of interpolation and can't figure out how yet. 
 
+### Day 063
+Experiment with lerping.
+
+I got something working. While a keyboard button is held down, it will lerp. When the button is let up, the currentvalues are set to the new values. Anyway that works. I tried to apply it to the Vive Grip, but it doesn't lerp, so I've got to crack that one.
+
+### Day 064
+I need to fix what values equal what in the lerp function. Then I need to get the lerp to happen with VR control button down.
+
+I've got it working quite well now. The seed was being randomized, which I changed, and now there is an even flow between terrain changes. I also added a state that says the terrain is looping to prevent starting a new terrain change during a current one. I also made it work on a button press and a randomized lerp time. It should be much easier to call from a VR controller at this point.
+
 ---
 
 ### Jesse Meeting 001

@@ -5,15 +5,15 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class NoiseData : UpdatableData
 {
-    public float noiseScale;
+    public float noiseScale = 30f;
 
-    public int octaves;
+    public int octaves = 4;
     [Range(0, 1)]
-    public float persistance;
-    public float lacunarity;
+    public float persistance = 0.5f;
+    public float lacunarity = 2f;
 
-    public int seed;
-    public Vector2 offset;
+    public int seed = 0;
+    public Vector2 offset = new Vector2(0, 0);
 
     protected override void OnValidate()
     {

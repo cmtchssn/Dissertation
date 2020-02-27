@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HTC.UnityPlugin.Vive;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -18,9 +19,11 @@ public class MapGenerator : MonoBehaviour
 
     public TerrainType[] regions;
 
-    //public MeshCollider meshCollider;
-
     float[,] falloffMap;
+
+    public float lerpTime;
+    public float currentLerpTime;
+    float lerpy;
 
     [Range(0.0001f, 0.5f)]
     public float smooth = 0.5f;
@@ -45,13 +48,20 @@ public class MapGenerator : MonoBehaviour
     public float currentMHMV;
     public float newMHMV;
 
+    bool terrainLoop;
+
     private void Awake()
     {
         falloffMap = FalloffGenerator.GenerateFalloffMap(mapChunkSize);
+        noiseData.seed = Random.Range(0, 100);
+        noiseData.noiseScale = 30f;
+        noiseData.persistance = 0.5f;
+        noiseData.lacunarity = 2f;
+        noiseData.offset = new Vector2(0f, 0f);
+        terrainData.meshHeightMultiplier = 0.1f;
         currentNSV = noiseData.noiseScale;
         currentPV = noiseData.persistance;
         currentLV = noiseData.lacunarity;
-        currentSV = noiseData.seed;
         currentOXV = noiseData.offset.x;
         currentOYV = noiseData.offset.y;
         currentMHMV = terrainData.meshHeightMultiplier;
@@ -59,7 +69,38 @@ public class MapGenerator : MonoBehaviour
 
     private void Update()
     {
-        MakeRandomVals();
+        currentLerpTime += Time.deltaTime;
+        if (currentLerpTime > lerpTime)
+        {
+            currentLerpTime = lerpTime;
+            terrainLoop = false;
+            currentNSV = newNSV;
+            currentPV = newPV;
+            currentLV = newLV;
+            currentOXV = newOXV;
+            currentOYV = newOYV;
+            currentMHMV = newMHMV;
+        }
+
+        lerpy = currentLerpTime / lerpTime;
+
+        if (!terrainLoop)
+        {
+            if (Input.GetKeyUp(KeyCode.B))
+            {
+                MakeRandomVals();
+                currentLerpTime = 0f;
+                terrainLoop = true;
+            }
+        }
+
+        noiseData.NotifyOfUpdatedValues();
+        noiseData.noiseScale = Mathf.Lerp(currentNSV, newNSV, lerpy);
+        noiseData.persistance = Mathf.Lerp(currentPV, newPV, lerpy);
+        noiseData.lacunarity = Mathf.Lerp(currentLV, newLV, lerpy);
+        noiseData.offset.x = Mathf.Lerp(currentOXV, newOXV, lerpy);
+        noiseData.offset.y = Mathf.Lerp(currentOYV, newOYV, lerpy);
+        terrainData.meshHeightMultiplier = Mathf.Lerp(currentMHMV, newMHMV, lerpy);
     }
 
     void OnValuesUpdated()
@@ -74,7 +115,7 @@ public class MapGenerator : MonoBehaviour
     */
     public void GenerateMap()
     {
-        float[,] noiseMap = Noise.GenerateNoiseMap(mapChunkSize, mapChunkSize, newSV, newNSV, noiseData.octaves, newPV, newLV, noiseData.offset);
+        float[,] noiseMap = Noise.GenerateNoiseMap(mapChunkSize, mapChunkSize, noiseData.seed, noiseData.noiseScale, noiseData.octaves, noiseData.persistance, noiseData.lacunarity, noiseData.offset);
 
         Color[] colorMap = new Color[mapChunkSize * mapChunkSize];
         for (int y = 0; y < mapChunkSize; y++)
@@ -108,7 +149,7 @@ public class MapGenerator : MonoBehaviour
         }
         else if (drawMode == DrawMode.Mesh)
         {
-            display.DrawMesh(MeshGenerator.GenerateTerrainMesh(noiseMap, newMHMV, terrainData.meshHeightCurve, levelOfDetail), TextureGenerator.TextureFromColorMap(colorMap, mapChunkSize, mapChunkSize));
+            display.DrawMesh(MeshGenerator.GenerateTerrainMesh(noiseMap, terrainData.meshHeightMultiplier, terrainData.meshHeightCurve, levelOfDetail), TextureGenerator.TextureFromColorMap(colorMap, mapChunkSize, mapChunkSize));
         }
         else if (drawMode == DrawMode.FalloffMap)
         {
@@ -134,32 +175,13 @@ public class MapGenerator : MonoBehaviour
 
     public void MakeRandomVals()
     {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            newNSV = Random.Range(5f, 10f);
-            newPV = Random.Range(0.15f, 0.65f);
-            newLV = Random.Range(1f, 3f);
-            newSV = Random.Range(0, 100);
-            newOXV = Random.Range(-10f, 10f);
-            newOYV = Random.Range(-10f, 10f);
-            newMHMV = Random.Range(-0.5f, 0.5f);
-            noiseData.seed = newSV;
-        }
-        
-        noiseData.noiseScale = Mathf.Lerp(currentNSV, newNSV, Time.deltaTime * smooth);
-        noiseData.persistance = Mathf.Lerp(currentPV, newPV, Time.deltaTime * smooth);
-        noiseData.lacunarity = Mathf.Lerp(currentLV, newLV, Time.deltaTime * smooth);
-        noiseData.offset.x = Mathf.Lerp(currentOXV, newOXV, Time.deltaTime * smooth);
-        noiseData.offset.y = Mathf.Lerp(currentOYV, newOYV, Time.deltaTime * smooth);
-        terrainData.meshHeightMultiplier = Mathf.Lerp(currentMHMV, newMHMV, Time.deltaTime * smooth);
-        GenerateMap();
-        currentNSV = newNSV;
-        currentPV = newPV;
-        currentLV = newLV;
-        currentSV = newSV;
-        currentOXV = newOXV;
-        currentOYV = newOYV;
-        currentMHMV = newMHMV;
+        newNSV = Random.Range(5f, 10f);
+        newPV = Random.Range(0.15f, 0.65f);
+        newLV = Random.Range(1f, 3f);
+        newOXV = Random.Range(-10f, 10f);
+        newOYV = Random.Range(-10f, 10f);
+        newMHMV = Random.Range(-0.5f, 0.5f);
+        lerpTime = Random.Range(4f, 20f);
     }
 }
 
