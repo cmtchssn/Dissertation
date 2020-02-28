@@ -86,7 +86,7 @@ public class MapGenerator : MonoBehaviour
 
         if (!terrainLoop)
         {
-            if (Input.GetKeyUp(KeyCode.B))
+            if (ViveInput.GetPressUp(HandRole.RightHand, ControllerButton.Grip) || ViveInput.GetPressUp(HandRole.LeftHand, ControllerButton.Grip))
             {
                 MakeRandomVals();
                 currentLerpTime = 0f;
@@ -180,7 +180,7 @@ public class MapGenerator : MonoBehaviour
         newLV = Random.Range(1f, 3f);
         newOXV = Random.Range(-10f, 10f);
         newOYV = Random.Range(-10f, 10f);
-        newMHMV = Random.Range(-0.5f, 0.5f);
+        newMHMV = Random.Range(-1.7f, 1.7f);
         lerpTime = Random.Range(4f, 20f);
     }
 }

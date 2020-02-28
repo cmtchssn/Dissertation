@@ -344,6 +344,11 @@ I need to fix what values equal what in the lerp function. Then I need to get th
 
 I've got it working quite well now. The seed was being randomized, which I changed, and now there is an even flow between terrain changes. I also added a state that says the terrain is looping to prevent starting a new terrain change during a current one. I also made it work on a button press and a randomized lerp time. It should be much easier to call from a VR controller at this point.
 
+### Day 065
+Map terrain lerp to VR controller. Make sure objects don't fall through. If they do, maybe set up a state that says when terrain is lerping, dice are unaffected by gravity or something. Just spitballing.
+
+I've got plenty to fix before this is a good playing experience, but it is at least semi-functional now. Mostly, I need to eliminate the first timeandspace object from being in the game and fix me not having any colliders so that I don't just float 10 feet in the air or sink below the flowing terrain.
+
 ---
 
 ### Jesse Meeting 001
@@ -414,3 +419,6 @@ Terrain plan, figuring out how to hook up audio effects. NIME paper submission. 
 Going to show of the noise maps and demo the possibilities, but also show what isn't quite working and how I'll be fixing it (hopefully). More importantly, talking about working at Meow Wolf. How do I get a job? What makes me competitive/stand out?
 
 Showed it off, talked a lot about where the rest of the project is heading. I love the idea of using probability of playback by timespheres as a variable based on how many dice exist. It adds an arranged element to help with the repetitive nature of my work. Definitely look into that. Another option is to select areas of the floor in some way to only play back or not play back to give the composer some more control over arrangement, but the probability one speaks more to the indeterminate aspects of what I'm doing.
+
+### Jesse Meetin 018
+Get functional, get demonstrable, get power point, get writing
