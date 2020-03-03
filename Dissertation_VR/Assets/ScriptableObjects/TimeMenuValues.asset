@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerVal: 0
   minSizeVal: 0
-  maxSizeVal: 6
-  speedVal: 8
+  maxSizeVal: 150
+  speedVal: 1
   durationVal: 5
   reverseVal: 0

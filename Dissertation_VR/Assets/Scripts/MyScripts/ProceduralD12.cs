@@ -123,10 +123,10 @@ public class ProceduralD12 : MonoBehaviour
                 {
                     if (globalFace[i].Contains(col1) && globalFace[i].Contains(col2) && globalFace[i].Contains(col3) && globalFace[i].Contains(col4))
                     {
-                        //print("D12 Face " + (i + 1) + " colliding");
+                        print("D12 Face " + (i + 1) + " colliding");
                         faceVal = i;
                         //pause then play audio.
-                        bell.Toll(0, faceVal);
+                        //bell.Toll(0, faceVal);
                         colFlag = false;
                     }
                 }
@@ -148,11 +148,25 @@ public class ProceduralD12 : MonoBehaviour
     {
         if (other.gameObject.layer == 15)
         {
-            bell.Toll(0, faceVal + 11);
+            if (faceVal >= 11)
+            {
+                bell.Toll(8, faceVal - 2);
+            }
+            else
+            {
+                bell.Toll(14, faceVal);
+            }
         }
         if (other.gameObject.layer == 16)
         {
-            bell.Toll(0, 22 - faceVal);
+            if (faceVal >= 11)
+            {
+                bell.Toll(9, faceVal - 2);
+            }
+            else
+            {
+                bell.Toll(9, faceVal);
+            }
         }
     }
 

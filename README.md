@@ -349,6 +349,11 @@ Map terrain lerp to VR controller. Make sure objects don't fall through. If they
 
 I've got plenty to fix before this is a good playing experience, but it is at least semi-functional now. Mostly, I need to eliminate the first timeandspace object from being in the game and fix me not having any colliders so that I don't just float 10 feet in the air or sink below the flowing terrain.
 
+### Day 066
+I need to film some old stuff today and edit it tomorrow. Then I need to work on getting the player char to exist and follow gravity and stuff.
+
+I put of presenting so my documentation will have to wait. I got the player char colliding, will look into getting it to not fall through the floor. Terrain works beautifly, I added new sounds from musique concrete samples and they sound amazing! Everything is basically functioning, with some small tweaks needed, but I'll get to them when I get to them. Next I'll start adding effects and makinge copies of scenes with different FX chains to make different pieces/movements.
+
 ---
 
 ### Jesse Meeting 001

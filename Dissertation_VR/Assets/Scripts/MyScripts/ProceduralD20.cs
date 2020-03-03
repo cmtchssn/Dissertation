@@ -123,7 +123,7 @@ public class ProceduralD20 : MonoBehaviour
                         //print("D20 Face " + (i + 1) + " colliding");
                         faceVal = i;
                         //pause then play audio.
-                        bell.Toll(0, 20 - faceVal);
+                        //bell.Toll(0, 20 - faceVal);
                         colFlag = false;
                     }
                 }
@@ -145,11 +145,25 @@ public class ProceduralD20 : MonoBehaviour
     {
         if (other.gameObject.layer == 15)
         {
-            bell.Toll(0, faceVal);
+            if (faceVal >= 11)
+            {
+                bell.Toll(10, faceVal - 10);
+            }
+            else
+            {
+                bell.Toll(13, faceVal);
+            }
         }
         if (other.gameObject.layer == 16)
         {
-            bell.Toll(0, 22 - faceVal);
+            if (faceVal >= 11)
+            {
+                bell.Toll(11, faceVal - 10);
+            }
+            else
+            {
+                bell.Toll(12, faceVal);
+            }
         }
     }
 

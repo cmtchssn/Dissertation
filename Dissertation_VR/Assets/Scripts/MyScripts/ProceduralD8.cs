@@ -105,7 +105,7 @@ public class ProceduralD8 : MonoBehaviour
                         //print("D8 Face " + (i + 1) + " colliding");
                         faceVal = i;
                         //pause then play audio.
-                        bell.Toll(0, faceVal);
+                        //bell.Toll(0, faceVal);
                         colFlag = false;
                     }
                 }
@@ -127,11 +127,11 @@ public class ProceduralD8 : MonoBehaviour
     {
         if (other.gameObject.layer == 15)
         {
-            bell.Toll(0, faceVal + 6);
+            bell.Toll(4, faceVal);
         }
         if (other.gameObject.layer == 16)
         {
-            bell.Toll(0, faceVal + 12);
+            bell.Toll(3, faceVal);
         }
     }
 
