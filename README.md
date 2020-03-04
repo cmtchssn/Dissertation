@@ -354,6 +354,11 @@ I need to film some old stuff today and edit it tomorrow. Then I need to work on
 
 I put of presenting so my documentation will have to wait. I got the player char colliding, will look into getting it to not fall through the floor. Terrain works beautifly, I added new sounds from musique concrete samples and they sound amazing! Everything is basically functioning, with some small tweaks needed, but I'll get to them when I get to them. Next I'll start adding effects and makinge copies of scenes with different FX chains to make different pieces/movements.
 
+### Day 067
+Going to work a little more on getting the player to rise with the terrain. 
+
+I got it working! No rigidbody required! just using raycast to set my position equal to the position of the floor the raycast hits when traveling away from me downward. Another Sebastian Lague video victory!
+
 ---
 
 ### Jesse Meeting 001

@@ -154,7 +154,7 @@ public class ProceduralD12 : MonoBehaviour
             }
             else
             {
-                bell.Toll(14, faceVal);
+                bell.Toll(1, faceVal);
             }
         }
         if (other.gameObject.layer == 16)
