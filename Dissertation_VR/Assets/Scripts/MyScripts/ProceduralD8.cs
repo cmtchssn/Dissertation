@@ -125,16 +125,33 @@ public class ProceduralD8 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 15)
+        
+            if (other.gameObject.layer == 15)
+            {
+                bell.Toll(4, faceVal);
+            }
+            if (other.gameObject.layer == 16)
+            {
+                bell.Toll(3, faceVal);
+            }
+        
+    }
+    /*
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.GetComponent<TimeSphereScript>().reverse)
         {
-            bell.Toll(4, faceVal);
-        }
-        if (other.gameObject.layer == 16)
-        {
-            bell.Toll(3, faceVal);
+            if (other.gameObject.layer == 15)
+            {
+                bell.Toll(4, faceVal);
+            }
+            if (other.gameObject.layer == 16)
+            {
+                bell.Toll(3, faceVal);
+            }
         }
     }
-
+    */
     void MakeD8()
     {
         vertices = new List<Vector3>();

@@ -359,6 +359,11 @@ Going to work a little more on getting the player to rise with the terrain.
 
 I got it working! No rigidbody required! just using raycast to set my position equal to the position of the floor the raycast hits when traveling away from me downward. Another Sebastian Lague video victory!
 
+### Day 068
+Going to put GenerateObjects.cs onto VR Origin so I can use my transform position to spawn dice in front of me. Then I'll look around at what else needs some tweaking.
+
+I need to get reverse trigger working, I need to still fix the terrain from changing height immediately. I managed to make it crash today, that was cool. Probably not a great thing, but hopefully I can learn why it happened and fix it.
+
 ---
 
 ### Jesse Meeting 001

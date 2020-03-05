@@ -143,30 +143,61 @@ public class ProceduralD20 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 15)
+        
+            if (other.gameObject.layer == 15)
+            {
+                if (faceVal >= 10)
+                {
+                    bell.Toll(10, faceVal - 10);
+                }
+                else
+                {
+                    bell.Toll(13, faceVal);
+                }
+            }
+            if (other.gameObject.layer == 16)
+            {
+                if (faceVal >= 10)
+                {
+                    bell.Toll(11, faceVal - 10);
+                }
+                else
+                {
+                    bell.Toll(12, faceVal);
+                }
+            }
+        
+    }
+    /*
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.GetComponent<TimeSphereScript>().reverse)
         {
-            if (faceVal >= 11)
+            if (other.gameObject.layer == 15)
             {
-                bell.Toll(10, faceVal - 10);
+                if (faceVal >= 10)
+                {
+                    bell.Toll(10, faceVal - 10);
+                }
+                else
+                {
+                    bell.Toll(13, faceVal);
+                }
             }
-            else
+            if (other.gameObject.layer == 16)
             {
-                bell.Toll(13, faceVal);
-            }
-        }
-        if (other.gameObject.layer == 16)
-        {
-            if (faceVal >= 11)
-            {
-                bell.Toll(11, faceVal - 10);
-            }
-            else
-            {
-                bell.Toll(12, faceVal);
+                if (faceVal >= 10)
+                {
+                    bell.Toll(11, faceVal - 10);
+                }
+                else
+                {
+                    bell.Toll(12, faceVal);
+                }
             }
         }
     }
-
+    */
     void MakeD20()
     {
         vertices = new List<Vector3>();

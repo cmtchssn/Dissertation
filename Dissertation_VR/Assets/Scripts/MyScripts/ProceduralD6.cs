@@ -127,16 +127,32 @@ public class ProceduralD6 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 15)
+            if (other.gameObject.layer == 15)
+            {
+                bell.Toll(2, faceVal);
+            }
+            if (other.gameObject.layer == 16)
+            {
+                bell.Toll(5, faceVal);
+            }
+        
+    }
+    /*
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.GetComponent<TimeSphereScript>().reverse)
         {
-            bell.Toll(2, faceVal);
-        }
-        if (other.gameObject.layer == 16)
-        {
-            bell.Toll(5, faceVal);
+            if (other.gameObject.layer == 15)
+            {
+                bell.Toll(2, faceVal);
+            }
+            if (other.gameObject.layer == 16)
+            {
+                bell.Toll(5, faceVal);
+            }
         }
     }
-
+    */
     void MakeD6()
     {
         vertices = new List<Vector3>();

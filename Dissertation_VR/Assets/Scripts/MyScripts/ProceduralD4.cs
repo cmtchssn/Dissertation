@@ -146,16 +146,33 @@ public class ProceduralD4 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 15)
+            if (other.gameObject.layer == 15)
+            {
+                bell.Toll(0, faceVal);
+            }
+            if (other.gameObject.layer == 16)
+            {
+                bell.Toll(1, faceVal);
+            }
+        
+    }
+    /*
+    private void OnTriggerExit(Collider other)
+    {
+        TimeSphereScript ts = other.gameObject.GetComponent<TimeSphereScript>();
+        if (ts.reverse)
         {
-            bell.Toll(0, faceVal);
-        }
-        if (other.gameObject.layer == 16)
-        {
-            bell.Toll(1, faceVal);
+            if (other.gameObject.layer == 15)
+            {
+                bell.Toll(0, faceVal);
+            }
+            if (other.gameObject.layer == 16)
+            {
+                bell.Toll(1, faceVal);
+            }
         }
     }
-
+    */
     #region D4 Make
 
     void MakeD4()

@@ -146,30 +146,61 @@ public class ProceduralD12 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 15)
+        
+            if (other.gameObject.layer == 15)
+            {
+                if (faceVal >= 10)
+                {
+                    bell.Toll(8, faceVal - 2);
+                }
+                else
+                {
+                    bell.Toll(1, faceVal);
+                }
+            }
+            if (other.gameObject.layer == 16)
+            {
+                if (faceVal >= 10)
+                {
+                    bell.Toll(9, faceVal - 2);
+                }
+                else
+                {
+                    bell.Toll(9, faceVal);
+                }
+            }
+        
+    }
+    /*
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.GetComponent<TimeSphereScript>().reverse)
         {
-            if (faceVal >= 11)
+            if (other.gameObject.layer == 15)
             {
-                bell.Toll(8, faceVal - 2);
+                if (faceVal >= 10)
+                {
+                    bell.Toll(8, faceVal - 2);
+                }
+                else
+                {
+                    bell.Toll(1, faceVal);
+                }
             }
-            else
+            if (other.gameObject.layer == 16)
             {
-                bell.Toll(1, faceVal);
-            }
-        }
-        if (other.gameObject.layer == 16)
-        {
-            if (faceVal >= 11)
-            {
-                bell.Toll(9, faceVal - 2);
-            }
-            else
-            {
-                bell.Toll(9, faceVal);
+                if (faceVal >= 10)
+                {
+                    bell.Toll(9, faceVal - 2);
+                }
+                else
+                {
+                    bell.Toll(9, faceVal);
+                }
             }
         }
     }
-
+    */
     void MakeD12()
     {
         vertices = new List<Vector3>();

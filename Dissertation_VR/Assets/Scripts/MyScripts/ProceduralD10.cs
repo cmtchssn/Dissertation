@@ -138,16 +138,33 @@ public class ProceduralD10 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 15)
+        
+            if (other.gameObject.layer == 15)
+            {
+                bell.Toll(6, faceVal);
+            }
+            if (other.gameObject.layer == 16)
+            {
+                bell.Toll(7, faceVal);
+            }
+        
+    }
+    /*
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.GetComponent<TimeSphereScript>().reverse)
         {
-            bell.Toll(6, faceVal);
-        }
-        if (other.gameObject.layer == 16)
-        {
-            bell.Toll(7, faceVal);
+            if (other.gameObject.layer == 15)
+            {
+                bell.Toll(6, faceVal);
+            }
+            if (other.gameObject.layer == 16)
+            {
+                bell.Toll(7, faceVal);
+            }
         }
     }
-
+    */
     void MakeD10()
     {
         vertices = new List<Vector3>();

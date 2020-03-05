@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class GenerateObject : MonoBehaviour
 {
-    GameObject emptyObj;
     public GameObject playerCam;
     public GameObject shapeMenu;
     public GameObject timeMenu;
@@ -20,8 +19,6 @@ public class GenerateObject : MonoBehaviour
     public GameObject D10;
     public GameObject D12;
     public GameObject D20;
-    public GameObject rhs;
-    public GameObject lhs;
     public float dist = 2f;
     int countT = 0;
     int count4 = 0;
@@ -51,13 +48,6 @@ public class GenerateObject : MonoBehaviour
     void Update()
     {
         VivePress();
-    }
-    
-    private void OnTriggerExit(Collider other)
-    {
-        //Debug.Log("Destroy: " + mom.kids[other.gameObject.name]);
-        //mom.kids.Remove(other.gameObject.name);
-        Destroy(other.gameObject);
     }
 
     void VivePress()
@@ -96,7 +86,7 @@ public class GenerateObject : MonoBehaviour
     public void generateTime()
     {
         timeSpace.name = "TimeSpace-" + countT;
-        GameObject myTS = Instantiate(timeSpace, new Vector3(rhs.transform.position.x + 2f, rhs.transform.position.y + 0.5f, rhs.transform.position.z + 2f), Quaternion.identity);
+        GameObject myTS = Instantiate(timeSpace, new Vector3(playerCam.transform.position.x, playerCam.transform.position.y - 0.75f, playerCam.transform.position.z) + playerCam.transform.forward * 0.75f, Quaternion.identity);
         myTS.transform.parent = mama;
         countT++;
     }
@@ -104,7 +94,7 @@ public class GenerateObject : MonoBehaviour
     public void generateD4()
     {
         D4.name = "D4-" + count4;
-        GameObject myD4 = Instantiate(D4, new Vector3(rhs.transform.position.x + 2f, rhs.transform.position.y + 0.5f, rhs.transform.position.z + 2f), Quaternion.identity);
+        GameObject myD4 = Instantiate(D4, playerCam.transform.position + playerCam.transform.forward * 1.5f, Quaternion.identity);
         myD4.transform.parent = mama;
         //Vector3 cont = ViveInput.Instance.transform.position;
         //mom.kids.Add(D4.name + "(Clone)", D4);
@@ -115,7 +105,7 @@ public class GenerateObject : MonoBehaviour
     public void generateD6()
     {
         D6.name = "D6-" + count6;
-        GameObject myD6 = Instantiate(D6, new Vector3(rhs.transform.position.x + 2f, rhs.transform.position.y + 0.5f, rhs.transform.position.z + 2f), Quaternion.identity);
+        GameObject myD6 = Instantiate(D6, playerCam.transform.position + playerCam.transform.forward * 2f, Quaternion.identity);
         myD6.transform.parent = mama;
         mom.kids.Add(D6.name, D6);
         count6++;
@@ -124,7 +114,7 @@ public class GenerateObject : MonoBehaviour
     public void generateD8()
     {
         D8.name = "D8-" + count8;
-        GameObject myD8 = Instantiate(D8, new Vector3(rhs.transform.position.x + 2f, rhs.transform.position.y + 0.5f, rhs.transform.position.z + 2f), Quaternion.identity);
+        GameObject myD8 = Instantiate(D8, playerCam.transform.position + playerCam.transform.forward * 1.75f, Quaternion.identity);
         myD8.transform.parent = mama;
         mom.kids.Add(D8.name, D8);
         count8++;
@@ -133,7 +123,7 @@ public class GenerateObject : MonoBehaviour
     public void generateD10()
     {
         D10.name = "D10-" + count10;
-        GameObject myD10 = Instantiate(D10, new Vector3(rhs.transform.position.x + 2f, rhs.transform.position.y + 0.5f, rhs.transform.position.z + 2f), Quaternion.identity);
+        GameObject myD10 = Instantiate(D10, playerCam.transform.position + playerCam.transform.forward * 1.5f, Quaternion.identity);
         myD10.transform.parent = mama;
         mom.kids.Add(D10.name, D10);
         count10++;
@@ -142,7 +132,7 @@ public class GenerateObject : MonoBehaviour
     public void generateD12()
     {
         D12.name = "D12-" + count12;
-        GameObject myD12 = Instantiate(D12, new Vector3(rhs.transform.position.x + 2f, rhs.transform.position.y + 0.5f, rhs.transform.position.z + 2f), Quaternion.identity);
+        GameObject myD12 = Instantiate(D12, playerCam.transform.position + playerCam.transform.forward * 2f, Quaternion.identity);
         myD12.transform.parent = mama;
         mom.kids.Add(D12.name, D12);
         count12++;
@@ -151,14 +141,9 @@ public class GenerateObject : MonoBehaviour
     public void generateD20()
     {
         D20.name = "D20-" + count20;
-        GameObject myD20 = Instantiate(D20, new Vector3(rhs.transform.position.x + 2f, rhs.transform.position.y + 0.5f, rhs.transform.position.z + 2f), Quaternion.identity);
+        GameObject myD20 = Instantiate(D20, playerCam.transform.position + playerCam.transform.forward * 1.5f, Quaternion.identity);
         myD20.transform.parent = mama;
         mom.kids.Add(D20.name, D20);
         count20++;
-    }
-
-    public void editTimeSphere()
-    {
-
     }
 }
