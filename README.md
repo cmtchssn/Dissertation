@@ -364,6 +364,13 @@ Going to put GenerateObjects.cs onto VR Origin so I can use my transform positio
 
 I need to get reverse trigger working, I need to still fix the terrain from changing height immediately. I managed to make it crash today, that was cool. Probably not a great thing, but hopefully I can learn why it happened and fix it.
 
+### Day 069 (Nice)
+A few things I need to do: set up a scene manager to load/unload scenes as movements to my piece, set up a bunch of mixers with various sfx w/ parameters exposed to have map generator and dice movement control sfx, save several scenes with different sfx chains hooked up, make the map slightly smaller, refine randomized map data, make timeandspace delete-able. Not all of this has to be done today, but I need to keep these goals in mind for my performance in six weeks.
+
+I've got the audio mixer groups set up for one movement, just an echo and chorus, and the params are exposed but I haven't scripted with them yet. I'm still thinking about the best way to go about it since it is tied to the map and dice data. But it sounds decent so far. I'm going to have trouble playing one movement full of nothing but echo sounds, so how can I choose to have echo during one section and bypass at another?
+
+What if the audio effects were set by the time spheres and layers? Data comes from the same place, but spheres determine which mixer to send audio to.
+
 ---
 
 ### Jesse Meeting 001

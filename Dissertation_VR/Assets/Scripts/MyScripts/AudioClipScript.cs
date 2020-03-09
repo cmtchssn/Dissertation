@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Networking;
 
 public class AudioClipScript : MonoBehaviour
@@ -23,11 +24,13 @@ public class AudioClipScript : MonoBehaviour
     TimeSphereScript ts;
     string id;
     Object dn = null;
+    public AudioMixer audioMixer;
 
     private void Start()
     {
         StartCoroutine(AudioFileFolder());
         audioSource = GetComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Echo")[0];
         audioSource.spatialize = true;
         audioSource.spatialBlend = 0.33f;
         audioSource.playOnAwake = false;
