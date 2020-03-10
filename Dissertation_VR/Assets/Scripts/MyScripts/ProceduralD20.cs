@@ -120,7 +120,7 @@ public class ProceduralD20 : MonoBehaviour
                 {
                     if (globalFace[i].Contains(col1) && globalFace[i].Contains(col2) && globalFace[i].Contains(col3))
                     {
-                        //print("D20 Face " + (i + 1) + " colliding");
+                        //Debug.Log("D20 Face " + (i + 1) + " colliding");
                         faceVal = i;
                         //pause then play audio.
                         //bell.Toll(0, 20 - faceVal);
@@ -133,7 +133,7 @@ public class ProceduralD20 : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        print(collision.gameObject.tag);
+        //Debug.Log(collision.gameObject.tag);
         if (collision.collider.tag == "Floor")
         {
             bell.Stop();

@@ -102,7 +102,7 @@ public class ProceduralD8 : MonoBehaviour
                 {
                     if (globalFace[i].Contains(col1) && globalFace[i].Contains(col2) && globalFace[i].Contains(col3))
                     {
-                        //print("D8 Face " + (i + 1) + " colliding");
+                        //Debug.Log("D8 Face " + (i + 1) + " colliding");
                         faceVal = i;
                         //pause then play audio.
                         //bell.Toll(0, faceVal);
@@ -115,7 +115,7 @@ public class ProceduralD8 : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        print(collision.gameObject.tag);
+        //Debug.Log(collision.gameObject.tag);
         if (collision.collider.tag == "Floor")
         {
             bell.Stop();

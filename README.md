@@ -371,6 +371,13 @@ I've got the audio mixer groups set up for one movement, just an echo and chorus
 
 What if the audio effects were set by the time spheres and layers? Data comes from the same place, but spheres determine which mixer to send audio to.
 
+### Day 070
+I'm going to start today with putting the raycast in fixedUpdate or the mapGen in fixedUpdate just to see what happens. Neither have rigidbodies but maybe something good will make me not fall through the floor. The other option is to double check my code and find out why elevation changes so quickly when I move the terrain.
+
+IDEA! To finish a piece, I turn off the floor's collider and let everything fall through, destroying the dice and stopping the music.
+
+Got really lost in the weeds today trying to fix the collision issues I'm having with the dice and the floor. Worked on raycasting, but it is so complex that it may not be worth it. Cross product of normals may work, but I don't understand how yet, so that's cool.
+
 ---
 
 ### Jesse Meeting 001

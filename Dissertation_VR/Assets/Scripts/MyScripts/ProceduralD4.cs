@@ -18,11 +18,15 @@ public class ProceduralD4 : MonoBehaviour
     Vector3[][] face;
     int faceCount = 4;
     static int faceVertCount = 3;
+    List<Vector3> norms;
+    Ray ray1;
+    public int xr;
+    public int yr;
+    public int zr;
 
     #region D4 Stats
 
     static float C0 = 0.353553390593273762200422181052f;// = Mathf.Sqrt(2f) / 4f;
-    //public static float size = 2f;
     static float C1 = C0 * 2f;
 
     public static Vector3[] verticesD4 =      // where each face connects in space
@@ -33,8 +37,6 @@ public class ProceduralD4 : MonoBehaviour
         new Vector3(-C1, -C1, -C1)
     };
 
-    //static int[][] faceytri = D4;
-
     public static int[][] faceTrianglesD4 =   // what order to connect vertices to create an outward facing mesh for each face
     {
         new int[] { 0, 1, 2 },
@@ -42,15 +44,7 @@ public class ProceduralD4 : MonoBehaviour
         new int[] { 2, 3, 0 },
         new int[] { 3, 2, 1 }
     };
-    /*
-    static int[][] D4 =
-    {
-        { 0, 1, 2 },
-        { 1, 0, 3 },
-        { 2, 3, 0 },
-        { 3, 2, 1 }
-    }
-    */
+
     public Vector3[] faceVerticesD4(int dir)
     {
         Vector3[] fv = new Vector3[faceVertCount]; // number of vertices per face
@@ -63,6 +57,8 @@ public class ProceduralD4 : MonoBehaviour
         return fv;
     }
     #endregion
+
+
 
     private void Awake()
     {
@@ -90,8 +86,17 @@ public class ProceduralD4 : MonoBehaviour
         
     }
 
+    private void Update()
+    {
+        ray1 = new Ray(transform.position, transform.forward + new Vector3(xr,yr,zr));
+        Ray ray2 = new Ray(transform.position, -transform.forward + new Vector3(xr, yr, zr));
+        Debug.DrawLine(ray1.origin, ray1.origin + ray1.direction * 1, Color.green);
+
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("normals: " + mesh.normals[9] + ", " + mesh.normals[10] + ", " + mesh.normals[11] + ", ");
         if (reTrig && collision.collider.tag == "Floor")
         {
             reTrig = false;
@@ -123,7 +128,7 @@ public class ProceduralD4 : MonoBehaviour
                 {
                     if (globalFace[i].Contains(col1) && globalFace[i].Contains(col2) && globalFace[i].Contains(col3))
                     {
-                        //print("D4 Face " + (i+1) + " colliding");
+                        Debug.Log("D4 Face " + (i+1) + " colliding");
                         faceVal = i;
                         //pause then play audio.
                         //bell.Toll(0, faceVal + 8);
@@ -136,7 +141,7 @@ public class ProceduralD4 : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        //print(collision.gameObject.tag);
+        //Debug.Log(collision.gameObject.tag);
         if (collision.collider.tag == "Floor")
         {
             bell.Stop();
@@ -173,6 +178,9 @@ public class ProceduralD4 : MonoBehaviour
         }
     }
     */
+
+
+
     #region D4 Make
 
     void MakeD4()
@@ -195,15 +203,17 @@ public class ProceduralD4 : MonoBehaviour
         triangles.Add(vCount - 3);      // 1 group of 0-2 means 3 total vertices per face
         triangles.Add(vCount - 3 + 1);
         triangles.Add(vCount - 3 + 2);
+
     }
-    #endregion
 
     void UpdateMesh()
     {
         mesh.Clear();
         mesh.vertices = vertices.ToArray();
         mesh.triangles = triangles.ToArray();
+        Debug.Log(mesh.triangles[0] + ", " + mesh.triangles[1] + ", " + mesh.triangles[2] + ", " + mesh.triangles[3]);
         mesh.RecalculateNormals();
         meshRend.material = Resources.Load("shapePrototypingMaterial") as Material;
     }
+    #endregion
 }
