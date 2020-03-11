@@ -18,7 +18,12 @@ public class ProceduralD6 : MonoBehaviour
     Vector3[][] face;
     static int faceCount = 6;
     int faceVertCount = 4;
-    
+    Ray[] faceRays;
+    LayerMask mask;
+
+
+
+    #region D6 Stats
 
     static float C0 = 1f;
 
@@ -53,7 +58,11 @@ public class ProceduralD6 : MonoBehaviour
         }
         return fv;
     }
+    #endregion
 
+
+
+    #region Run
     private void Awake()
     {
         mesh = GetComponent<MeshFilter>().mesh;
@@ -61,6 +70,8 @@ public class ProceduralD6 : MonoBehaviour
         meshCollider.sharedMesh = mesh;
         meshRend = GetComponent<MeshRenderer>();
         face = new Vector3[faceCount][];
+        faceRays = new Ray[faceCount];
+        mask = LayerMask.GetMask("Floor");
     }
 
     void Start()
@@ -69,8 +80,51 @@ public class ProceduralD6 : MonoBehaviour
         UpdateMesh();
         meshCollider.convex = true;
         bell = GetComponent<AudioClipScript>();
+        Debug.Log("Normal length: " + mesh.normals.Length);
     }
 
+    private void Update()
+    {
+        for (int i = 0; i < faceRays.Length; i++)
+        {
+            faceRays[i] = new Ray(transform.position, transform.TransformVector(mesh.normals[i * faceVertCount]));
+            Debug.DrawLine(transform.position, transform.TransformPoint(mesh.normals[i * faceVertCount]), Color.magenta);
+        }
+
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(faceRays[0], out hitInfo, 3, mask))
+        {
+            faceVal = 0;
+            Debug.Log("D6 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[1], out hitInfo, 3, mask))
+        {
+            faceVal = 1;
+            Debug.Log("D6 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[2], out hitInfo, 3, mask))
+        {
+            faceVal = 2;
+            Debug.Log("D6 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[3], out hitInfo, 3, mask))
+        {
+            faceVal = 3;
+            Debug.Log("D6 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[4], out hitInfo, 3, mask))
+        {
+            faceVal = 4;
+            Debug.Log("D6 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[5], out hitInfo, 3, mask))
+        {
+            faceVal = 5;
+            Debug.Log("D6 faceVal = " + faceVal);
+        }
+    }
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         if (reTrig && collision.collider.tag == "Floor")
@@ -124,18 +178,17 @@ public class ProceduralD6 : MonoBehaviour
             reTrig = true;
         }
     }
-
+    */
     private void OnTriggerEnter(Collider other)
     {
-            if (other.gameObject.layer == 15)
-            {
-                bell.Toll(2, faceVal);
-            }
-            if (other.gameObject.layer == 16)
-            {
-                bell.Toll(5, faceVal);
-            }
-        
+        if (other.gameObject.layer == 15)
+        {
+            bell.Toll(2, faceVal);
+        }
+        if (other.gameObject.layer == 16)
+        {
+            bell.Toll(5, faceVal);
+        }
     }
     /*
     private void OnTriggerExit(Collider other)
@@ -153,6 +206,12 @@ public class ProceduralD6 : MonoBehaviour
         }
     }
     */
+    #endregion
+
+
+
+    #region D6 Make
+
     void MakeD6()
     {
         vertices = new List<Vector3>();
@@ -187,4 +246,5 @@ public class ProceduralD6 : MonoBehaviour
         mesh.RecalculateNormals();
         meshRend.material = Resources.Load("shapePrototypingMaterial") as Material;
     }
+    #endregion
 }

@@ -18,6 +18,12 @@ public class ProceduralD20 : MonoBehaviour
     Vector3[][] face;
     static int faceCount = 20;
     int faceVertCount = 3;
+    Ray[] faceRays;
+    LayerMask mask;
+
+
+
+    #region D20 Stats
 
     static float C0 = 0.809016994374947424102293417183f;    // = (1f + Mathf.Sqrt(5f)) / 4f;
 
@@ -70,6 +76,11 @@ public class ProceduralD20 : MonoBehaviour
         }
         return fv;
     }
+    #endregion
+
+
+
+    #region Run
 
     private void Awake()
     {
@@ -78,6 +89,8 @@ public class ProceduralD20 : MonoBehaviour
         meshCollider.sharedMesh = mesh;
         meshRend = GetComponent<MeshRenderer>();
         face = new Vector3[faceCount][];
+        faceRays = new Ray[faceCount];
+        mask = LayerMask.GetMask("Floor");
     }
 
     void Start()
@@ -88,6 +101,118 @@ public class ProceduralD20 : MonoBehaviour
         bell = GetComponent<AudioClipScript>();
     }
 
+    private void Update()
+    {
+        for (int i = 0; i < faceRays.Length; i++)
+        {
+            faceRays[i] = new Ray(transform.position, transform.TransformVector(mesh.normals[i * faceVertCount]));
+            Debug.DrawLine(transform.position, transform.TransformPoint(mesh.normals[i * faceVertCount]), Color.magenta);
+        }
+
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(faceRays[0], out hitInfo, 2, mask))
+        {
+            faceVal = 0;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[1], out hitInfo, 2, mask))
+        {
+            faceVal = 1;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[2], out hitInfo, 2, mask))
+        {
+            faceVal = 2;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[3], out hitInfo, 2, mask))
+        {
+            faceVal = 3;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[4], out hitInfo, 2, mask))
+        {
+            faceVal = 4;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[5], out hitInfo, 2, mask))
+        {
+            faceVal = 5;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[6], out hitInfo, 2, mask))
+        {
+            faceVal = 6;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[7], out hitInfo, 2, mask))
+        {
+            faceVal = 7;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[8], out hitInfo, 2, mask))
+        {
+            faceVal = 8;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[9], out hitInfo, 2, mask))
+        {
+            faceVal = 9;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[10], out hitInfo, 2, mask))
+        {
+            faceVal = 10;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[11], out hitInfo, 2, mask))
+        {
+            faceVal = 11;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[12], out hitInfo, 2, mask))
+        {
+            faceVal = 12;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[13], out hitInfo, 2, mask))
+        {
+            faceVal = 13;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[14], out hitInfo, 2, mask))
+        {
+            faceVal = 14;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[15], out hitInfo, 2, mask))
+        {
+            faceVal = 15;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[16], out hitInfo, 2, mask))
+        {
+            faceVal = 16;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[17], out hitInfo, 2, mask))
+        {
+            faceVal = 17;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[18], out hitInfo, 2, mask))
+        {
+            faceVal = 18;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[19], out hitInfo, 2, mask))
+        {
+            faceVal = 19;
+            Debug.Log("D20 faceVal = " + faceVal);
+        }
+    }
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         if (reTrig && collision.collider.tag == "Floor")
@@ -140,7 +265,7 @@ public class ProceduralD20 : MonoBehaviour
             reTrig = true;
         }
     }
-
+    */
     private void OnTriggerEnter(Collider other)
     {
         
@@ -198,6 +323,11 @@ public class ProceduralD20 : MonoBehaviour
         }
     }
     */
+    #endregion
+
+
+
+    #region D20 Make
     void MakeD20()
     {
         vertices = new List<Vector3>();
@@ -229,4 +359,5 @@ public class ProceduralD20 : MonoBehaviour
         mesh.RecalculateNormals();
         meshRend.material = Resources.Load("shapePrototypingMaterial") as Material;
     }
+    #endregion
 }

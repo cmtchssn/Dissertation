@@ -18,11 +18,10 @@ public class ProceduralD4 : MonoBehaviour
     Vector3[][] face;
     int faceCount = 4;
     static int faceVertCount = 3;
-    List<Vector3> norms;
-    Ray ray1;
-    public int xr;
-    public int yr;
-    public int zr;
+    Ray[] faceRays;
+    LayerMask mask;
+
+
 
     #region D4 Stats
 
@@ -60,6 +59,7 @@ public class ProceduralD4 : MonoBehaviour
 
 
 
+    #region Run
     private void Awake()
     {
         mesh = GetComponent<MeshFilter>().mesh;
@@ -67,14 +67,8 @@ public class ProceduralD4 : MonoBehaviour
         meshCollider.sharedMesh = mesh;
         meshRend = GetComponent<MeshRenderer>();
         face = new Vector3[faceCount][];
-        
-        // Spawn resize info here:
-        // I think using transform scale may be the easy way to do it
-        //this.verticesD4
-        //size = size + 0.5f;
-        //C1 = C0 * size;
-        //Debug.Log(size);
-        //Debug.Log(C1);
+        faceRays = new Ray[faceCount];
+        mask = LayerMask.GetMask("Floor");
     }
 
     void Start()
@@ -83,27 +77,51 @@ public class ProceduralD4 : MonoBehaviour
         UpdateMesh();
         meshCollider.convex = true;
         bell = GetComponent<AudioClipScript>();
-        
     }
 
     private void Update()
     {
-        ray1 = new Ray(transform.position, transform.forward + new Vector3(xr,yr,zr));
-        Ray ray2 = new Ray(transform.position, -transform.forward + new Vector3(xr, yr, zr));
-        Debug.DrawLine(ray1.origin, ray1.origin + ray1.direction * 1, Color.green);
+        for (int i = 0; i < faceRays.Length; i++)
+        {
+            faceRays[i] = new Ray(transform.position, transform.TransformVector(mesh.normals[i * faceVertCount]));
+            Debug.DrawLine(transform.position, transform.TransformPoint(mesh.normals[i * faceVertCount]), Color.magenta);
+        }
+
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(faceRays[0], out hitInfo, 1, mask))
+        {
+            faceVal = 0;
+            //Debug.Log("D4 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[1], out hitInfo, 1, mask))
+        {
+            faceVal = 1;
+            //Debug.Log("D4 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[2], out hitInfo, 1, mask))
+        {
+            faceVal = 2;
+            //Debug.Log("D4 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[3], out hitInfo, 1, mask))
+        {
+            faceVal = 3;
+            //Debug.Log("D4 faceVal = " + faceVal);
+        }
 
     }
 
+    /*
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("normals: " + mesh.normals[9] + ", " + mesh.normals[10] + ", " + mesh.normals[11] + ", ");
+        //Debug.Log("normals: " + mesh.normals[9] + ", " + mesh.normals[10] + ", " + mesh.normals[11] + ", ");
         if (reTrig && collision.collider.tag == "Floor")
         {
             reTrig = false;
             colFlag = true;
         }
     }
-
     void OnCollisionStay(Collision collision)
     {
         if (colFlag)
@@ -128,7 +146,7 @@ public class ProceduralD4 : MonoBehaviour
                 {
                     if (globalFace[i].Contains(col1) && globalFace[i].Contains(col2) && globalFace[i].Contains(col3))
                     {
-                        Debug.Log("D4 Face " + (i+1) + " colliding");
+                        //Debug.Log("D4 Face " + (i+1) + " colliding");
                         faceVal = i;
                         //pause then play audio.
                         //bell.Toll(0, faceVal + 8);
@@ -138,7 +156,6 @@ public class ProceduralD4 : MonoBehaviour
             }
         }
     }
-
     private void OnCollisionExit(Collision collision)
     {
         //Debug.Log(collision.gameObject.tag);
@@ -148,18 +165,18 @@ public class ProceduralD4 : MonoBehaviour
             reTrig = true;
         }
     }
+    */
 
     private void OnTriggerEnter(Collider other)
     {
-            if (other.gameObject.layer == 15)
-            {
-                bell.Toll(0, faceVal);
-            }
-            if (other.gameObject.layer == 16)
-            {
-                bell.Toll(1, faceVal);
-            }
-        
+        if (other.gameObject.layer == 15)
+        {
+            bell.Toll(0, faceVal);
+        }
+        if (other.gameObject.layer == 16)
+        {
+            bell.Toll(1, faceVal);
+        }
     }
     /*
     private void OnTriggerExit(Collider other)
@@ -178,6 +195,7 @@ public class ProceduralD4 : MonoBehaviour
         }
     }
     */
+    #endregion
 
 
 
@@ -211,7 +229,7 @@ public class ProceduralD4 : MonoBehaviour
         mesh.Clear();
         mesh.vertices = vertices.ToArray();
         mesh.triangles = triangles.ToArray();
-        Debug.Log(mesh.triangles[0] + ", " + mesh.triangles[1] + ", " + mesh.triangles[2] + ", " + mesh.triangles[3]);
+        //Debug.Log(mesh.triangles[0] + ", " + mesh.triangles[1] + ", " + mesh.triangles[2] + ", " + mesh.triangles[3]);
         mesh.RecalculateNormals();
         meshRend.material = Resources.Load("shapePrototypingMaterial") as Material;
     }

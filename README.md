@@ -378,6 +378,11 @@ IDEA! To finish a piece, I turn off the floor's collider and let everything fall
 
 Got really lost in the weeds today trying to fix the collision issues I'm having with the dice and the floor. Worked on raycasting, but it is so complex that it may not be worth it. Cross product of normals may work, but I don't understand how yet, so that's cool.
 
+### Day 071
+I'm going to make the ray origin the mesh normals instead of the transform.origin to see if the rays will cast from the vertices.
+
+I am genuinely amazed that I got this working. I send a ray from the center of the di to the normal vector for each face. When the ray touches items with the mask "Floor" is sets the faceVal variable and selects audio based on that. It took way too long to figure this out, but I am super happy about it! I need to work on the user falling through the floor still, and will get to that tomorrow.
+
 ---
 
 ### Jesse Meeting 001

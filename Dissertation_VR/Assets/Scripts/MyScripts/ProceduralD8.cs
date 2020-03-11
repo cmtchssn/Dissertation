@@ -18,29 +18,36 @@ public class ProceduralD8 : MonoBehaviour
     Vector3[][] face;
     static int faceCount = 8;
     int faceVertCount = 3;
+    Ray[] faceRays;
+    LayerMask mask;
+
+
+
+    #region D8 Stats
+
+    static float C0 = 0.7071067811865475244008443621048f;
+    static float C1 = C0 * 2f;
 
     public static Vector3[] verticesD8 =
     {
-        new Vector3( 0,  1,  0),
-        new Vector3( 1,  0,  1),
-        new Vector3(-1,  0,  1),
-        new Vector3(-1,  0, -1),
-        new Vector3( 1,  0, -1),
-        new Vector3( 0, -1,  0)
+        new Vector3(  0,   0,   C1),
+        new Vector3(  0,   0,  -C1),
+        new Vector3( C1,   0,    0),
+        new Vector3(-C1,   0,    0),
+        new Vector3(  0,  C1,    0),
+        new Vector3(  0, -C1,    0)
     };
 
     public static int[][] faceTrianglesD8 =
     {
-        //top triangles
-        new int[] { 2, 1, 0 },
-        new int[] { 3, 2, 0 },
-        new int[] { 4, 3, 0 },
-        new int[] { 1, 4, 0 },
-        //bottom triangles
+        new int[] { 0, 2, 4 },
+        new int[] { 0, 4, 3 },
+        new int[] { 0, 3, 5 },
+        new int[] { 0, 5, 2 },
         new int[] { 1, 2, 5 },
-        new int[] { 2, 3, 5 },
-        new int[] { 3, 4, 5 },
-        new int[] { 4, 1, 5 }   //culling is weird on this one, these are counterclockwise, but work.
+        new int[] { 1, 5, 3 },
+        new int[] { 1, 3, 4 },
+        new int[] { 1, 4, 2 }
     };
 
     public static Vector3[] faceVerticesD8(int dir)
@@ -52,7 +59,11 @@ public class ProceduralD8 : MonoBehaviour
         }
         return fv;
     }
+    #endregion
 
+
+
+    #region Run
     private void Awake()
     {
         mesh = GetComponent<MeshFilter>().mesh;
@@ -60,6 +71,8 @@ public class ProceduralD8 : MonoBehaviour
         meshCollider.sharedMesh = mesh;
         meshRend = GetComponent<MeshRenderer>();
         face = new Vector3[faceCount][];
+        faceRays = new Ray[faceCount];
+        mask = LayerMask.GetMask("Floor");
     }
 
     void Start()
@@ -68,8 +81,61 @@ public class ProceduralD8 : MonoBehaviour
         UpdateMesh();
         meshCollider.convex = true;
         bell = GetComponent<AudioClipScript>();
+        Debug.Log("Normal length: " + mesh.normals.Length);
     }
+    
+    private void Update()
+    {
+        for (int i = 0; i < faceRays.Length; i++)
+        {
+            faceRays[i] = new Ray(transform.position, transform.TransformVector(mesh.normals[i * faceVertCount]));
+            Debug.DrawLine(transform.position, transform.TransformPoint(mesh.normals[i * faceVertCount]), Color.magenta);
+        }
 
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(faceRays[0], out hitInfo, 3, mask))
+        {
+            faceVal = 0;
+            Debug.Log("D8 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[1], out hitInfo, 3, mask))
+        {
+            faceVal = 1;
+            Debug.Log("D8 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[2], out hitInfo, 3, mask))
+        {
+            faceVal = 2;
+            Debug.Log("D8 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[3], out hitInfo, 3, mask))
+        {
+            faceVal = 3;
+            Debug.Log("D8 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[4], out hitInfo, 3, mask))
+        {
+            faceVal = 4;
+            Debug.Log("D8 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[5], out hitInfo, 3, mask))
+        {
+            faceVal = 5;
+            Debug.Log("D8 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[6], out hitInfo, 3, mask))
+        {
+            faceVal = 6;
+            Debug.Log("D8 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[7], out hitInfo, 3, mask))
+        {
+            faceVal = 7;
+            Debug.Log("D8 faceVal = " + faceVal);
+        }
+    }
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         if (reTrig && collision.collider.tag == "Floor")
@@ -122,7 +188,7 @@ public class ProceduralD8 : MonoBehaviour
             reTrig = true;
         }
     }
-
+    */
     private void OnTriggerEnter(Collider other)
     {
         
@@ -152,6 +218,12 @@ public class ProceduralD8 : MonoBehaviour
         }
     }
     */
+    #endregion
+
+
+
+    #region D8 Make
+
     void MakeD8()
     {
         vertices = new List<Vector3>();
@@ -183,4 +255,5 @@ public class ProceduralD8 : MonoBehaviour
         mesh.RecalculateNormals();
         meshRend.material = Resources.Load("shapePrototypingMaterial") as Material;
     }
+    #endregion
 }

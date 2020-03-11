@@ -18,6 +18,12 @@ public class ProceduralD12 : MonoBehaviour
     Vector3[][] face;
     static int faceCount = 12;
     int faceVertCount = 5;
+    Ray[] faceRays;
+    LayerMask mask;
+
+
+
+    #region D12 Stats
 
     static float C0 = 0.809016994374947424102293417183f;    // = (1f + Math.Sqrt(5f)) / 4f
     static float C1 = 1.30901699437494742410229341718f;     // = (3f + Math.Sqrt(5f)) / 4f
@@ -71,6 +77,11 @@ public class ProceduralD12 : MonoBehaviour
         }
         return fv;
     }
+    #endregion
+
+
+
+    #region Run
 
     private void Awake()
     {
@@ -79,6 +90,8 @@ public class ProceduralD12 : MonoBehaviour
         meshCollider.sharedMesh = mesh;
         meshRend = GetComponent<MeshRenderer>();
         face = new Vector3[faceCount][];
+        faceRays = new Ray[faceCount];
+        mask = LayerMask.GetMask("Floor");
     }
 
     void Start()
@@ -89,6 +102,78 @@ public class ProceduralD12 : MonoBehaviour
         bell = GetComponent<AudioClipScript>();
     }
 
+    private void Update()
+    {
+        for (int i = 0; i < faceRays.Length; i++)
+        {
+            faceRays[i] = new Ray(transform.position, transform.TransformVector(mesh.normals[i * faceVertCount]));
+            Debug.DrawLine(transform.position, transform.TransformPoint(mesh.normals[i * faceVertCount]), Color.magenta);
+        }
+
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(faceRays[0], out hitInfo, 2, mask))
+        {
+            faceVal = 0;
+            Debug.Log("D12 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[1], out hitInfo, 2, mask))
+        {
+            faceVal = 1;
+            Debug.Log("D12 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[2], out hitInfo, 2, mask))
+        {
+            faceVal = 2;
+            Debug.Log("D12 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[3], out hitInfo, 2, mask))
+        {
+            faceVal = 3;
+            Debug.Log("D12 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[4], out hitInfo, 2, mask))
+        {
+            faceVal = 4;
+            Debug.Log("D12 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[5], out hitInfo, 2, mask))
+        {
+            faceVal = 5;
+            Debug.Log("D12 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[6], out hitInfo, 2, mask))
+        {
+            faceVal = 6;
+            Debug.Log("D12 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[7], out hitInfo, 2, mask))
+        {
+            faceVal = 7;
+            Debug.Log("D12 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[8], out hitInfo, 2, mask))
+        {
+            faceVal = 8;
+            Debug.Log("D12 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[9], out hitInfo, 2, mask))
+        {
+            faceVal = 9;
+            Debug.Log("D12 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[10], out hitInfo, 2, mask))
+        {
+            faceVal = 10;
+            Debug.Log("D12 faceVal = " + faceVal);
+        }
+        else if (Physics.Raycast(faceRays[11], out hitInfo, 2, mask))
+        {
+            faceVal = 11;
+            Debug.Log("D12 faceVal = " + faceVal);
+        }
+    }
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         if (reTrig && collision.collider.tag == "Floor")
@@ -143,7 +228,7 @@ public class ProceduralD12 : MonoBehaviour
             reTrig = true;
         }
     }
-
+    */
     private void OnTriggerEnter(Collider other)
     {
         
@@ -201,6 +286,11 @@ public class ProceduralD12 : MonoBehaviour
         }
     }
     */
+    #endregion
+
+
+
+    #region D12 Make
     void MakeD12()
     {
         vertices = new List<Vector3>();
@@ -239,4 +329,5 @@ public class ProceduralD12 : MonoBehaviour
         mesh.RecalculateNormals();
         meshRend.material = Resources.Load("shapePrototypingMaterial") as Material;
     }
+    #endregion
 }
