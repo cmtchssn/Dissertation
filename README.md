@@ -383,6 +383,11 @@ I'm going to make the ray origin the mesh normals instead of the transform.origi
 
 I am genuinely amazed that I got this working. I send a ray from the center of the di to the normal vector for each face. When the ray touches items with the mask "Floor" is sets the faceVal variable and selects audio based on that. It took way too long to figure this out, but I am super happy about it! I need to work on the user falling through the floor still, and will get to that tomorrow.
 
+### Day 072
+Falling through the floor needs fixing. I think if I improve my raycasting it will work better.
+
+I solved this specific issue by making 2 rays that shoot down toward the floor. The first ray is 2 units above the floor, and the second ray is 100 units above the floor. Now when the map goes over my head, the higher up ray will hit it and move me up. The only problem is one single frame of seeing the map above me. Most people may not notice, but I can tell it is happening. Not sure that I want to fix it yet. I think I should work on the other things I need to perform first.
+
 ---
 
 ### Jesse Meeting 001
