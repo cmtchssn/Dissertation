@@ -388,6 +388,10 @@ Falling through the floor needs fixing. I think if I improve my raycasting it wi
 
 I solved this specific issue by making 2 rays that shoot down toward the floor. The first ray is 2 units above the floor, and the second ray is 100 units above the floor. Now when the map goes over my head, the higher up ray will hit it and move me up. The only problem is one single frame of seeing the map above me. Most people may not notice, but I can tell it is happening. Not sure that I want to fix it yet. I think I should work on the other things I need to perform first.
 
+### Day 073
+Going to put VR Origin raycasting in LateUpdate() and see if it works any better. Then, I'm going to figure out how to connect height data to audio effects.
+
+
 ---
 
 ### Jesse Meeting 001

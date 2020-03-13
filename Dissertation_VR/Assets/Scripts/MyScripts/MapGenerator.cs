@@ -67,7 +67,7 @@ public class MapGenerator : MonoBehaviour
         currentMHMV = terrainData.meshHeightMultiplier;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         currentLerpTime += Time.deltaTime;
         if (currentLerpTime > lerpTime)

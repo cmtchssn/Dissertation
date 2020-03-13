@@ -11,7 +11,7 @@ public class Mvt1 : MonoBehaviour
 
     void Start()
     {
-        mvt1Mixer.
+        
     }
 
     void Update()

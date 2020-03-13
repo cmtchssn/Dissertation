@@ -13,10 +13,10 @@ public class DontFall : MonoBehaviour
 
     void FixedUpdate()
     {
-        Ray rayD = new Ray(new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), -Vector3.up * 100);
-        Ray rayU = new Ray(new Vector3(transform.position.x, transform.position.y + 100, transform.position.z), -Vector3.up * 100);
+        Ray rayD = new Ray(new Vector3(transform.position.x, transform.position.y + 100, transform.position.z), -Vector3.up * 100);
+        //Ray rayU = new Ray(new Vector3(transform.position.x, transform.position.y + 100, transform.position.z), -Vector3.up * 100);
         Debug.DrawRay(rayD.origin, -Vector3.up, Color.magenta);
-        Debug.DrawRay(rayU.origin, -Vector3.up, Color.cyan);
+        //Debug.DrawRay(rayU.origin, -Vector3.up, Color.cyan);
         //Ray ray = new Ray(transform.position, -Vector3.up);
         RaycastHit hitInfo;
 
@@ -26,12 +26,11 @@ public class DontFall : MonoBehaviour
             //Debug.DrawRay(transform.position, transform.TransformVector(-transform.up), Color.magenta);
             transform.position = hitInfo.point;
         }
-        else if (Physics.Raycast(rayU, out hitInfo, 1001, mask))
-        {
-            Debug.DrawRay(rayU.origin, -Vector3.up, Color.gray);
+        //else if (Physics.Raycast(rayU, out hitInfo, 1001, mask))
+        //{
+            //Debug.DrawRay(rayU.origin, -Vector3.up, Color.gray);
             //Debug.DrawRay(transform.position, transform.TransformVector(-transform.up), Color.magenta);
-            transform.position = hitInfo.point;
-        }
-
+            //transform.position = hitInfo.point;
+        //}
     }
 }
