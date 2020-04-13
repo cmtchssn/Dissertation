@@ -391,6 +391,11 @@ I solved this specific issue by making 2 rays that shoot down toward the floor. 
 ### Day 073
 Going to put VR Origin raycasting in LateUpdate() and see if it works any better. Then, I'm going to figure out how to connect height data to audio effects.
 
+### Day 074
+Ignoring whether or not I can fix a single frame and moving on. Today is about connecting audio effects parameters to height data. I'll make three scenes each with different effects mappings.
+
+Well, I got things connected in Update(), but I'm convinced there is a better way to do it, similar to the updatable data script Sebastien Lague wrote. Anyway, it works, the audio effects are mapped, albeit, arbitrarily, but they are mapped and it works.
+
 
 ---
 

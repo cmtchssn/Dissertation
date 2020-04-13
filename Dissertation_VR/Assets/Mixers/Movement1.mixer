@@ -90,6 +90,8 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: 45326f84e8faab146aa344cc252f2c82
+    name: chorVol
   - guid: 01a401b7d76d7f9449ef0f750b5c4fb3
     name: chorDry
   - guid: ab5f419eab97b1c4e8b3308301fa787a
@@ -106,6 +108,8 @@ AudioMixerController:
     name: chorDepth
   - guid: b30779767e22bb64b829dda2c39e5722
     name: chorFeedback
+  - guid: 7225f066c81c9984b840a75a8f7af854
+    name: echoVol
   - guid: 1e89e666f04d3a5449f0a6c2bf3298f6
     name: echoDelay
   - guid: 810da2d9af8d0fe4d91d683d17566ff5
@@ -169,18 +173,19 @@ AudioMixerSnapshotController:
   m_SnapshotID: aab3e6830978a4f41a818587712ae793
   m_FloatValues:
     c7a045603fbbb134f9bbb196f706b888: 1
-    9f55fda0c3b1ac743af1efc8723baf26: 1
-    6f7951a2301fae844b0d8174b89b2898: 0.54
+    9f55fda0c3b1ac743af1efc8723baf26: 0
+    6f7951a2301fae844b0d8174b89b2898: 1
     8c1c3f84a765c1144b31749e182e4066: 100
-    1e89e666f04d3a5449f0a6c2bf3298f6: 3065
+    7225f066c81c9984b840a75a8f7af854: 0
+    1e89e666f04d3a5449f0a6c2bf3298f6: 1
     b30779767e22bb64b829dda2c39e5722: -1
     01a401b7d76d7f9449ef0f750b5c4fb3: 0
     0ddf5a89161756d4daa631cf638fbea3: 1
-    810da2d9af8d0fe4d91d683d17566ff5: 0.24
+    810da2d9af8d0fe4d91d683d17566ff5: 0
     ba70dfcb7047cf34fba2b59768c038e5: 0
     8caab3fdc1f49d34fad2203a406afda3: 20
     ab5f419eab97b1c4e8b3308301fa787a: 1
-    e2ba337fcb15cf047ba5e60c35bc1e35: 1.8
+    e2ba337fcb15cf047ba5e60c35bc1e35: 0
   m_TransitionOverrides: {}
 --- !u!244 &1582421572277015607
 AudioMixerEffectController:

@@ -54,7 +54,7 @@ public class MapGenerator : MonoBehaviour
     {
         falloffMap = FalloffGenerator.GenerateFalloffMap(mapChunkSize);
         noiseData.seed = Random.Range(0, 100);
-        noiseData.noiseScale = 30f;
+        noiseData.noiseScale = 5f;
         noiseData.persistance = 0.5f;
         noiseData.lacunarity = 2f;
         noiseData.offset = new Vector2(0f, 0f);

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class NoiseData : UpdatableData
 {
-    public float noiseScale = 30f;
+    public float noiseScale = 5f;
 
     public int octaves = 4;
     [Range(0, 1)]
