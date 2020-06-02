@@ -8,7 +8,7 @@ public class TimeSphereScript : MonoBehaviour
     public GameObject spaceSphere;
     public GameObject timeAndSpace;
     SpaceSphereScript sp;
-    int[] layerPool = new int[] { 15, 16 };
+    int[] layerPool = new int[] { 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30};
     public int layer = 0;
     public Vector3 minScale;
     public Vector3 maxScale;

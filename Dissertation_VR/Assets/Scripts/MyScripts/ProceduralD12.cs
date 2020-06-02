@@ -231,59 +231,79 @@ public class ProceduralD12 : MonoBehaviour
     */
     private void OnTriggerEnter(Collider other)
     {
-        
-            if (other.gameObject.layer == 15)
+        if (other.gameObject.layer > 14 && other.gameObject.layer < 31)
+        {
+            if (other.gameObject.layer == 15) //10
             {
-                if (faceVal >= 10)
-                {
-                    bell.Toll(8, faceVal - 2);
-                }
-                else
-                {
-                    bell.Toll(1, faceVal);
-                }
+                bell.Toll(4, faceVal % 10);
             }
-            if (other.gameObject.layer == 16)
+            if (other.gameObject.layer == 16) //20
             {
-                if (faceVal >= 10)
-                {
-                    bell.Toll(9, faceVal - 2);
-                }
-                else
-                {
-                    bell.Toll(9, faceVal);
-                }
+                bell.Toll(5, faceVal % 7);
             }
-        
+            if (other.gameObject.layer == 17) //10
+            {
+                bell.Toll(6, faceVal);
+            }
+            if (other.gameObject.layer == 18) //20
+            {
+                bell.Toll(7, faceVal % 10);
+            }
+            if (other.gameObject.layer == 19) //10
+            {
+                bell.Toll(8, faceVal % 10);
+            }
+            if (other.gameObject.layer == 20) //8
+            {
+                bell.Toll(9, faceVal % 10);
+            }
+            if (other.gameObject.layer == 21) //20
+            {
+                bell.Toll(10, faceVal % 10);
+            }
+            if (other.gameObject.layer == 22) //10
+            {
+                bell.Toll(11, faceVal % 10);
+            }
+            if (other.gameObject.layer == 23) //10
+            {
+                bell.Toll(12, faceVal % 10);
+            }
+            if (other.gameObject.layer == 24) //10
+            {
+                bell.Toll(13, faceVal % 10);
+            }
+            if (other.gameObject.layer == 25) //10
+            {
+                bell.Toll(14, faceVal % 10);
+            }
+            if (other.gameObject.layer == 26) //10
+            {
+                bell.Toll(15, faceVal);
+            }
+            if (other.gameObject.layer == 27) //10
+            {
+                bell.Toll(0, faceVal % 10);
+            }
+            if (other.gameObject.layer == 28) //10
+            {
+                bell.Toll(1, faceVal);
+            }
+            if (other.gameObject.layer == 29) //10
+            {
+                bell.Toll(2, faceVal % 10);
+            }
+            if (other.gameObject.layer == 30) //20
+            {
+                bell.Toll(3, faceVal);
+            }
+        }
     }
     /*
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.GetComponent<TimeSphereScript>().reverse)
-        {
-            if (other.gameObject.layer == 15)
-            {
-                if (faceVal >= 10)
-                {
-                    bell.Toll(8, faceVal - 2);
-                }
-                else
-                {
-                    bell.Toll(1, faceVal);
-                }
-            }
-            if (other.gameObject.layer == 16)
-            {
-                if (faceVal >= 10)
-                {
-                    bell.Toll(9, faceVal - 2);
-                }
-                else
-                {
-                    bell.Toll(9, faceVal);
-                }
-            }
-        }
+        // needs a condition for when the time sphere is set to reverse
+        bell.Toll(other.gameObject.layer - 15, faceVal);
     }
     */
     #endregion

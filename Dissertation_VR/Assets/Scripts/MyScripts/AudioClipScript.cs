@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class AudioClipScript : MonoBehaviour
 {
@@ -24,13 +25,29 @@ public class AudioClipScript : MonoBehaviour
     TimeSphereScript ts;
     string id;
     Object dn = null;
-    public AudioMixer audioMixer;
+    public AudioMixer audioMixer1;
+    public AudioMixer audioMixer2;
+    public AudioMixer audioMixer3;
 
     private void Start()
     {
+        string currentScene = SceneManager.GetActiveScene().name;
+        Debug.Log(currentScene);
         StartCoroutine(AudioFileFolder());
         audioSource = GetComponent<AudioSource>();
-        audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Echo")[0];
+        if (currentScene == "Movement1")
+        {
+            audioSource.outputAudioMixerGroup = audioMixer1.FindMatchingGroups("Echo")[0];
+        }
+        else if (currentScene == "Movement2")
+        {
+            audioSource.outputAudioMixerGroup = audioMixer2.FindMatchingGroups("PitchShift")[0];
+        }
+        else if (currentScene == "Movement3")
+        {
+            audioSource.outputAudioMixerGroup = audioMixer3.FindMatchingGroups("Reso")[0];
+        }
+
         audioSource.spatialize = true;
         audioSource.spatialBlend = 0.33f;
         audioSource.playOnAwake = false;

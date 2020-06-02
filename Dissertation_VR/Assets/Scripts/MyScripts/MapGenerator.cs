@@ -48,7 +48,7 @@ public class MapGenerator : MonoBehaviour
     public float currentMHMV;
     public float newMHMV;
 
-    bool terrainLoop;
+    public bool terrainLoop;
 
     private void Awake()
     {

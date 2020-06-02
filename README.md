@@ -396,6 +396,28 @@ Ignoring whether or not I can fix a single frame and moving on. Today is about c
 
 Well, I got things connected in Update(), but I'm convinced there is a better way to do it, similar to the updatable data script Sebastien Lague wrote. Anyway, it works, the audio effects are mapped, albeit, arbitrarily, but they are mapped and it works.
 
+### Day 075
+I really need more audio clips. That is something I'll plan on working on this evening. Until then, I'm going to work on getting audio mixers together with sfx I like for my 3 movements.
+
+### Day 076
+Going to map mvt 2 and 3 today. Still need to add a ton of new audio, new skyboxes for each level, and I think changing the colors of the ground for each level is a good idea too.
+
+Reverb pitch shift and mod filter are acting so horribly slow. I don't know if I can keep them. When I use edit in playmode, everything seems to run fine, but using noise data to lerp their values drops every frame in the game. It basically won't run. I should find a new set of effects probably.
+
+### Day 077
+I got the snapshots to transition in a coroutine instead of how I was previously working. Things are so much smoother now, and easier to implement. I'll go back and redo the first movement with the new script, and then start on the third movement.
+
+### Day 078
+Going to set up first and third movements to use coroutine snapshot lerping. Then I'll add some lightboxes and change the stage colors to each scene. I need to record what I do today to use for editing together to make music.
+
+All three scenes are working well. I need to remove the delete time sphere button since the functionality isn't there.
+
+Time sphere button is hidden, skyboxes and floor color schemes are changed. Biggest change next is getting a second camera to record what I do in VR. I need to play around and record what I make today. Tomorrow, I can edit everything together. Also, I still need to add so many new samples.
+
+### Day 079
+Learn to record 2 cameras in Unity. Fixed 3rd person camera angle. Add new audio. Record performing.
+
+Fixed 3rd person cameras. Time to learn to record.
 
 ---
 
