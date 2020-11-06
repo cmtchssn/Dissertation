@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-7702614708318995379
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 133a5caa67fa012409cad4bc0aad17e1
+  m_EffectName: Receive
+  m_MixLevel: 9faac79c972f09c4695431ed882b74e7
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!245 &-6980166093987967094
 AudioMixerSnapshotController:
   m_ObjectHideFlags: 0
@@ -38,6 +52,7 @@ AudioMixerSnapshotController:
     c7a045603fbbb134f9bbb196f706b888: 0.59
     9f55fda0c3b1ac743af1efc8723baf26: 0.52
     6f7951a2301fae844b0d8174b89b2898: 0.7
+    084d15a3b303ff84ba736e97bace0553: 0
     8c1c3f84a765c1144b31749e182e4066: 23
     7225f066c81c9984b840a75a8f7af854: 0
     1e89e666f04d3a5449f0a6c2bf3298f6: 29
@@ -71,6 +86,20 @@ AudioMixerEffectController:
     m_GUID: 6f7951a2301fae844b0d8174b89b2898
   - m_ParameterName: Wetmix
     m_GUID: 9f55fda0c3b1ac743af1efc8723baf26
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &-2966155469032599490
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 3df4323163176c54d93cf6eaa4584d93
+  m_EffectName: Send
+  m_MixLevel: 16fc8b7632d3b7d4db7816e106f3efc5
+  m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
@@ -116,7 +145,7 @@ AudioMixerGroupController:
   m_Children: []
   m_Volume: 7225f066c81c9984b840a75a8f7af854
   m_Pitch: 960ec6153efa68344801c6c223f89d59
-  m_Send: 00000000000000000000000000000000
+  m_Send: 5af8502cb9368184a932ca5bb33c2664
   m_Effects:
   - {fileID: 2488795986068125565}
   - {fileID: -4313957018243085977}
@@ -148,14 +177,19 @@ AudioMixerController:
     name: chorVol
   - guid: 7225f066c81c9984b840a75a8f7af854
     name: echoVol
+  - guid: 1e89e666f04d3a5449f0a6c2bf3298f6
+    name: echoDelay
   m_AudioMixerGroupViews:
   - guids:
     - 7f576e42920a23b4c9cabe49ff34714e
-    - b5bcb711ab2850e4dad6d9de71789762
     - 3f2bb5fd652df3a42ab39c7ad0bcdc3c
+    - b5bcb711ab2850e4dad6d9de71789762
     name: View
+  - guids:
+    - 7f576e42920a23b4c9cabe49ff34714e
+    name: View2
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 24500006}
+  m_TargetSnapshot: {fileID: -6980166093987967094}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -203,14 +237,17 @@ AudioMixerSnapshotController:
     c7a045603fbbb134f9bbb196f706b888: 1
     9f55fda0c3b1ac743af1efc8723baf26: 0
     6f7951a2301fae844b0d8174b89b2898: 1
+    084d15a3b303ff84ba736e97bace0553: 0
     8c1c3f84a765c1144b31749e182e4066: 100
     7225f066c81c9984b840a75a8f7af854: 0
     1e89e666f04d3a5449f0a6c2bf3298f6: 1
     b30779767e22bb64b829dda2c39e5722: -1
     01a401b7d76d7f9449ef0f750b5c4fb3: 0
+    677c1aa8d0dfd874e9e2605ddd6a7a85: 0.025
     0ddf5a89161756d4daa631cf638fbea3: 1
     810da2d9af8d0fe4d91d683d17566ff5: 0
     ba70dfcb7047cf34fba2b59768c038e5: 0
+    5af8502cb9368184a932ca5bb33c2664: 0
     8caab3fdc1f49d34fad2203a406afda3: 20
     ab5f419eab97b1c4e8b3308301fa787a: 1
     e2ba337fcb15cf047ba5e60c35bc1e35: 0
@@ -267,7 +304,7 @@ AudioMixerGroupController:
   - {fileID: -793162797789003047}
   m_Volume: 45326f84e8faab146aa344cc252f2c82
   m_Pitch: 6710ef81224e74a44aaed7f0e19f4935
-  m_Send: 00000000000000000000000000000000
+  m_Send: 084d15a3b303ff84ba736e97bace0553
   m_Effects:
   - {fileID: 7151399269076309056}
   - {fileID: -865658497780298508}
